@@ -64,7 +64,7 @@ Działa rownież wysyłka "międzyplatformowa", czyli kombinacje client_py + ser
 ## Zadanie 1.2
 
 Przygotowaliśmy program, który wysyła datagramy UDP o przyrastającej wielkości.
-Maksymalny datagram, który udało się wysłać, miał rozmiar **65507** bajtów.
+Maksymalny rozmiar danych, który udało się nam wysłać to **65507** bajtów.
 
 - Rozmiar ten wynika z tego, że datagram jest wysyłany w jednym pakiecie IPv4, którego maksymalny rozmiar wynosi 2^16 -1
   = 65535 bajtów
