@@ -1,4 +1,6 @@
-# PSI 22Z
+# PSI 22Z Zad 1.x
+
+## Uruchomienie kontenerów
 
 - Uruchamianie serwera
   `./server_py.sh` lub `./server_c.sh`
@@ -6,10 +8,9 @@
   `./client_py.sh` lub `./client_c.sh`. Dodatkowo do klienta wymagany jest argument `server` "c" albo "py", czyli
   np `./client_py.sh server=c`
 
-## Zadanie 1
+## Zadanie 1.1
 
-
-### Python:
+### Python
 
 server
 ```
@@ -40,22 +41,30 @@ Message from Server "Hello UDP Client"
 server
 ```
 $ ./server_c.sh
-
+UDP server up and listening
+Waiting for data...Received packet from 172.21.21.3:32866
+Data: Hello UDP Server
+Waiting for data...Received packet from 172.21.21.3:32866
+Data: Hello UDP Server
+Waiting for data...Received packet from 172.21.21.3:32866
+Data: Hello UDP Server
+Waiting for data...
 ```
 
 client
 ```
 $ ./client_c.sh server=c
-
+Message received from the server: "Hello UDP Client"
+Message received from the server: "Hello UDP Client"
+Message received from the server: "Hello UDP Client"
 ```
-
 
 Działa rownież wysyłka "międzyplatformowa", czyli kombinacje client_py + server_c oraz client_c + server_py.
 
 ## Zadanie 1.2
 
 Przygotowaliśmy program, który wysyła datagramy UDP o przyrastającej wielkości.
-Maksymalny datagram, który udało się wysłać miał rozmiar **65507** bajtów.
+Maksymalny datagram, który udało się wysłać, miał rozmiar **65507** bajtów.
 
 - Rozmiar ten wynika z tego, że datagram jest wysyłany w jednym pakiecie IPv4, którego maksymalny rozmiar wynosi 2^16 -1
   = 65535 bajtów
