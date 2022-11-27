@@ -8,7 +8,8 @@
 
 ### Zadanie 1
 
-# TODO 
+# TODO przykladowe uruchomienie
+# TODO test "miedzyplatformowy"
 
 #### Zadanie 1.2
 
