@@ -70,25 +70,24 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    // do 3 times
     for (i = 0; i < 3; i++)
     {
         if (sendto(s, message, strlen(message), 0, (struct sockaddr *)&si_other, slen) == -1)
         {
             die("sendto()");
         }
-    }
 
-    // receive a reply and print it
-    // clear the buffer by filling null, it might have previously received data
-    memset(buf, '\0', BUFLEN);
-    // try to receive some data, this is a blocking call
-    if (recvfrom(s, buf, BUFLEN, 0, (struct sockaddr *)&si_other, &slen) == -1)
-    {
-        die("recvfrom()");
-    }
+        // receive a reply and print it
+        // clear the buffer by filling null, it might have previously received data
+        memset(buf, '\0', BUFLEN);
+        // try to receive some data, this is a blocking call
+        if (recvfrom(s, buf, BUFLEN, 0, (struct sockaddr *)&si_other, &slen) == -1)
+        {
+            die("recvfrom()");
+        }
 
-    printf("Message received from the server: \"%s\"\n", buf);
+        printf("Message received from the server: \"%s\"\n", buf);
+    }
 
     close(s);
     return 0;

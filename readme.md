@@ -6,12 +6,53 @@
   `./client_py.sh` lub `./client_c.sh`. Dodatkowo do klienta wymagany jest argument `server` "c" albo "py", czyli
   np `./client_py.sh server=c`
 
-### Zadanie 1
+## Zadanie 1
 
-# TODO przykladowe uruchomienie
-# TODO test "miedzyplatformowy"
 
-#### Zadanie 1.2
+### Python:
+
+server
+```
+$ ./server_py.sh
+UDP server up and listening
+Waiting for data...
+Message from Client: b'Hello UDP Server'
+Client IP Address: ('172.21.21.3', 44075)
+Waiting for data...
+Message from Client: b'Hello UDP Server'
+Client IP Address: ('172.21.21.3', 44075)
+Waiting for data...
+Message from Client: b'Hello UDP Server'
+Client IP Address: ('172.21.21.3', 44075)
+Waiting for data...
+```
+
+client
+```
+$ ./client_py.sh server=py
+Message from Server "Hello UDP Client"
+Message from Server "Hello UDP Client"
+Message from Server "Hello UDP Client"
+```
+
+### C
+
+server
+```
+$ ./server_c.sh
+
+```
+
+client
+```
+$ ./client_c.sh server=c
+
+```
+
+
+Działa rownież wysyłka "międzyplatformowa", czyli kombinacje client_py + server_c oraz client_c + server_py.
+
+## Zadanie 1.2
 
 Przygotowaliśmy program, który wysyła datagramy UDP o przyrastającej wielkości.
 Maksymalny datagram, który udało się wysłać miał rozmiar **65507** bajtów.
