@@ -1,4 +1,4 @@
-docker build -t z21_client_py -f ./client/Dockerfile.py ./client
+docker build -t z21_12_client_py -f ./client/Dockerfile.py ./client
 
 for ARGUMENT in "$@"
 do
@@ -16,11 +16,11 @@ if [[ -z $server ]]; then
 fi
 
 if [ $server == "c" ]; then
-    server_dns="z21_server_c"
+    server_dns="z21_12_server_c"
 elif [ $server == "py" ]; then
-    server_dns="z21_server_py"
+    server_dns="z21_12_server_py"
 else
     echo "Wrong 'server' argument. Please choose 'c' or 'py'"
 fi
 
-docker run -it --rm --network-alias z21_client_py --network z21_network --name z21_client_py z21_client_py $server_dns
+docker run -it --rm --network-alias z21_12_client_py --network z21_network --name z21_12_client_py z21_12_client_py $server_dns
