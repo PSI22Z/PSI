@@ -9,16 +9,16 @@
 #define BUFLEN 1024
 #define PORT 8888
 
-int DNSLookUp(char* hostname, char* ip)
+int DNSLookUp(char *hostname, char *ip)
 {
     struct hostent *H;
     struct in_addr **AddrList;
-    if((H = gethostbyname(hostname)) == NULL)
+    if ((H = gethostbyname(hostname)) == NULL)
     {
         herror("gethostbyname() error");
         return 1;
     }
-    AddrList = (struct in_addr **) H->h_addr_list;
+    AddrList = (struct in_addr **)H->h_addr_list;
     for (int i = 0; AddrList[i] != NULL; i++)
     {
         strcpy(ip, inet_ntoa(*AddrList[i]));
@@ -35,11 +35,13 @@ void die(char *s)
 
 int main(int argc, char *argv[])
 {
-    if (argc > 2) {
+    if (argc > 2)
+    {
         printf("Too many arguments.\n");
         return 1;
     }
-    else if (argc == 1) {
+    else if (argc == 1)
+    {
         printf("One argument expected.\n");
         return 1;
     }
@@ -68,9 +70,13 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    if (sendto(s, message, strlen(message), 0, (struct sockaddr *)&si_other, slen) == -1)
+    // do 3 times
+    for (i = 0; i < 3; i++)
     {
-        die("sendto()");
+        if (sendto(s, message, strlen(message), 0, (struct sockaddr *)&si_other, slen) == -1)
+        {
+            die("sendto()");
+        }
     }
 
     // receive a reply and print it
@@ -81,7 +87,7 @@ int main(int argc, char *argv[])
     {
         die("recvfrom()");
     }
-    
+
     printf("Message received from the server: \"%s\"\n", buf);
 
     close(s);

@@ -11,7 +11,7 @@ PORT = 8888
 BUFFER_SIZE = 1024
 
 msgFromClient = 'Hello UDP Server'
-bytesToSend = [str.encode(msgFromClient + f' {i}') for i in range(3)]
+bytesToSend = [str.encode(msgFromClient) for i in range(3)]
 
 UDPClientSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
 
