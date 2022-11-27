@@ -3,7 +3,6 @@ import sys
 
 try:
     ADDRESS = socket.gethostbyname(sys.argv[1])
-    # ADDRESS = "127.0.0.1"
 except socket.gaierror:
     print(f'Server "{sys.argv[1]}" is not running')
     quit()
