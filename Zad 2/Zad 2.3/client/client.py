@@ -27,9 +27,8 @@ except BaseException as e:
     quit(2)
 
 for message in bytesToSend:
+    print(f'Sending: {message}')
     client_socket.sendall(message)
-    data = client_socket.recv(BUFFER_SIZE).decode()
-    print(f'Received from server: {data}')
-    time.sleep(15)
+    time.sleep(5)
 
 client_socket.close()

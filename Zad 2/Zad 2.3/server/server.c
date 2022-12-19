@@ -1,17 +1,29 @@
-#include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
-#include <arpa/inet.h>
+#include <string.h>
+#include <stdio.h>
+#include <sys/types.h>
 #include <sys/socket.h>
+#include <netinet/in.h>
+#include <netdb.h>
+#include <stdio.h>
+#include <arpa/inet.h>
+#include <sys/un.h>
 
 #define BUFLEN 1024
 #define PORT 8888
+
+#define MAX_FDS 5
+
+#define max(a, b) (((a) > (b)) ? (a) : (b))
 
 int main(void)
 {
     int port, sock, msgsock, client_length, rval, i;
     struct sockaddr_in server_addr, client;
     char *client_addr, buf[BUFLEN];
+    int descriptors_count, number_active, sockets[MAX_FDS];
+    fd_set ready;
+    struct timeval timeout;
 
     sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock == -1)
@@ -26,7 +38,7 @@ int main(void)
 
     if (bind(sock, (struct sockaddr *)&server_addr, sizeof server_addr) == -1)
     {
-        perror("binding stream socket");socktab
+        perror("binding stream socket");
         exit(-1);
     }
 
@@ -36,44 +48,87 @@ int main(void)
         exit(-1);
     }
 
-    // TODO tutaj zczac rozbiorke
-
     printf("TCP server up and listening\n");
 
     while (1)
     {
-        printf("Waiting for data...\n");
-        client_length = sizeof(client);
-        msgsock = accept(sock, (struct sockaddr *)&client, &client_length);
-        if (msgsock == -1)
+        FD_ZERO(&ready);
+        FD_SET(sock, &ready);
+        for (i = 0; i < MAX_FDS; i++)
         {
-            perror("accept");
+            if (sockets[i] > 0)
+            {
+                FD_SET(sockets[i], &ready);
+            }
         }
-        else
-        {
-            client_addr = inet_ntoa(client.sin_addr);
-            printf("Client connected at IP: %s and port: %i\n", client_addr, ntohs(client.sin_port));
+        timeout.tv_sec = 10;
+        timeout.tv_usec = 0;
 
-            do
+        if ((number_active = select(descriptors_count, &ready, (fd_set *)0, (fd_set *)0, &timeout)) == -1)
+        {
+            perror("select");
+            continue;
+        }
+
+        if (FD_ISSET(sock, &ready))
+        {
+            client_length = sizeof(client);
+            msgsock = accept(sock, (struct sockaddr *)&client, &client_length);
+
+            if (msgsock == -1)
+            {
+                perror("accept");
+            }
+            else if (msgsock >= MAX_FDS)
+            {
+                printf("Too many clients\n");
+                if (close(msgsock) == -1)
+                {
+                    perror("closing messagesock: too many descriptors");
+                }
+            }
+            else
+            {
+                descriptors_count = max(descriptors_count, msgsock + 1);
+                sockets[msgsock] = msgsock;
+
+                client_addr = inet_ntoa(client.sin_addr);
+                printf("Accepted from: %s:%d as %d\n", client_addr, ntohs(client.sin_port), msgsock);
+            }
+        }
+
+        for (i = 0; i < MAX_FDS; i++)
+        {
+            if ((msgsock = sockets[i]) > 0 && FD_ISSET(sockets[i], &ready))
             {
                 memset(buf, 0, sizeof buf);
+
                 if ((rval = read(msgsock, buf, BUFLEN)) == -1)
+                {
                     perror("reading stream message");
-
-                if (rval > 0)
-                    printf("Message from client: %s\n", buf);
-
-                if (send(msgsock, buf, strlen(buf), 0) < 0){
-                    printf("Can't send\n");
-                    return -1;
                 }
-            } while (rval > 0);
+                else if (rval > 0)
+                {
+                    printf("Message from client: %s", buf);
+                }
+                else if (rval == 0)
+                {
+                    printf("Ending connection %d\n", msgsock);
+                    if (close(msgsock) == -1)
+                        perror("closing message socket: ending connection");
+                    sockets[msgsock] = -1;
+                }
+                else
+                {
+                    printf("- %2d -> ", msgsock);
+                    fwrite(buf, 1, rval, stdout);
+                    printf("\n");
+                }
+            }
         }
 
-        printf("Ending connection\n");
-
-        if (close(msgsock) == -1)
-            perror("closing message socket");
+        if (number_active == 0)
+            printf("Timeout...\n");
     }
 
     if (close(sock) == -1)
@@ -81,8 +136,6 @@ int main(void)
         perror("closing socket");
         exit(-1);
     }
-
-    // TODO tutaj skonczyc
 
     return 0;
 }
