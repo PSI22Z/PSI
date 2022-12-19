@@ -130,8 +130,6 @@ int main(int argc, char *argv[])
     }
 
 done:
-    printf("Connected to %s:%d successfully\n", hostname, PORT);
-
     // send 10 messages via TCP, make sure to send all data (like python sendall())
     for (i = 0; i < 10; i++)
     {
