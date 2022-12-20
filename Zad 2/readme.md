@@ -109,3 +109,62 @@ receiving message of length 16:
 from connected user: Hello TCP Server
 Waiting for data
 ```
+
+# Zad 2.3
+
+## Python
+
+### Timeout na serwerze
+
+```
+# Server - Python
+Connection from: ('127.0.0.1', 36168)
+from connected user: Hello TCP Server
+from connected user: Hello TCP Server
+from connected user: Hello TCP Server
+Waiting for data...
+No connection for 10 seconds, ex: timed out
+Waiting for data...
+No connection for 10 seconds, ex: timed out
+Waiting for data...
+No connection for 10 seconds, ex: timed out
+Waiting for data...
+```
+
+Jeżeli klient nie połączy się w ciągu 10 sekund do serwera to dostaniemy timeout.
+
+### Timeout na kliencie
+
+```
+# Client - Python
+No connection for 10 seconds, ex: timed out
+```
+
+Przy ustawieniu liczby maksymalnych połączeń na serwerze za pomocą `TCPServerSocket.listen(5)` i uruchomieniu wielu
+klientów jednocześnie jeżeli serwer przestanie obsługiwać połączenia otrzymamy Timeout na kliencie.
+Można to zasymulować np. komentując `accept()` na serwerze.
+
+## C
+
+```
+# Server - C
+TCP server up and listening
+Accepted from: 172.22.0.3:44902 as 4
+Timeout...
+Message from client: Message 1Message 2Message from client: Message 3Message 4Message from client: Message 5Message from client: Message 6Message from client: Message 7Message from client: Message 8Message from client: Message 9Message from client: Message 10Ending connection 4
+Timeout...
+```
+
+```
+IP 172.22.0.2
+Sent "Message 1" to z21_23_server_c:8888
+Sent "Message 2" to z21_23_server_c:8888
+Sent "Message 3" to z21_23_server_c:8888
+Sent "Message 4" to z21_23_server_c:8888
+Sent "Message 5" to z21_23_server_c:8888
+Sent "Message 6" to z21_23_server_c:8888
+Sent "Message 7" to z21_23_server_c:8888
+Sent "Message 8" to z21_23_server_c:8888
+Sent "Message 9" to z21_23_server_c:8888
+Sent "Message 10" to z21_23_server_c:8888
+```
