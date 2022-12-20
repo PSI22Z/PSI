@@ -1,5 +1,13 @@
 # PSI 22Z Zad 2.x
 
+Autorzy:
+
+- Mikołaj Olejnik
+- Bartłomiej Rasztabiga
+- Marcin Zasuwa
+
+Data: 20.12.2022
+
 ## Uruchomienie kontenerów
 
 - Uruchamianie serwera
