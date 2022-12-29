@@ -203,7 +203,7 @@ class FileTransferThread(StoppableThread):
             try:
                 conn, addr = sock.accept()
                 print(f'connection from {addr}')
-                filename = recvall(conn)
+                filename = recvall(conn).decode('utf-8')
                 print(f'received {filename}')
 
                 with open(os.path.join(self.path, filename), 'rb') as file:
