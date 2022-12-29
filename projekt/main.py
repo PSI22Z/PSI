@@ -112,6 +112,30 @@ class BroadcastListenThread(StoppableThread):
         super().__init__()
         self.path = path
 
+    def get_local_in_dir(self) -> list[File]:
+        filenames = [f for f in os.listdir(self.path) if os.path.isfile(os.path.join(self.path, f))]
+
+        files = []
+        for filename in filenames:
+            stat = os.stat(os.path.join(self.path, filename))
+
+            files.append(File(
+                filename=filename,
+                created_at=datetime.fromtimestamp(stat.st_ctime),
+                modified_at=datetime.fromtimestamp(stat.st_mtime),
+                size=stat.st_size
+            ))
+
+        return files + deleted_files
+
+    def download_file(self, ip: str, filename: str):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((ip, TCP_PORT))
+        sock.sendall(filename.encode('utf-8'))
+        data = recvall(sock)
+        sock.close()
+        return data
+
     def run(self) -> None:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -125,9 +149,34 @@ class BroadcastListenThread(StoppableThread):
                 # w teorii ogranicza nas MTU (1500 bajtow), oraz rozmiar pakietu UDP (65535 bajtow)
 
                 # ignore own messages
-                if addr != IP:
+                # TODO przeciez tak nie mozna, bo IP bedzie takie samo. To jak to zrobic?
+                if addr[0] != IP:
                     files = pickle.loads(data)
                     print(f"received message: {files} from {addr}")
+
+                    # TODO tutaj skonczylem
+                    # trzeba porownac files z tym co mamy w folderze
+
+                    local_files = self.get_local_in_dir()
+                    for file in files:
+                        if file not in local_files:
+                            # TODO pobrac plik z serwera
+                            downloaded_file = self.download_file(addr[0], file.filename)
+                            print(downloaded_file)
+                            pass
+                        else:
+                            # TODO sprawdzic czy sa rozne (rozna data modyfikacji, rozmiar)
+                            # find local file by filename
+                            if file.is_deleted:
+                                # TODO jeżeli lokalnie istnieje plik o tej samej nazwie, ale o dacie utworzenia/modyfikacji późniejszej niż otrzymany “usunięty” plik, to wiadomość o usunięciu pliku zostaje zignorowana
+                                pass
+
+                            local_file = next((f for f in local_files if f.filename == file.filename), None)
+                            if local_file is not None:
+                                if local_file.modified_at != file.modified_at or local_file.size != file.size:
+                                    # TODO pobrac plik z serwera
+                                    pass
+
             except socket.timeout:
                 continue
 
@@ -148,13 +197,19 @@ class FileTransferThread(StoppableThread):
         sock.settimeout(5)
 
         # TODO chyba 2 thready beda gadac na jednym sockecie, potrzebny jakis mutex?
+        # TODO jak to ma dzialac jak mam server i klienta w jednym programie?
 
         while True and not self.stopped():
             try:
                 conn, addr = sock.accept()
                 print(f'connection from {addr}')
-                data = recvall(conn)
-                print(f'received {data}')
+                filename = recvall(conn)
+                print(f'received {filename}')
+
+                with open(os.path.join(self.path, filename), 'rb') as file:
+                    file_content = file.read()
+                    conn.sendall(file_content)
+
                 conn.close()
             except socket.timeout:
                 continue
