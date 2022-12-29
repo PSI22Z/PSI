@@ -164,7 +164,7 @@ class BroadcastListenThread(StoppableThread):
                     local_files = self.get_local_in_dir()
                     for file in files:
                         if file not in local_files:
-                            # TODO pobrac plik z serwera
+                            # TODO trzeba podmienic metadane (daty np.)
                             downloaded_file = self.download_file(addr[0], file.filename)
                             self.save_file(file.filename, downloaded_file)
 
@@ -177,7 +177,8 @@ class BroadcastListenThread(StoppableThread):
 
                             local_file = next((f for f in local_files if f.filename == file.filename), None)
                             if local_file is not None:
-                                if local_file.modified_at < file.modified_at or local_file.size != file.size:
+                                if local_file.modified_at < file.modified_at:
+                                    # TODO trzeba podmienic metadane (daty np.)
                                     downloaded_file = self.download_file(addr[0], file.filename)
                                     self.save_file(file.filename, downloaded_file)
 
