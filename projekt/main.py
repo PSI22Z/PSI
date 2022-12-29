@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from time import sleep
 from datetime import datetime
 
-IP = "192.168.0.10"
+IP = "192.168.0.183"
 UDP_PORT = 5005
 TCP_PORT = 5006
 
@@ -136,6 +136,10 @@ class BroadcastListenThread(StoppableThread):
         sock.close()
         return data
 
+    def save_file(self, filename: str, content):
+        with open(os.path.join(self.path, filename), 'wb') as f:
+            f.write(content)
+
     def run(self) -> None:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -162,8 +166,8 @@ class BroadcastListenThread(StoppableThread):
                         if file not in local_files:
                             # TODO pobrac plik z serwera
                             downloaded_file = self.download_file(addr[0], file.filename)
-                            print(downloaded_file)
-                            pass
+                            self.save_file(file.filename, downloaded_file)
+
                         else:
                             # TODO sprawdzic czy sa rozne (rozna data modyfikacji, rozmiar)
                             # find local file by filename
@@ -174,8 +178,8 @@ class BroadcastListenThread(StoppableThread):
                             local_file = next((f for f in local_files if f.filename == file.filename), None)
                             if local_file is not None:
                                 if local_file.modified_at != file.modified_at or local_file.size != file.size:
-                                    # TODO pobrac plik z serwera
-                                    pass
+                                    downloaded_file = self.download_file(addr[0], file.filename)
+                                    self.save_file(file.filename, downloaded_file)
 
             except socket.timeout:
                 continue
