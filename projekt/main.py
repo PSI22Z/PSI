@@ -9,7 +9,8 @@ from time import sleep
 from datetime import datetime
 
 IP = "192.168.0.10"
-PORT = 5005
+UDP_PORT = 5005
+TCP_PORT = 5006
 
 deleted_files = []
 previous_files_snapshot = []
@@ -87,7 +88,7 @@ class BroadcastSendThread(StoppableThread):
             msg = pickle.dumps(files)
             print(len(msg))
             print(f'broadcasting {files}')
-            sock.sendto(msg, ("192.168.0.255", PORT))
+            sock.sendto(msg, ("192.168.0.255", UDP_PORT))
             sleep(15)
 
         print('BroadcastSendThread stopped')
@@ -104,7 +105,7 @@ class BroadcastListenThread(StoppableThread):
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
         sock.settimeout(5)
-        sock.bind(("", PORT))
+        sock.bind(("", UDP_PORT))
 
         while True and not self.stopped():
             try:
@@ -116,10 +117,34 @@ class BroadcastListenThread(StoppableThread):
                     files = pickle.loads(data)
                     print(f"received message: {files} from {addr}")
             except socket.timeout:
-                print('socket timeout')
                 continue
 
         print('BroadcastListenThread stopped')
+        sock.close()
+
+
+class FileTransferThread(StoppableThread):
+    def __init__(self, path):
+        super().__init__()
+        self.path = path
+
+    def run(self) -> None:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM, socket.IPPROTO_TCP)
+        sock.bind((IP, TCP_PORT))
+        sock.listen(1)
+        sock.settimeout(5)
+
+        while True and not self.stopped():
+            try:
+                conn, addr = sock.accept()
+                print(f'connection from {addr}')
+                data = conn.recv(1024)
+                print(f'received {data}')
+                conn.close()
+            except socket.timeout:
+                continue
+
+        print('FileTransferThread stopped')
         sock.close()
 
 
@@ -128,9 +153,11 @@ def main():
 
     broadcast_send_thread = BroadcastSendThread(path)
     broadcast_listen_thread = BroadcastListenThread(path)
+    file_transfer_thread = FileTransferThread(path)
 
     broadcast_send_thread.start()
     broadcast_listen_thread.start()
+    file_transfer_thread.start()
 
     while True:
         try:
@@ -140,9 +167,11 @@ def main():
             print('KeyboardInterrupt')
             broadcast_send_thread.stop()
             broadcast_listen_thread.stop()
+            file_transfer_thread.stop()
 
             broadcast_send_thread.join()
             broadcast_listen_thread.join()
+            file_transfer_thread.join()
             sys.exit(0)
 
 
