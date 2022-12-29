@@ -16,6 +16,18 @@ deleted_files = []
 previous_files_snapshot = []
 
 
+def recvall(conn):
+    BUFF_SIZE = 1024
+    data = b''
+    while True:
+        part = conn.recv(BUFF_SIZE)
+        data += part
+        if len(part) < BUFF_SIZE:
+            # either 0 or end of data
+            break
+    return data
+
+
 @dataclass
 class File:
     filename: str
@@ -130,15 +142,18 @@ class FileTransferThread(StoppableThread):
 
     def run(self) -> None:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM, socket.IPPROTO_TCP)
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         sock.bind((IP, TCP_PORT))
         sock.listen(1)
         sock.settimeout(5)
+
+        # TODO chyba 2 thready beda gadac na jednym sockecie, potrzebny jakis mutex?
 
         while True and not self.stopped():
             try:
                 conn, addr = sock.accept()
                 print(f'connection from {addr}')
-                data = conn.recv(1024)
+                data = recvall(conn)
                 print(f'received {data}')
                 conn.close()
             except socket.timeout:
