@@ -8,7 +8,14 @@ from dataclasses import dataclass
 from time import sleep
 from datetime import datetime
 
-IP = "192.168.0.10"  # TODO dynamicznie?
+
+def get_ip_address():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    return s.getsockname()[0]
+
+
+IP = get_ip_address()  # TODO dynamicznie?
 UDP_PORT = 5005
 TCP_PORT = 5006
 
