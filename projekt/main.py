@@ -266,6 +266,8 @@ class BroadcastListenThread(StoppableThread):
                                 # TODO trzeba sprawdzic skrot pliku?
                                 # TODO trzeba podmienic metadane (daty np.)
                                 print(f'HAVE TO DOWNLOAD {file.filename}, BECAUSE MODIFIED')
+                                print(local_file)
+                                print(file)
                                 downloaded_file_content = self.download_file(addr[0], file.filename)
                                 self.save_file(file, downloaded_file_content)
                     syncing_lock.release()
