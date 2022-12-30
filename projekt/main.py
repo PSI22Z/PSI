@@ -199,7 +199,7 @@ class BroadcastListenThread(StoppableThread):
         files = []
         for strct in structs:
             filename, created_at, modified_at, size, is_deleted = struct.unpack('!100sddi?', strct)
-            files.append(File(filename.decode('utf-8').trim(),
+            files.append(File(filename.decode('utf-8').split('\0', 1)[0],
                               datetime.fromtimestamp(created_at),
                               datetime.fromtimestamp(modified_at),
                               size,
