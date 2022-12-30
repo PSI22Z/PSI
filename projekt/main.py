@@ -104,6 +104,10 @@ class BroadcastSendThread(StoppableThread):
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
         sock.settimeout(5)
 
+        broadcast_address = os.getenv("BROADCAST")
+        if broadcast_address is None:
+            broadcast_address = "192.168.0.255"
+
         while True and not self.stopped():
             syncing_lock.acquire()
             try:
@@ -111,7 +115,7 @@ class BroadcastSendThread(StoppableThread):
                 msg = pickle.dumps(files)
                 print(len(msg))
                 print(f'broadcasting {files}')
-                sock.sendto(msg, ("192.168.0.255", UDP_PORT))
+                sock.sendto(msg, (broadcast_address, UDP_PORT))
             finally:
                 syncing_lock.release()
             sleep(15)
