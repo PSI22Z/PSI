@@ -194,11 +194,7 @@ class BroadcastListenThread(StoppableThread):
                     for file in files:
                         local_file = next((f for f in local_files if f.filename == file.filename), None)
 
-                        if file in deleted_files and not file.is_deleted:
-                            deleted_files.remove(file)
-                            print(f"FILE {file.filename} IS NO LONGER DELETED")
-
-                        if file.is_deleted or file in deleted_files:
+                        if file.is_deleted:
                             # file is deleted, checking if we have to delete
                             if local_file is not None and local_file.modified_at < file.modified_at:
                                 # if we have a file locally and it is older than the deleted file, we delete it
@@ -206,6 +202,13 @@ class BroadcastListenThread(StoppableThread):
                                 os.remove(os.path.join(self.path, file.filename))
                                 deleted_files.add(file)
                             continue
+                        elif not file.is_deleted and file in deleted_files:
+                            # file is not deleted, but we have it marked as deleted
+                            # we have to remove it from deleted_files if it is newer than the deleted file
+                            deleted_file = next((f for f in deleted_files if f.filename == file.filename), None)
+                            if deleted_file is not None and deleted_file.modified_at < file.modified_at:
+                                print(f'HAVE TO REMOVE {file.filename} FROM DELETED FILES')
+                                deleted_files.remove(file)
 
                         if local_file is None:
                             # we don't have the file locally, we have to download it
