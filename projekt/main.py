@@ -196,11 +196,11 @@ class BroadcastListenThread(StoppableThread):
 
                         if file.is_deleted:
                             # file is deleted, checking if we have to delete
+                            deleted_files.add(file)
                             if local_file is not None and local_file.modified_at < file.modified_at:
                                 # if we have a file locally and it is older than the deleted file, we delete it
                                 print(f'HAVE TO DELETE {file.filename}, BECAUSE IT IS MARKED AS DELETED')
                                 os.remove(os.path.join(self.path, file.filename))
-                                deleted_files.add(file)
                             continue
                         elif not file.is_deleted and file in deleted_files:
                             # file is not deleted, but we have it marked as deleted
