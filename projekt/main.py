@@ -19,7 +19,7 @@ IP = get_ip_address()  # TODO dynamicznie?
 UDP_PORT = 5005
 TCP_PORT = 5006
 
-deleted_files = []
+deleted_files = set()
 previous_files_snapshot = []
 
 syncing_lock = threading.Lock()
@@ -92,7 +92,7 @@ class BroadcastSendThread(StoppableThread):
                 previous_file.is_deleted = True
                 previous_file.modified_at = datetime.now()
                 print(f"FILE {previous_file.filename} IS MARKED AS DELETED")
-                deleted_files.append(previous_file)
+                deleted_files.add(previous_file)
 
         # trzeba tez kasowac z deleted_files jak sie pojawi
         for deleted_file in deleted_files:
@@ -197,7 +197,7 @@ class BroadcastListenThread(StoppableThread):
                                 # if we have a file locally and it is older than the deleted file, we delete it
                                 print(f'HAVE TO DELETE {file.filename}, BECAUSE IT IS MARKED AS DELETED')
                                 os.remove(os.path.join(self.path, file.filename))
-                                deleted_files.append(file)
+                                deleted_files.add(file)
                             continue
 
                         if local_file is None:
