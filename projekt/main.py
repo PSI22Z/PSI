@@ -81,22 +81,24 @@ class BroadcastSendThread(StoppableThread):
                 size=stat.st_size
             ))
 
-        # compare files with previous_files_snapshot and set is_deleted flag
-        # TODO poprawic
+        return files
+
+    def update_deleted_files(self):
+        local_files = self.get_files_in_dir()
+
         global previous_files_snapshot, deleted_files
         for previous_file in previous_files_snapshot:
-            if previous_file not in files:
+            if previous_file not in local_files:
                 previous_file.is_deleted = True
                 previous_file.modified_at = datetime.now()
                 deleted_files.append(previous_file)
 
         # trzeba tez kasowac z deleted_files jak sie pojawi
         for deleted_file in deleted_files:
-            if deleted_file in files:
+            if deleted_file in local_files:
                 deleted_files.remove(deleted_file)
 
-        previous_files_snapshot = files
-        return files + deleted_files
+        previous_files_snapshot = local_files
 
     def run(self) -> None:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
@@ -112,7 +114,7 @@ class BroadcastSendThread(StoppableThread):
             syncing_lock.acquire()
             print("BroadcastSendThread: acquired lock")
             try:
-                files = self.get_files_in_dir()
+                files = self.get_files_in_dir() + deleted_files
                 msg = pickle.dumps(files)
                 print(len(msg))
                 print(f'broadcasting {files}')
@@ -120,7 +122,9 @@ class BroadcastSendThread(StoppableThread):
             finally:
                 print("BroadcastSendThread: release lock")
                 syncing_lock.release()
-            sleep(15)
+            for _ in range(15):
+                self.update_deleted_files()
+                sleep(1)
 
         print('BroadcastSendThread stopped')
         sock.close()
@@ -131,7 +135,7 @@ class BroadcastListenThread(StoppableThread):
         super().__init__()
         self.path = path
 
-    def get_local_in_dir(self) -> list[File]:
+    def get_files_in_dir(self) -> list[File]:
         filenames = [f for f in os.listdir(self.path) if os.path.isfile(os.path.join(self.path, f))]
 
         files = []
@@ -145,7 +149,7 @@ class BroadcastListenThread(StoppableThread):
                 size=stat.st_size
             ))
 
-        return files + deleted_files
+        return files
 
     def download_file(self, ip: str, filename: str):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -185,7 +189,7 @@ class BroadcastListenThread(StoppableThread):
                     # TODO tutaj skonczylem
                     # trzeba porownac files z tym co mamy w folderze
 
-                    local_files = self.get_local_in_dir()
+                    local_files = self.get_files_in_dir() + deleted_files
                     for file in files:
                         if file not in local_files:
                             # TODO trzeba podmienic metadane (daty np.)
@@ -274,6 +278,8 @@ def main():
             sleep(1)
         except KeyboardInterrupt:
             print('KeyboardInterrupt')
+            syncing_lock.release()
+
             broadcast_send_thread.stop()
             broadcast_listen_thread.stop()
             file_transfer_thread.stop()
