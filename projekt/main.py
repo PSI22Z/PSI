@@ -28,44 +28,44 @@ syncing_lock = threading.Lock()
 BUFF_SIZE = 1024
 
 
-# def recvall(conn):
-#     data = b''
-#     while True:
-#         part = conn.recv(BUFF_SIZE)
-#         data += part
-#         if len(part) < BUFF_SIZE:
-#             break
-#     return data
+def recvall(conn):
+    data = b''
+    while True:
+        part = conn.recv(BUFF_SIZE)
+        data += part
+        if not len(part):
+            break
+    return data
 
 
 # https://stackoverflow.com/questions/17667903/python-socket-receive-large-amount-of-data
 # NIE WIEM PO CO SA TE 3 RZECZY, ALE MOZE POMOGA Z WYSLKA PLIKOW
-def send_msg(sock, msg):
-    # Prefix each message with a 4-byte length (network byte order)
-    msg = struct.pack('>I', len(msg)) + msg
-    sock.sendall(msg)
-
-
-def recv_msg(sock):
-    # Read message length and unpack it into an integer
-    raw_msglen = recvall(sock, 4)
-    if raw_msglen is None:
-        return None
-    msglen = struct.unpack('>I', raw_msglen)[0]
-    # Read the message data
-    data = recvall(sock, msglen)
-    return data
-
-
-def recvall(sock, n):
-    # Helper function to recv n bytes or return None if EOF is hit
-    data = bytearray()
-    while len(data) < n:
-        packet = sock.recv(n - len(data))
-        if not packet:
-            return None
-        data.extend(packet)
-    return data
+# def send_msg(sock, msg):
+#     # Prefix each message with a 4-byte length (network byte order)
+#     msg = struct.pack('>I', len(msg)) + msg
+#     sock.sendall(msg)
+#
+#
+# def recv_msg(sock):
+#     # Read message length and unpack it into an integer
+#     raw_msglen = recvall(sock, 4)
+#     if raw_msglen is None:
+#         return None
+#     msglen = struct.unpack('>I', raw_msglen)[0]
+#     # Read the message data
+#     data = recvall(sock, msglen)
+#     return data
+#
+#
+# def recvall(sock, n):
+#     # Helper function to recv n bytes or return None if EOF is hit
+#     data = bytearray()
+#     while len(data) < n:
+#         packet = sock.recv(n - len(data))
+#         if not packet:
+#             return None
+#         data.extend(packet)
+#     return data
 
 
 @dataclass
@@ -153,7 +153,7 @@ class BroadcastSendThread(StoppableThread):
                 msg = pickle.dumps(files)
                 print(f'broadcasting {list(map(lambda f: f"{f.filename} {f.is_deleted}", files))}')
                 # TODO to nie zadziala jak mamy bardoz duzo plikow, trzeba dzielic wiadomosci?
-                print(len(files))
+                print(len(msg))
                 sock.sendto(msg, (broadcast_address, UDP_PORT))
             finally:
                 syncing_lock.release()
@@ -192,7 +192,7 @@ class BroadcastListenThread(StoppableThread):
         sock.connect((ip, TCP_PORT))
         # send_msg(sock, filename.encode('utf-8'))
         sock.sendall(filename.encode('utf-8'))
-        data = recv_msg(sock)
+        data = recvall(sock)
         # data = recvall(sock)
         sock.close()
         if data is None:
@@ -295,7 +295,7 @@ class FileTransferThread(StoppableThread):
 
                 syncing_lock.acquire()
                 with open(os.path.join(self.path, filename), 'rb') as file:
-                    send_msg(conn, file.read())
+                    conn.sendall(file.read())
                 conn.close()
                 syncing_lock.release()
             except socket.timeout:
