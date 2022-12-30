@@ -24,13 +24,13 @@ previous_files_snapshot = []
 
 syncing_lock = threading.Lock()
 
+BUFF_SIZE = 4096
+
 
 def recvall(conn):
-    BUFF_SIZE = 1024
     data = b''
     while True:
         part = conn.recv(BUFF_SIZE)
-        print(f'received part {part}')
         data += part
         if len(part) < BUFF_SIZE:
             break
@@ -255,11 +255,10 @@ class FileTransferThread(StoppableThread):
 
                 syncing_lock.acquire()
                 with open(os.path.join(self.path, filename), 'rb') as file:
-                    file_content = file.read(1024)
+                    file_content = file.read(BUFF_SIZE)
                     while file_content:
-                        print(f'sending... {file_content}')
                         conn.send(file_content)
-                        file_content = file.read(1024)
+                        file_content = file.read(BUFF_SIZE)
                 conn.close()
                 syncing_lock.release()
             except socket.timeout:
