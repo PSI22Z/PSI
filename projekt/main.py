@@ -32,41 +32,10 @@ def recvall(conn):
     data = bytearray()
     while True:
         part = conn.recv(BUFF_SIZE)
-        print('read part', part, len(part))
         if not len(part):
             break
         data.extend(part)
     return data
-
-
-# https://stackoverflow.com/questions/17667903/python-socket-receive-large-amount-of-data
-# NIE WIEM PO CO SA TE 3 RZECZY, ALE MOZE POMOGA Z WYSLKA PLIKOW
-# def send_msg(sock, msg):
-#     # Prefix each message with a 4-byte length (network byte order)
-#     msg = struct.pack('>I', len(msg)) + msg
-#     sock.sendall(msg)
-#
-#
-# def recv_msg(sock):
-#     # Read message length and unpack it into an integer
-#     raw_msglen = recvall(sock, 4)
-#     if raw_msglen is None:
-#         return None
-#     msglen = struct.unpack('>I', raw_msglen)[0]
-#     # Read the message data
-#     data = recvall(sock, msglen)
-#     return data
-#
-#
-# def recvall(sock, n):
-#     # Helper function to recv n bytes or return None if EOF is hit
-#     data = bytearray()
-#     while len(data) < n:
-#         packet = sock.recv(n - len(data))
-#         if not packet:
-#             return None
-#         data.extend(packet)
-#     return data
 
 
 @dataclass
