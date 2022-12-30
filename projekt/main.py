@@ -22,6 +22,8 @@ TCP_PORT = 5006
 deleted_files = []
 previous_files_snapshot = []
 
+syncing_lock = threading.Lock()
+
 
 def recvall(conn):
     BUFF_SIZE = 1024
@@ -103,11 +105,15 @@ class BroadcastSendThread(StoppableThread):
         sock.settimeout(5)
 
         while True and not self.stopped():
-            files = self.get_files_in_dir()
-            msg = pickle.dumps(files)
-            print(len(msg))
-            print(f'broadcasting {files}')
-            sock.sendto(msg, ("192.168.0.255", UDP_PORT))
+            syncing_lock.acquire()
+            try:
+                files = self.get_files_in_dir()
+                msg = pickle.dumps(files)
+                print(len(msg))
+                print(f'broadcasting {files}')
+                sock.sendto(msg, ("192.168.0.255", UDP_PORT))
+            finally:
+                syncing_lock.release()
             sleep(15)
 
         print('BroadcastSendThread stopped')
@@ -157,6 +163,7 @@ class BroadcastListenThread(StoppableThread):
         sock.bind(("", UDP_PORT))
 
         while True and not self.stopped():
+            syncing_lock.acquire()
             try:
                 data, addr = sock.recvfrom(40000)  # TODO jaki jest limit? czy trzeba dzielic na mniejsze wiadomosci?
                 # w teorii ogranicza nas MTU (1500 bajtow), oraz rozmiar pakietu UDP (65535 bajtow)
@@ -194,9 +201,10 @@ class BroadcastListenThread(StoppableThread):
                                     print(f'HAVE TO DOWNLOAD {file.filename}, BECAUSE MODIFIED')
                                     downloaded_file_content = self.download_file(addr[0], file.filename)
                                     self.save_file(file, downloaded_file_content)
-
             except socket.timeout:
                 continue
+            finally:
+                syncing_lock.release()
 
         print('BroadcastListenThread stopped')
         sock.close()
@@ -218,6 +226,7 @@ class FileTransferThread(StoppableThread):
         # TODO jak to ma dzialac jak mam server i klienta w jednym programie?
 
         while True and not self.stopped():
+            syncing_lock.acquire()
             try:
                 conn, addr = sock.accept()
                 print(f'connection from {addr}')
@@ -231,6 +240,8 @@ class FileTransferThread(StoppableThread):
                 conn.close()
             except socket.timeout:
                 continue
+            finally:
+                syncing_lock.release()
 
         print('FileTransferThread stopped')
         sock.close()
