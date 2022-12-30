@@ -16,14 +16,14 @@ def get_ip_address():
     return s.getsockname()[0]
 
 
-IP = get_ip_address()  # TODO dynamicznie?
+IP = get_ip_address()
 UDP_PORT = 5005
 TCP_PORT = 5006
 
 deleted_files = set()
-previous_files_snapshot = []
+previous_local_files_snapshot = []
 
-syncing_lock = threading.Lock()
+lock = threading.Lock()
 
 BUFF_SIZE = 1024
 
@@ -50,6 +50,7 @@ class File:
     def __eq__(self, other):
         return self.filename == other.filename
 
+    # tymczasowe rozwiazanie, zeby moc wsadzac File do setów
     def __hash__(self):
         return hash(self.filename)
 
@@ -87,11 +88,14 @@ class BroadcastSendThread(StoppableThread):
 
         return files
 
+    # uruchamiana cyklicznie (np. co 1 s) żeby wykrywać usunięte pliki
+    # musi być często odpalana, żeby nie było sytuacji, że plik zostanie usunięty
+    # a przyjdzie wiadomość od innego klienta, że taki plik istnieje
     def update_deleted_files(self):
         local_files = self.get_files_in_dir()
 
-        global previous_files_snapshot, deleted_files
-        for previous_file in previous_files_snapshot:
+        global previous_local_files_snapshot, deleted_files
+        for previous_file in previous_local_files_snapshot:
             if previous_file not in local_files:
                 previous_file.is_deleted = True
                 previous_file.modified_at = datetime.now()
@@ -104,8 +108,9 @@ class BroadcastSendThread(StoppableThread):
                 print(f"FILE {deleted_file.filename} IS NO LONGER DELETED")
                 deleted_files.remove(deleted_file)
 
-        previous_files_snapshot = local_files
+        previous_local_files_snapshot = local_files
 
+    # używane do serializacji z użyciem struct (nie używane, bo problem z alignmentem)
     def prepare_struct(self, files):
         structs = []
         for file in files:
@@ -130,7 +135,7 @@ class BroadcastSendThread(StoppableThread):
             broadcast_address = "192.168.0.255"
 
         while True and not self.stopped():
-            syncing_lock.acquire()
+            lock.acquire()
             try:
                 files = self.get_files_in_dir() + list(deleted_files)
                 # structs = self.prepare_struct(files)
@@ -141,7 +146,7 @@ class BroadcastSendThread(StoppableThread):
                 print(len(msg))
                 sock.sendto(msg, (broadcast_address, UDP_PORT))
             finally:
-                syncing_lock.release()
+                lock.release()
             for _ in range(15):
                 self.update_deleted_files()
                 sleep(1)
@@ -222,7 +227,7 @@ class BroadcastListenThread(StoppableThread):
                 # ignore own messages
                 # TODO przeciez tak nie mozna, bo IP bedzie takie samo. To jak to zrobic?
                 if addr[0] != IP:
-                    syncing_lock.acquire()
+                    lock.acquire()
                     files = pickle.loads(data)
                     # files = self.unpack_structs(data)  # TODO
                     print(f'received {list(map(lambda f: f"{f.filename} {f.is_deleted}", files))} from {addr}')
@@ -270,7 +275,7 @@ class BroadcastListenThread(StoppableThread):
                                 print(file)
                                 downloaded_file_content = self.download_file(addr[0], file.filename)
                                 self.save_file(file, downloaded_file_content)
-                    syncing_lock.release()
+                    lock.release()
             except socket.timeout:
                 continue
 
@@ -297,11 +302,11 @@ class FileTransferThread(StoppableThread):
                 # filename = recv_msg(conn).decode('utf-8')
                 print(f'received download request for {filename}')
 
-                syncing_lock.acquire()
+                lock.acquire()
                 with open(os.path.join(self.path, filename), 'rb') as file:
                     conn.sendall(file.read())
                 conn.close()
-                syncing_lock.release()
+                lock.release()
             except socket.timeout:
                 continue
 
@@ -326,8 +331,8 @@ def main():
             sleep(1)
         except KeyboardInterrupt:
             print('KeyboardInterrupt')
-            if syncing_lock.locked():
-                syncing_lock.release()
+            if lock.locked():
+                lock.release()
 
             broadcast_send_thread.stop()
             broadcast_listen_thread.stop()
