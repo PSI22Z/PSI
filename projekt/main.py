@@ -154,6 +154,7 @@ class BroadcastListenThread(StoppableThread):
         return files
 
     def download_file(self, ip: str, filename: str):
+        # TODO odbieranie duzych plikow nie dziala! nie wiem czemu
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((ip, TCP_PORT))
         sock.sendall(filename.encode('utf-8'))
@@ -209,7 +210,7 @@ class BroadcastListenThread(StoppableThread):
                             if deleted_file is not None and deleted_file.modified_at < file.modified_at:
                                 print(f'HAVE TO REMOVE {file.filename} FROM DELETED FILES')
                                 deleted_files.remove(file)
-                            # continue
+                            continue
 
                         if local_file is None:
                             # we don't have the file locally, we have to download it
