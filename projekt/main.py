@@ -192,6 +192,8 @@ class BroadcastListenThread(StoppableThread):
         os.utime(path, (file.modified_at.timestamp(), file.modified_at.timestamp()))
 
     def unpack_structs(self, data):
+        # TODO tutaj cos nie dziala, jezeli sie alignment nie zgadza
+        # TODO struct.error: unpack requires a buffer of x bytes
         if len(data) == 0:
             return []
         structs = data.split(b";")
