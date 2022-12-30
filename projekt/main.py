@@ -118,7 +118,7 @@ class BroadcastSendThread(StoppableThread):
                 files = self.get_files_in_dir() + deleted_files
                 msg = pickle.dumps(files)
                 print(len(msg))
-                print(f'broadcasting {files}')
+                print(f'broadcasting {map(lambda f: f"{f.filename} {f.is_deleted}", files)}')
                 sock.sendto(msg, (broadcast_address, UDP_PORT))
             finally:
                 syncing_lock.release()
@@ -183,7 +183,7 @@ class BroadcastListenThread(StoppableThread):
                 if addr[0] != IP:
                     syncing_lock.acquire()
                     files = pickle.loads(data)
-                    print(f"received files: {files} from {addr}")
+                    print(f'received {map(lambda f: f"{f.filename} {f.is_deleted}", files)} from {addr}')
 
                     # TODO tutaj skonczylem
                     # trzeba porownac files z tym co mamy w folderze
