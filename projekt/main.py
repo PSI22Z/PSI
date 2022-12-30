@@ -221,8 +221,7 @@ class BroadcastListenThread(StoppableThread):
 
                 # ignore own messages
                 # TODO przeciez tak nie mozna, bo IP bedzie takie samo. To jak to zrobic?
-                # if addr[0] != IP:
-                if True:
+                if addr[0] != IP:
                     syncing_lock.acquire()
                     # files = pickle.loads(data)
                     files = self.unpack_structs(data)  # TODO
