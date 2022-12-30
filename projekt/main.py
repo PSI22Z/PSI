@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from time import sleep
 from datetime import datetime
 
-IP = "192.168.0.183"
+IP = "192.168.0.10"  # TODO dynamicznie?
 UDP_PORT = 5005
 TCP_PORT = 5006
 
@@ -165,7 +165,7 @@ class BroadcastListenThread(StoppableThread):
                     for file in files:
                         if file not in local_files:
                             # TODO trzeba podmienic metadane (daty np.)
-                            print('HAVE TO DOWNLOAD, BECAUSE NOT IN LOCAL')
+                            print(f'HAVE TO DOWNLOAD {file.filename}, BECAUSE NOT IN LOCAL')
                             downloaded_file = self.download_file(addr[0], file.filename)
                             self.save_file(file.filename, downloaded_file)
 
@@ -181,7 +181,7 @@ class BroadcastListenThread(StoppableThread):
                                 if local_file.modified_at < file.modified_at and local_file.size != file.size:
                                     # TODO trzeba sprawdzic skrot pliku?
                                     # TODO trzeba podmienic metadane (daty np.)
-                                    print('HAVE TO DOWNLOAD, BECAUSE MODIFIED')
+                                    print(f'HAVE TO DOWNLOAD {file.filename}, BECAUSE MODIFIED')
                                     downloaded_file = self.download_file(addr[0], file.filename)
                                     self.save_file(file.filename, downloaded_file)
 
