@@ -102,7 +102,7 @@ class BroadcastSendThread(StoppableThread):
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-        sock.settimeout(5)
+        sock.settimeout(1)
 
         broadcast_address = os.getenv("BROADCAST")
         if broadcast_address is None:
@@ -110,6 +110,7 @@ class BroadcastSendThread(StoppableThread):
 
         while True and not self.stopped():
             syncing_lock.acquire()
+            print("BroadcastSendThread: acquired lock")
             try:
                 files = self.get_files_in_dir()
                 msg = pickle.dumps(files)
@@ -117,6 +118,7 @@ class BroadcastSendThread(StoppableThread):
                 print(f'broadcasting {files}')
                 sock.sendto(msg, (broadcast_address, UDP_PORT))
             finally:
+                print("BroadcastSendThread: release lock")
                 syncing_lock.release()
             sleep(15)
 
@@ -163,11 +165,11 @@ class BroadcastListenThread(StoppableThread):
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-        sock.settimeout(5)
+        sock.settimeout(1)
         sock.bind(("", UDP_PORT))
 
         while True and not self.stopped():
-            syncing_lock.acquire()
+
             try:
                 data, addr = sock.recvfrom(40000)  # TODO jaki jest limit? czy trzeba dzielic na mniejsze wiadomosci?
                 # w teorii ogranicza nas MTU (1500 bajtow), oraz rozmiar pakietu UDP (65535 bajtow)
@@ -175,6 +177,8 @@ class BroadcastListenThread(StoppableThread):
                 # ignore own messages
                 # TODO przeciez tak nie mozna, bo IP bedzie takie samo. To jak to zrobic?
                 if addr[0] != IP:
+                    syncing_lock.acquire()
+                    print("BroadcastListenThread: acquired lock")
                     files = pickle.loads(data)
                     print(f"received message: {files} from {addr}")
 
@@ -206,10 +210,11 @@ class BroadcastListenThread(StoppableThread):
                                     print(f'HAVE TO DOWNLOAD {file.filename}, BECAUSE MODIFIED')
                                     downloaded_file_content = self.download_file(addr[0], file.filename)
                                     self.save_file(file, downloaded_file_content)
+
+                    print("BroadcastListenThread: release lock")
+                    syncing_lock.release()
             except socket.timeout:
                 continue
-            finally:
-                syncing_lock.release()
 
         print('BroadcastListenThread stopped')
         sock.close()
@@ -225,25 +230,28 @@ class FileTransferThread(StoppableThread):
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         sock.bind((IP, TCP_PORT))
         sock.listen(5)
-        sock.settimeout(5)
+        sock.settimeout(1)
 
         while True and not self.stopped():
-            syncing_lock.acquire()
             try:
                 conn, addr = sock.accept()
                 print(f'connection from {addr}')
                 filename = recvall(conn).decode('utf-8')
                 print(f'received {filename}')
 
+                syncing_lock.acquire()
+                print("FileTransferThread: acquired lock")
+
                 with open(os.path.join(self.path, filename), 'rb') as file:
                     file_content = file.read()
                     conn.sendall(file_content)
 
                 conn.close()
+
+                print("FileTransferThread: release lock")
+                syncing_lock.release()
             except socket.timeout:
                 continue
-            finally:
-                syncing_lock.release()
 
         print('FileTransferThread stopped')
         sock.close()
