@@ -2,6 +2,7 @@ import datetime
 import os
 import pickle
 import socket
+import struct
 import sys
 import threading
 from dataclasses import dataclass
@@ -34,6 +35,35 @@ def recvall(conn):
         data += part
         if len(part) < BUFF_SIZE:
             break
+    return data
+
+
+# https://stackoverflow.com/questions/17667903/python-socket-receive-large-amount-of-data
+# NIE WIEM PO CO SA TE 3 RZECZY, ALE MOZE POMOGA Z WYSLKA PLIKOW
+def send_msg(sock, msg):
+    # Prefix each message with a 4-byte length (network byte order)
+    msg = struct.pack('>I', len(msg)) + msg
+    sock.sendall(msg)
+
+
+def recv_msg(sock):
+    # Read message length and unpack it into an integer
+    raw_msglen = recvall(sock, 4)
+    if not raw_msglen:
+        return None
+    msglen = struct.unpack('>I', raw_msglen)[0]
+    # Read the message data
+    return recvall(sock, msglen)
+
+
+def recvall(sock, n):
+    # Helper function to recv n bytes or return None if EOF is hit
+    data = bytearray()
+    while len(data) < n:
+        packet = sock.recv(n - len(data))
+        if not packet:
+            return None
+        data.extend(packet)
     return data
 
 
@@ -157,8 +187,10 @@ class BroadcastListenThread(StoppableThread):
         # TODO odbieranie duzych plikow nie dziala! nie wiem czemu
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((ip, TCP_PORT))
-        sock.sendall(filename.encode('utf-8'))
-        data = recvall(sock)
+        send_msg(sock, filename.encode('utf-8'))
+        # sock.sendall(filename.encode('utf-8'))
+        data = recv_msg(sock)
+        # data = recvall(sock)
         sock.close()
         return data
 
@@ -199,6 +231,7 @@ class BroadcastListenThread(StoppableThread):
                             # file is deleted, checking if we have to delete
                             deleted_files.add(file)
                             if local_file is not None and local_file.modified_at < file.modified_at:
+                                # TODO to chyba nie dziala poprawnie
                                 # if we have a file locally and it is older than the deleted file, we delete it
                                 print(f'HAVE TO DELETE {file.filename}, BECAUSE IT IS MARKED AS DELETED')
                                 os.remove(os.path.join(self.path, file.filename))
@@ -260,7 +293,8 @@ class FileTransferThread(StoppableThread):
                         file_content = file.read(BUFF_SIZE)
                         if not file_content:
                             break
-                        conn.sendall(file_content)
+                        # conn.sendall(file_content)
+                        send_msg(conn, file_content)
                 conn.close()
                 syncing_lock.release()
             except socket.timeout:
