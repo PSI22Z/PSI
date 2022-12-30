@@ -29,12 +29,13 @@ BUFF_SIZE = 1024
 
 
 def recvall(conn):
-    data = b''
+    data = bytearray()
     while True:
         part = conn.recv(BUFF_SIZE)
-        data += part
+        print('read part', part, len(part))
         if not len(part):
             break
+        data.extend(part)
     return data
 
 
