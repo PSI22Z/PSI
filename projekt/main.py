@@ -49,7 +49,7 @@ def send_msg(sock, msg):
 def recv_msg(sock):
     # Read message length and unpack it into an integer
     raw_msglen = recvall(sock, 4)
-    if not raw_msglen:
+    if raw_msglen is None:
         return None
     msglen = struct.unpack('>I', raw_msglen)[0]
     # Read the message data
@@ -192,6 +192,8 @@ class BroadcastListenThread(StoppableThread):
         data = recv_msg(sock)
         # data = recvall(sock)
         sock.close()
+        if data is None:
+            return bytearray()
         return data
 
     def save_file(self, file: File, content):
