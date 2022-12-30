@@ -91,11 +91,13 @@ class BroadcastSendThread(StoppableThread):
             if previous_file not in local_files:
                 previous_file.is_deleted = True
                 previous_file.modified_at = datetime.now()
+                print(f"FILE {previous_file.filename} IS MARKED AS DELETED")
                 deleted_files.append(previous_file)
 
         # trzeba tez kasowac z deleted_files jak sie pojawi
         for deleted_file in deleted_files:
             if deleted_file in local_files:
+                print(f"FILE {deleted_file.filename} IS NO LONGER DELETED")
                 deleted_files.remove(deleted_file)
 
         previous_files_snapshot = local_files
@@ -112,7 +114,6 @@ class BroadcastSendThread(StoppableThread):
 
         while True and not self.stopped():
             syncing_lock.acquire()
-            print("BroadcastSendThread: acquired lock")
             try:
                 files = self.get_files_in_dir() + deleted_files
                 msg = pickle.dumps(files)
@@ -120,7 +121,6 @@ class BroadcastSendThread(StoppableThread):
                 print(f'broadcasting {files}')
                 sock.sendto(msg, (broadcast_address, UDP_PORT))
             finally:
-                print("BroadcastSendThread: release lock")
                 syncing_lock.release()
             for _ in range(15):
                 self.update_deleted_files()
@@ -182,9 +182,8 @@ class BroadcastListenThread(StoppableThread):
                 # TODO przeciez tak nie mozna, bo IP bedzie takie samo. To jak to zrobic?
                 if addr[0] != IP:
                     syncing_lock.acquire()
-                    print("BroadcastListenThread: acquired lock")
                     files = pickle.loads(data)
-                    print(f"received message: {files} from {addr}")
+                    print(f"received files: {files} from {addr}")
 
                     # TODO tutaj skonczylem
                     # trzeba porownac files z tym co mamy w folderze
@@ -214,8 +213,6 @@ class BroadcastListenThread(StoppableThread):
                                     print(f'HAVE TO DOWNLOAD {file.filename}, BECAUSE MODIFIED')
                                     downloaded_file_content = self.download_file(addr[0], file.filename)
                                     self.save_file(file, downloaded_file_content)
-
-                    print("BroadcastListenThread: release lock")
                     syncing_lock.release()
             except socket.timeout:
                 continue
@@ -239,20 +236,15 @@ class FileTransferThread(StoppableThread):
         while True and not self.stopped():
             try:
                 conn, addr = sock.accept()
-                print(f'connection from {addr}')
                 filename = recvall(conn).decode('utf-8')
-                print(f'received {filename}')
+                print(f'received download request for {filename}')
 
                 syncing_lock.acquire()
-                print("FileTransferThread: acquired lock")
-
                 with open(os.path.join(self.path, filename), 'rb') as file:
                     file_content = file.read()
                     conn.sendall(file_content)
 
                 conn.close()
-
-                print("FileTransferThread: release lock")
                 syncing_lock.release()
             except socket.timeout:
                 continue
