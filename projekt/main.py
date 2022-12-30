@@ -25,7 +25,7 @@ previous_files_snapshot = []
 
 syncing_lock = threading.Lock()
 
-BUFF_SIZE = 4096
+BUFF_SIZE = 1024
 
 
 # def recvall(conn):
