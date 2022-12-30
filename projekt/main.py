@@ -143,9 +143,11 @@ class BroadcastListenThread(StoppableThread):
         sock.close()
         return data
 
-    def save_file(self, filename: str, content):
-        with open(os.path.join(self.path, filename), 'wb') as f:
+    def save_file(self, file: File, content):
+        path = os.path.join(self.path, file.filename)
+        with open(path, 'wb') as f:
             f.write(content)
+        os.utime(path, (file.modified_at.timestamp(), file.modified_at.timestamp()))
 
     def run(self) -> None:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
@@ -173,24 +175,25 @@ class BroadcastListenThread(StoppableThread):
                         if file not in local_files:
                             # TODO trzeba podmienic metadane (daty np.)
                             print(f'HAVE TO DOWNLOAD {file.filename}, BECAUSE NOT IN LOCAL')
-                            downloaded_file = self.download_file(addr[0], file.filename)
-                            self.save_file(file.filename, downloaded_file)
-
+                            downloaded_file_content = self.download_file(addr[0], file.filename)
+                            self.save_file(file, downloaded_file_content)
                         else:
-                            # TODO sprawdzic czy sa rozne (rozna data modyfikacji, rozmiar)
-                            # find local file by filename
-                            if file.is_deleted:
-                                # TODO jeżeli lokalnie istnieje plik o tej samej nazwie, ale o dacie utworzenia/modyfikacji późniejszej niż otrzymany “usunięty” plik, to wiadomość o usunięciu pliku zostaje zignorowana
-                                pass
-
                             local_file = next((f for f in local_files if f.filename == file.filename), None)
+
+                            if file.is_deleted:
+                                if local_file is not None and local_file.modified_at < file.modified_at:
+                                    print(f'HAVE TO DELETE {file.filename}, BECAUSE IT IS MARKED AS DELETED')
+                                    os.remove(os.path.join(self.path, file.filename))
+                                    continue
+
                             if local_file is not None:
-                                if local_file.modified_at < file.modified_at and local_file.size != file.size:
+                                # TODO if local_file.modified_at < file.modified_at and local_file.size != file.size:
+                                if local_file.modified_at < file.modified_at:
                                     # TODO trzeba sprawdzic skrot pliku?
                                     # TODO trzeba podmienic metadane (daty np.)
                                     print(f'HAVE TO DOWNLOAD {file.filename}, BECAUSE MODIFIED')
-                                    downloaded_file = self.download_file(addr[0], file.filename)
-                                    self.save_file(file.filename, downloaded_file)
+                                    downloaded_file_content = self.download_file(addr[0], file.filename)
+                                    self.save_file(file, downloaded_file_content)
 
             except socket.timeout:
                 continue
