@@ -28,14 +28,14 @@ syncing_lock = threading.Lock()
 BUFF_SIZE = 4096
 
 
-def recvall(conn):
-    data = b''
-    while True:
-        part = conn.recv(BUFF_SIZE)
-        data += part
-        if len(part) < BUFF_SIZE:
-            break
-    return data
+# def recvall(conn):
+#     data = b''
+#     while True:
+#         part = conn.recv(BUFF_SIZE)
+#         data += part
+#         if len(part) < BUFF_SIZE:
+#             break
+#     return data
 
 
 # https://stackoverflow.com/questions/17667903/python-socket-receive-large-amount-of-data
@@ -284,7 +284,8 @@ class FileTransferThread(StoppableThread):
         while True and not self.stopped():
             try:
                 conn, addr = sock.accept()
-                filename = recvall(conn).decode('utf-8')
+                # filename = recvall(conn).decode('utf-8'),
+                filename = recv_msg(conn).decode('utf-8')
                 print(f'received download request for {filename}')
 
                 syncing_lock.acquire()
