@@ -49,6 +49,9 @@ class File:
     def __eq__(self, other):
         return self.filename == other.filename
 
+    def __hash__(self):
+        return hash(self.filename)
+
 
 class StoppableThread(threading.Thread):
     def __init__(self, *args, **kwargs):
