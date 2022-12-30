@@ -191,6 +191,7 @@ class BroadcastListenThread(StoppableThread):
                                 if local_file is not None and local_file.modified_at < file.modified_at:
                                     print(f'HAVE TO DELETE {file.filename}, BECAUSE IT IS MARKED AS DELETED')
                                     os.remove(os.path.join(self.path, file.filename))
+                                    deleted_files.append(file)
                                     continue
 
                             if local_file is not None:
@@ -219,11 +220,8 @@ class FileTransferThread(StoppableThread):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM, socket.IPPROTO_TCP)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         sock.bind((IP, TCP_PORT))
-        sock.listen(1)
+        sock.listen(5)
         sock.settimeout(5)
-
-        # TODO chyba 2 thready beda gadac na jednym sockecie, potrzebny jakis mutex?
-        # TODO jak to ma dzialac jak mam server i klienta w jednym programie?
 
         while True and not self.stopped():
             syncing_lock.acquire()
