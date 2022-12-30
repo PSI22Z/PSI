@@ -9,6 +9,10 @@ from dataclasses import dataclass
 from time import sleep
 from datetime import datetime
 
+# 1. socket na broadcast
+# 2. socket na słuchanie na broadcast
+# 3. socket na obsługę transferu plików
+
 
 def get_ip_address():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
