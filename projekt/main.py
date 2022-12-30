@@ -185,7 +185,7 @@ class BroadcastListenThread(StoppableThread):
         while True and not self.stopped():
 
             try:
-                data, addr = sock.recvfrom(65535)  # TODO jaki jest limit? czy trzeba dzielic na mniejsze wiadomosci?
+                data, addr = sock.recvfrom(65507)  # TODO jaki jest limit? czy trzeba dzielic na mniejsze wiadomosci?
                 # w teorii ogranicza nas MTU (1500 bajtow), oraz rozmiar pakietu UDP (65535 bajtow)
 
                 # ignore own messages
