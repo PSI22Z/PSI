@@ -295,12 +295,7 @@ class FileTransferThread(StoppableThread):
 
                 syncing_lock.acquire()
                 with open(os.path.join(self.path, filename), 'rb') as file:
-                    while True:
-                        file_content = file.read(BUFF_SIZE)
-                        if not file_content:
-                            break
-                        # conn.sendall(file_content)
-                        send_msg(conn, file_content)
+                    send_msg(conn, file.read())
                 conn.close()
                 syncing_lock.release()
             except socket.timeout:
