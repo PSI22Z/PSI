@@ -133,9 +133,9 @@ class BroadcastSendThread(StoppableThread):
             syncing_lock.acquire()
             try:
                 files = self.get_files_in_dir() + list(deleted_files)
-                structs = self.prepare_struct(files)
-                # msg = pickle.dumps(files)
-                msg = b";".join(structs)  # TODO
+                # structs = self.prepare_struct(files)
+                msg = pickle.dumps(files)
+                # msg = b";".join(structs)  # TODO
                 print(f'broadcasting {list(map(lambda f: f"{f.filename} {f.is_deleted}", files))}')
                 # TODO to nie zadziala jak mamy bardoz duzo plikow, trzeba dzielic wiadomosci?
                 print(len(msg))
@@ -223,8 +223,8 @@ class BroadcastListenThread(StoppableThread):
                 # TODO przeciez tak nie mozna, bo IP bedzie takie samo. To jak to zrobic?
                 if addr[0] != IP:
                     syncing_lock.acquire()
-                    # files = pickle.loads(data)
-                    files = self.unpack_structs(data)  # TODO
+                    files = pickle.loads(data)
+                    # files = self.unpack_structs(data)  # TODO
                     print(f'received {list(map(lambda f: f"{f.filename} {f.is_deleted}", files))} from {addr}')
 
                     # TODO tutaj skonczylem
