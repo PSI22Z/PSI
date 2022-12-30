@@ -117,7 +117,6 @@ class BroadcastSendThread(StoppableThread):
             try:
                 files = self.get_files_in_dir() + deleted_files
                 msg = pickle.dumps(files)
-                print(len(msg))
                 print(f'broadcasting {list(map(lambda f: f"{f.filename} {f.is_deleted}", files))}')
                 sock.sendto(msg, (broadcast_address, UDP_PORT))
             finally:
