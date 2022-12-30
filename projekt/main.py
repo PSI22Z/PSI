@@ -28,11 +28,11 @@ syncing_lock = threading.Lock()
 def recvall(conn):
     BUFF_SIZE = 1024
     data = b''
-    part = conn.recv(BUFF_SIZE)
-    while part:
-        print('received', part)
-        data += part
+    while True:
         part = conn.recv(BUFF_SIZE)
+        data += part
+        if len(part) < BUFF_SIZE:
+            break
     return data
 
 
