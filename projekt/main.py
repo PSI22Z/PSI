@@ -194,6 +194,10 @@ class BroadcastListenThread(StoppableThread):
                     for file in files:
                         local_file = next((f for f in local_files if f.filename == file.filename), None)
 
+                        if file in deleted_files and not file.is_deleted:
+                            deleted_files.remove(file)
+                            print(f"FILE {file.filename} IS NO LONGER DELETED")
+
                         if file.is_deleted or file in deleted_files:
                             # file is deleted, checking if we have to delete
                             if local_file is not None and local_file.modified_at < file.modified_at:
