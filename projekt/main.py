@@ -52,10 +52,8 @@ def recv_msg(sock):
     if raw_msglen is None:
         return None
     msglen = struct.unpack('>I', raw_msglen)[0]
-    print(msglen)
     # Read the message data
     data = recvall(sock, msglen)
-    print(len(data))
     return data
 
 
@@ -155,6 +153,7 @@ class BroadcastSendThread(StoppableThread):
                 msg = pickle.dumps(files)
                 print(f'broadcasting {list(map(lambda f: f"{f.filename} {f.is_deleted}", files))}')
                 # TODO to nie zadziala jak mamy bardoz duzo plikow, trzeba dzielic wiadomosci?
+                print(len(files))
                 sock.sendto(msg, (broadcast_address, UDP_PORT))
             finally:
                 syncing_lock.release()
@@ -191,8 +190,8 @@ class BroadcastListenThread(StoppableThread):
         # TODO odbieranie duzych plikow nie dziala! nie wiem czemu
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((ip, TCP_PORT))
-        send_msg(sock, filename.encode('utf-8'))
-        # sock.sendall(filename.encode('utf-8'))
+        # send_msg(sock, filename.encode('utf-8'))
+        sock.sendall(filename.encode('utf-8'))
         data = recv_msg(sock)
         # data = recvall(sock)
         sock.close()
@@ -216,7 +215,7 @@ class BroadcastListenThread(StoppableThread):
         while True and not self.stopped():
 
             try:
-                data, addr = sock.recvfrom(40000)  # TODO jaki jest limit? czy trzeba dzielic na mniejsze wiadomosci?
+                data, addr = sock.recvfrom(65535)  # TODO jaki jest limit? czy trzeba dzielic na mniejsze wiadomosci?
                 # w teorii ogranicza nas MTU (1500 bajtow), oraz rozmiar pakietu UDP (65535 bajtow)
 
                 # ignore own messages
@@ -290,8 +289,8 @@ class FileTransferThread(StoppableThread):
         while True and not self.stopped():
             try:
                 conn, addr = sock.accept()
-                # filename = recvall(conn).decode('utf-8'),
-                filename = recv_msg(conn).decode('utf-8')
+                filename = conn.recv(BUFF_SIZE).decode('utf-8')
+                # filename = recv_msg(conn).decode('utf-8')
                 print(f'received download request for {filename}')
 
                 syncing_lock.acquire()
