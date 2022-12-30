@@ -205,10 +205,13 @@ class BroadcastListenThread(StoppableThread):
                         elif not file.is_deleted and file in deleted_files:
                             # file is not deleted, but we have it marked as deleted
                             # we have to remove it from deleted_files if it is newer than the deleted file
+                            print(f'HAVE TO REMOVE {file.filename} FROM DELETED FILES, BECAUSE IT IS NOT DELETED')
                             deleted_file = next((f for f in deleted_files if f.filename == file.filename), None)
+                            print(deleted_file)
                             if deleted_file is not None and deleted_file.modified_at < file.modified_at:
                                 print(f'HAVE TO REMOVE {file.filename} FROM DELETED FILES')
                                 deleted_files.remove(file)
+                            continue
 
                         if local_file is None:
                             # we don't have the file locally, we have to download it
