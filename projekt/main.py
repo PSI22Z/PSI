@@ -106,6 +106,20 @@ class BroadcastSendThread(StoppableThread):
 
         previous_files_snapshot = local_files
 
+    def prepare_struct(self, files):
+        structs = []
+        for file in files:
+            filename = bytes(file.filename, "utf-8")
+            structs.append(struct.pack(f'!I{len(filename)}sffi?',
+                                       len(filename),
+                                       filename,
+                                       file.created_at.timestamp(),
+                                       file.modified_at.timestamp(),
+                                       file.size,
+                                       file.is_deleted)
+                           )
+        return structs
+
     def run(self) -> None:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -120,7 +134,9 @@ class BroadcastSendThread(StoppableThread):
             syncing_lock.acquire()
             try:
                 files = self.get_files_in_dir() + list(deleted_files)
-                msg = pickle.dumps(files)
+                structs = self.prepare_struct(files)
+                # msg = pickle.dumps(files)
+                msg = b";".join(structs)  # TODO
                 print(f'broadcasting {list(map(lambda f: f"{f.filename} {f.is_deleted}", files))}')
                 # TODO to nie zadziala jak mamy bardoz duzo plikow, trzeba dzielic wiadomosci?
                 print(len(msg))
@@ -175,6 +191,19 @@ class BroadcastListenThread(StoppableThread):
             f.write(content)
         os.utime(path, (file.modified_at.timestamp(), file.modified_at.timestamp()))
 
+    def unpack_structs(self, data):
+        structs = data.split(b";")
+        files = []
+        for strct in structs:
+            (i,), data = struct.unpack('!I', strct[:4]), strct[4:]
+            filename, created_at, modified_at, size, is_deleted = struct.unpack(f'!{i}sffi?', data)
+            files.append(File(filename.decode('utf-8'),
+                              datetime.fromtimestamp(created_at),
+                              datetime.fromtimestamp(modified_at),
+                              size,
+                              is_deleted))
+        return files
+
     def run(self) -> None:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -190,9 +219,11 @@ class BroadcastListenThread(StoppableThread):
 
                 # ignore own messages
                 # TODO przeciez tak nie mozna, bo IP bedzie takie samo. To jak to zrobic?
-                if addr[0] != IP:
+                # if addr[0] != IP:
+                if True:
                     syncing_lock.acquire()
-                    files = pickle.loads(data)
+                    # files = pickle.loads(data)
+                    files = self.unpack_structs(data)  # TODO
                     print(f'received {list(map(lambda f: f"{f.filename} {f.is_deleted}", files))} from {addr}')
 
                     # TODO tutaj skonczylem
