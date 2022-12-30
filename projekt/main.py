@@ -187,7 +187,7 @@ class BroadcastListenThread(StoppableThread):
                     # TODO tutaj skonczylem
                     # trzeba porownac files z tym co mamy w folderze
 
-                    local_files = self.get_files_in_dir() + deleted_files
+                    local_files = self.get_files_in_dir()
                     for file in files:
                         local_file = next((f for f in local_files if f.filename == file.filename), None)
 
