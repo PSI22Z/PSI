@@ -115,7 +115,7 @@ class BroadcastSendThread(StoppableThread):
         while True and not self.stopped():
             syncing_lock.acquire()
             try:
-                files = self.get_files_in_dir() + deleted_files
+                files = self.get_files_in_dir() + list(deleted_files)
                 msg = pickle.dumps(files)
                 print(f'broadcasting {list(map(lambda f: f"{f.filename} {f.is_deleted}", files))}')
                 sock.sendto(msg, (broadcast_address, UDP_PORT))
