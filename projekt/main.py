@@ -190,29 +190,33 @@ class BroadcastListenThread(StoppableThread):
 
                     local_files = self.get_files_in_dir() + deleted_files
                     for file in files:
-                        if file not in local_files:
+                        local_file = next((f for f in local_files if f.filename == file.filename), None)
+
+                        if file.is_deleted:
+                            # file is deleted, checking if we have to delete
+                            if local_file is not None and local_file.modified_at < file.modified_at:
+                                # if we have a file locally and it is older than the deleted file, we delete it
+                                print(f'HAVE TO DELETE {file.filename}, BECAUSE IT IS MARKED AS DELETED')
+                                os.remove(os.path.join(self.path, file.filename))
+                                deleted_files.append(file)
+                            continue
+
+                        if local_file is None:
+                            # we don't have the file locally, we have to download it
                             # TODO trzeba podmienic metadane (daty np.)
                             print(f'HAVE TO DOWNLOAD {file.filename}, BECAUSE NOT IN LOCAL')
                             downloaded_file_content = self.download_file(addr[0], file.filename)
                             self.save_file(file, downloaded_file_content)
                         else:
-                            local_file = next((f for f in local_files if f.filename == file.filename), None)
-
-                            if file.is_deleted:
-                                if local_file is not None and local_file.modified_at < file.modified_at:
-                                    print(f'HAVE TO DELETE {file.filename}, BECAUSE IT IS MARKED AS DELETED')
-                                    os.remove(os.path.join(self.path, file.filename))
-                                    deleted_files.append(file)
-                                    continue
-
-                            if local_file is not None:
-                                # TODO if local_file.modified_at < file.modified_at and local_file.size != file.size:
-                                if local_file.modified_at < file.modified_at:
-                                    # TODO trzeba sprawdzic skrot pliku?
-                                    # TODO trzeba podmienic metadane (daty np.)
-                                    print(f'HAVE TO DOWNLOAD {file.filename}, BECAUSE MODIFIED')
-                                    downloaded_file_content = self.download_file(addr[0], file.filename)
-                                    self.save_file(file, downloaded_file_content)
+                            # we have the file locally, we have to check if we have to update it
+                            # TODO if local_file.modified_at < file.modified_at and local_file.size != file.size:
+                            if local_file.modified_at < file.modified_at:
+                                # if we have a file locally and it is older than the file from the broadcast, we update it
+                                # TODO trzeba sprawdzic skrot pliku?
+                                # TODO trzeba podmienic metadane (daty np.)
+                                print(f'HAVE TO DOWNLOAD {file.filename}, BECAUSE MODIFIED')
+                                downloaded_file_content = self.download_file(addr[0], file.filename)
+                                self.save_file(file, downloaded_file_content)
                     syncing_lock.release()
             except socket.timeout:
                 continue
