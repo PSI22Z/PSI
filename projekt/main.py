@@ -192,6 +192,8 @@ class BroadcastListenThread(StoppableThread):
         os.utime(path, (file.modified_at.timestamp(), file.modified_at.timestamp()))
 
     def unpack_structs(self, data):
+        if len(data) == 0:
+            return []
         structs = data.split(b";")
         files = []
         for strct in structs:
