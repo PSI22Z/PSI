@@ -259,7 +259,8 @@ class FileTransferThread(StoppableThread):
                     while file_content:
                         conn.send(file_content)
                         file_content = file.read(BUFF_SIZE)
-                conn.close()
+                conn.shutdown(socket.SHUT_RDWR)
+                # TODO conn.close()?
                 syncing_lock.release()
             except socket.timeout:
                 continue
