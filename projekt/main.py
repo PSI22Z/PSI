@@ -154,6 +154,7 @@ class BroadcastSendThread(StoppableThread):
                 files = self.get_files_in_dir() + list(deleted_files)
                 msg = pickle.dumps(files)
                 print(f'broadcasting {list(map(lambda f: f"{f.filename} {f.is_deleted}", files))}')
+                # TODO to nie zadziala jak mamy bardoz duzo plikow, trzeba dzielic wiadomosci?
                 sock.sendto(msg, (broadcast_address, UDP_PORT))
             finally:
                 syncing_lock.release()
