@@ -209,7 +209,7 @@ class BroadcastListenThread(StoppableThread):
                             if deleted_file is not None and deleted_file.modified_at < file.modified_at:
                                 print(f'HAVE TO REMOVE {file.filename} FROM DELETED FILES')
                                 deleted_files.remove(file)
-                            continue
+                            # continue
 
                         if local_file is None:
                             # we don't have the file locally, we have to download it
