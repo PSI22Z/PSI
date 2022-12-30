@@ -125,7 +125,9 @@ class BroadcastSendThread(StoppableThread):
             finally:
                 syncing_lock.release()
             for _ in range(15):
+                syncing_lock.acquire()
                 self.update_deleted_files()
+                syncing_lock.release()
                 sleep(1)
 
         print('BroadcastSendThread stopped')
