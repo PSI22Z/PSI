@@ -274,7 +274,8 @@ def main():
             sleep(1)
         except KeyboardInterrupt:
             print('KeyboardInterrupt')
-            syncing_lock.release()
+            if syncing_lock.locked():
+                syncing_lock.release()
 
             broadcast_send_thread.stop()
             broadcast_listen_thread.stop()
