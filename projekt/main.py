@@ -52,8 +52,11 @@ def recv_msg(sock):
     if raw_msglen is None:
         return None
     msglen = struct.unpack('>I', raw_msglen)[0]
+    print(msglen)
     # Read the message data
-    return recvall(sock, msglen)
+    data = recvall(sock, msglen)
+    print(len(data))
+    return data
 
 
 def recvall(sock, n):
