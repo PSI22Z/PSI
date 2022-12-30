@@ -30,6 +30,7 @@ def recvall(conn):
     data = b''
     while True:
         part = conn.recv(BUFF_SIZE)
+        print(f'received part {part}')
         data += part
         if len(part) < BUFF_SIZE:
             break
