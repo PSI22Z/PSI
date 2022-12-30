@@ -98,7 +98,7 @@ class BroadcastSendThread(StoppableThread):
                 deleted_files.add(previous_file)
 
         # trzeba tez kasowac z deleted_files jak sie pojawi
-        for deleted_file in deleted_files:
+        for deleted_file in deleted_files.copy():
             if deleted_file in local_files:
                 print(f"FILE {deleted_file.filename} IS NO LONGER DELETED")
                 deleted_files.remove(deleted_file)
@@ -125,9 +125,7 @@ class BroadcastSendThread(StoppableThread):
             finally:
                 syncing_lock.release()
             for _ in range(15):
-                syncing_lock.acquire()
                 self.update_deleted_files()
-                syncing_lock.release()
                 sleep(1)
 
         print('BroadcastSendThread stopped')
