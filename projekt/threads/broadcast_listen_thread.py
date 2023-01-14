@@ -49,6 +49,7 @@ class FileSyncClientThread(StoppableThread):
         if deleted_file is not None and deleted_file.modified_at < remote_file.modified_at:
             print(f'HAVE TO REMOVE {remote_file.filename} FROM DELETED FILES')  # TODO logging
             self.fs.deleted_files.remove(remote_file),
+            # TODO najlepiej by bylo od razu sciagnac ten plik, zawolac upsert_local_file?
 
     def handle_new_remote_file(self, remote_file, server_ip):
         # we don't have the file locally, we have to download it
