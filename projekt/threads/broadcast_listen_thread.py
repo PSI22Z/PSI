@@ -4,7 +4,7 @@ import socket
 import struct
 from datetime import datetime
 
-from file_system.fs import get_files_in_dir, save_file
+from file_system.fs import get_files_in_dir, save_file, delete_file
 from threads.file_sync_lock import file_sync_lock
 from utils.consts import TCP_PORT, UDP_PORT, ENCODING
 from file_system.deleted_files import deleted_files
@@ -82,7 +82,7 @@ class BroadcastListenThread(StoppableThread):
                                 # TODO to chyba nie dziala poprawnie
                                 # if we have a file locally and it is older than the deleted file, we delete it
                                 print(f'HAVE TO DELETE {file.filename}, BECAUSE IT IS MARKED AS DELETED')
-                                os.remove(os.path.join(self.path, file.filename))
+                                delete_file(self.path, file.filename)
                             continue
                         elif not file.is_deleted and file in deleted_files:
                             # file is not deleted, but we have it marked as deleted

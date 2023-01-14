@@ -1,3 +1,4 @@
+import os
 import socket
 
 from utils.consts import BUFF_SIZE
@@ -17,3 +18,10 @@ def recvall(conn):
             break
         data.extend(part)
     return data
+
+
+def get_broadcast_address():
+    broadcast_address = os.getenv("BROADCAST")
+    if broadcast_address is None:
+        broadcast_address = "192.168.0.255"
+    return broadcast_address

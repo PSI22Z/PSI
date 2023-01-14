@@ -7,6 +7,8 @@ from threads.file_sync_lock import file_sync_lock
 from threads.stoppable_thread import StoppableThread
 
 
+# TODO dodac nasluchiwanie na zmiany w folderze?
+
 class FileSystemWatcherThread(StoppableThread):
     def __init__(self, path):
         super().__init__()

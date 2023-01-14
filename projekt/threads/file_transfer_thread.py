@@ -45,7 +45,8 @@ class FileTransferThread(StoppableThread):
                 file_sync_lock.acquire()
 
                 file_content = read_file(self.path, filename)
-                conn.sendall(file_content)
+                if file_content is not None:
+                    conn.sendall(file_content)
                 conn.close()
 
                 file_sync_lock.release()

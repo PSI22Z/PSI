@@ -8,13 +8,7 @@ from file_system.deleted_files import deleted_files
 from threads.file_sync_lock import file_sync_lock
 from threads.stoppable_thread import StoppableThread
 from file_system.fs import get_files_in_dir
-
-
-def get_broadcast_address():
-    broadcast_address = os.getenv("BROADCAST")
-    if broadcast_address is None:
-        broadcast_address = "192.168.0.255"
-    return broadcast_address
+from utils.utils import get_broadcast_address
 
 
 # TODO rename to ClientThread?
@@ -66,7 +60,7 @@ class BroadcastSendThread(StoppableThread):
                 self.broadcast(msg)
             finally:
                 file_sync_lock.release()
-            sleep(15) # TODO konfigurowalny czas?
+            sleep(15)  # TODO konfigurowalny czas?
 
         print('BroadcastSendThread stopped')
         self.close_udp_client_socket()

@@ -25,6 +25,14 @@ def save_file(path: str, file: File, content):
     os.utime(path, (file.modified_at.timestamp(), file.modified_at.timestamp()))
 
 
-def read_file(path: str, filename: str) -> bytes:
-    with open(os.path.join(path, filename), 'rb') as file:
-        return file.read()
+def read_file(path: str, filename: str) -> bytes | None:
+    try:
+        with open(os.path.join(path, filename), 'rb') as file:
+            return file.read()
+    except Exception as e:
+        print(e)  # TODO logging
+        return None
+
+
+def delete_file(path: str, filename: str):
+    os.remove(os.path.join(path, filename))
