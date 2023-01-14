@@ -1,21 +1,19 @@
 import socket
 
-from file_system.fs import get_files_in_dir, save_file, delete_file
 from network.deser import deserialize
 from network.file_downloader import download_file
 from threads.file_sync_lock import file_sync_lock
 from utils.consts import UDP_PORT, MAX_UDP_PACKET_SIZE
-from file_system.deleted_files import deleted_files
 from threads.stoppable_thread import StoppableThread
 from utils.utils import get_ip_address
 
 
 # TODO rename to ClientThread?
 class BroadcastListenThread(StoppableThread):
-    def __init__(self, path):
+    def __init__(self, fs):
         super().__init__()
         self.sock = None
-        self.path = path
+        self.fs = fs
         self.host_ip = get_ip_address()
         self.prepare_udp_client_socket()
 
@@ -38,20 +36,20 @@ class BroadcastListenThread(StoppableThread):
 
     def handle_deleted_remote_file(self, remote_file, local_file):
         # file is deleted, checking if we have to delete
-        deleted_files.add(remote_file)
+        self.fs.deleted_files.add(remote_file)
         if local_file is not None and local_file.modified_at < remote_file.modified_at:
             # if we have a file locally, and it is older than the deleted file, we delete it
             print(
                 f'HAVE TO DELETE {remote_file.filename}, BECAUSE IT IS MARKED AS DELETED')  # TODO logging
-            delete_file(self.path, remote_file.filename)
+            self.fs.delete_file(remote_file.filename)
 
     def handle_undeleted_remote_file(self, remote_file):
         # file is not deleted, but we have it marked as deleted
         # we have to remove it from deleted_files if it is newer than the deleted file
-        deleted_file = next((f for f in deleted_files if f.filename == remote_file.filename), None)
+        deleted_file = next((f for f in self.fs.deleted_files if f.filename == remote_file.filename), None)
         if deleted_file is not None and deleted_file.modified_at < remote_file.modified_at:
             print(f'HAVE TO REMOVE {remote_file.filename} FROM DELETED FILES')  # TODO logging
-            deleted_files.remove(remote_file),
+            self.fs.deleted_files.remove(remote_file),
 
     def handle_new_remote_file(self, remote_file, server_ip):
         # we don't have the file locally, we have to download it
@@ -67,7 +65,7 @@ class BroadcastListenThread(StoppableThread):
 
     def upsert_local_file(self, remote_file, server_ip):
         downloaded_file_content = download_file(server_ip, remote_file.filename)
-        save_file(self.path, remote_file, downloaded_file_content)
+        self.fs.save_file(remote_file, downloaded_file_content)
 
     def handle_remote_files(self, data, server_ip):
         file_sync_lock.acquire()  # wait for file sync to finish
@@ -76,7 +74,7 @@ class BroadcastListenThread(StoppableThread):
         print(
             f'received {list(map(lambda f: f"{f.filename} {f.is_deleted}", remote_files))} from {server_ip}')  # TODO logging
 
-        local_files = get_files_in_dir(self.path)
+        local_files = self.fs.local_files
 
         for remote_file in remote_files:
             local_file = self.find_local_file(local_files, remote_file.filename)
@@ -84,7 +82,7 @@ class BroadcastListenThread(StoppableThread):
             if remote_file.is_deleted:
                 self.handle_deleted_remote_file(remote_file, local_file)
                 continue
-            elif not remote_file.is_deleted and remote_file in deleted_files:
+            elif not remote_file.is_deleted and remote_file in self.fs.deleted_files:
                 self.handle_undeleted_remote_file(remote_file)
                 continue
 

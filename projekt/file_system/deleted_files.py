@@ -36,8 +36,3 @@ class DeletedFiles:
 
     def __len__(self):
         return self.deleted_files.__len__()
-
-
-# TODO zalozyc locki? jak chronic dostep wielowatkowy?
-
-deleted_files = DeletedFiles()

@@ -1,6 +1,5 @@
 import socket
 
-from file_system.fs import read_file
 from utils.consts import TCP_PORT, BUFF_SIZE, ENCODING
 from threads.file_sync_lock import file_sync_lock
 from threads.stoppable_thread import StoppableThread
@@ -10,10 +9,10 @@ from threads.stoppable_thread import StoppableThread
 
 
 class FileTransferThread(StoppableThread):
-    def __init__(self, path):
+    def __init__(self, fs):
         super().__init__()
         self.sock = None
-        self.path = path
+        self.fs = fs
         self.prepare_tcp_server_socket()
 
     def prepare_tcp_server_socket(self):
@@ -43,7 +42,7 @@ class FileTransferThread(StoppableThread):
 
                 file_sync_lock.acquire()
 
-                file_content = read_file(self.path, filename)
+                file_content = self.fs.read_file(filename)
                 if file_content is not None:
                     conn.sendall(file_content)
                 conn.close()

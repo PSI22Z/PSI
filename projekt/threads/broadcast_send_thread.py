@@ -3,19 +3,17 @@ from time import sleep
 
 from network.deser import serialize
 from utils.consts import UDP_PORT
-from file_system.deleted_files import deleted_files
 from threads.file_sync_lock import file_sync_lock
 from threads.stoppable_thread import StoppableThread
-from file_system.fs import get_files_in_dir
 from utils.utils import get_broadcast_address
 
 
 # TODO rename to ServerThread?
 class BroadcastSendThread(StoppableThread):
-    def __init__(self, path):
+    def __init__(self, fs):
         super().__init__()
         self.sock = None
-        self.path = path
+        self.fs = fs
         self.current_local_files_snapshot = []
         self.broadcast_address = get_broadcast_address()
         self.prepare_udp_server_socket()
@@ -36,7 +34,7 @@ class BroadcastSendThread(StoppableThread):
         while True and not self.stopped():
             file_sync_lock.acquire()  # wait for file sync to finish
             try:
-                files = get_files_in_dir(self.path) + deleted_files.to_list()
+                files = self.fs.local_files + self.fs.deleted_files.to_list()
                 msg = serialize(files)
                 print(f'broadcasting {list(map(lambda f: f"{f.filename} {f.is_deleted}", files))}')  # TODO logging
                 self.broadcast(msg)

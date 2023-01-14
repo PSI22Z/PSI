@@ -2,6 +2,7 @@ import sys
 
 from time import sleep
 
+from file_system.fs import FileSystem
 from threads.broadcast_listen_thread import BroadcastListenThread
 from threads.broadcast_send_thread import BroadcastSendThread
 from threads.file_system_watcher_thread import FileSystemWatcherThread
@@ -16,10 +17,12 @@ def main():
 
     syncing_path = sys.argv[1]
 
-    file_system_watcher_thread = FileSystemWatcherThread(syncing_path)
-    broadcast_send_thread = BroadcastSendThread(syncing_path)
-    broadcast_listen_thread = BroadcastListenThread(syncing_path)
-    file_transfer_thread = FileTransferThread(syncing_path)
+    fs = FileSystem(syncing_path)
+
+    file_system_watcher_thread = FileSystemWatcherThread(fs)
+    broadcast_send_thread = BroadcastSendThread(fs)
+    broadcast_listen_thread = BroadcastListenThread(fs)
+    file_transfer_thread = FileTransferThread(fs)
 
     file_system_watcher_thread.start()
     broadcast_send_thread.start()
