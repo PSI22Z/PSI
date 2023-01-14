@@ -4,6 +4,7 @@ from time import sleep
 
 from threads.broadcast_listen_thread import BroadcastListenThread
 from threads.broadcast_send_thread import BroadcastSendThread
+from threads.file_system_watcher_thread import FileSystemWatcherThread
 from threads.file_transfer_thread import FileTransferThread
 from threads.file_sync_lock import file_sync_lock
 
@@ -15,10 +16,12 @@ def main():
 
     syncing_path = sys.argv[1]
 
+    file_system_watcher_thread = FileSystemWatcherThread(syncing_path)
     broadcast_send_thread = BroadcastSendThread(syncing_path)
     broadcast_listen_thread = BroadcastListenThread(syncing_path)
     file_transfer_thread = FileTransferThread(syncing_path)
 
+    file_system_watcher_thread.start()
     broadcast_send_thread.start()
     broadcast_listen_thread.start()
     file_transfer_thread.start()
@@ -37,10 +40,12 @@ def main():
             print('KeyboardInterrupt')
             file_sync_lock.release()
 
+            file_system_watcher_thread.stop()
             broadcast_send_thread.stop()
             broadcast_listen_thread.stop()
             file_transfer_thread.stop()
 
+            file_system_watcher_thread.join()
             broadcast_send_thread.join()
             broadcast_listen_thread.join()
             file_transfer_thread.join()

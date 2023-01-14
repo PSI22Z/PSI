@@ -7,7 +7,7 @@ from datetime import datetime
 from file_system.fs import get_files_in_dir, save_file
 from threads.file_sync_lock import file_sync_lock
 from utils.consts import TCP_PORT, UDP_PORT, ENCODING
-from deleted_files import deleted_files
+from file_system.deleted_files import deleted_files
 from file_system.file import File
 from threads.stoppable_thread import StoppableThread
 from utils.utils import recvall, get_ip_address

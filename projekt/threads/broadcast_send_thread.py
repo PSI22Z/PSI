@@ -1,12 +1,10 @@
 import os
 import pickle
 import socket
-import struct
-from datetime import datetime
 from time import sleep
 
-from utils.consts import UDP_PORT, ENCODING
-from deleted_files import deleted_files
+from utils.consts import UDP_PORT
+from file_system.deleted_files import deleted_files
 from threads.file_sync_lock import file_sync_lock
 from threads.stoppable_thread import StoppableThread
 from file_system.fs import get_files_in_dir
@@ -41,30 +39,6 @@ class BroadcastSendThread(StoppableThread):
     def close_udp_client_socket(self):
         self.sock.close()
 
-    # uruchamiana cyklicznie (np. co 1 s) żeby wykrywać usunięte pliki
-    # musi być często odpalana, żeby nie było sytuacji, że plik zostanie usunięty
-    # a przyjdzie wiadomość od innego klienta, że taki plik istnieje
-
-    # TODO moze to powinno byc sledzone w osobnym watku?
-    def update_deleted_files(self):
-        # save current snapshot as previous
-        previous_local_files_snapshot = self.current_local_files_snapshot
-        self.current_local_files_snapshot = get_files_in_dir(self.path)
-
-        for previous_file in previous_local_files_snapshot:
-            if previous_file not in self.current_local_files_snapshot:
-                # file was deleted
-                previous_file.is_deleted = True
-                previous_file.modified_at = datetime.now()
-                print(f"FILE {previous_file.filename} IS MARKED AS DELETED")
-                deleted_files.add(previous_file)
-
-        for deleted_file in deleted_files.copy():
-            # if file was deleted and then created again, it's not deleted anymore
-            if deleted_file in self.current_local_files_snapshot:
-                print(f"FILE {deleted_file.filename} IS NO LONGER DELETED")
-                deleted_files.remove(deleted_file)
-
     # używane do serializacji z użyciem struct (nie używane, bo problem z alignmentem)
     # def prepare_struct(self, files):
     #     structs = []
@@ -92,10 +66,7 @@ class BroadcastSendThread(StoppableThread):
                 self.broadcast(msg)
             finally:
                 file_sync_lock.release()
-            for _ in range(15):  # TODO konfigurowalny czas?
-                # TODO da sie to poprawic?
-                self.update_deleted_files()
-                sleep(1)
+            sleep(15) # TODO konfigurowalny czas?
 
         print('BroadcastSendThread stopped')
         self.close_udp_client_socket()
