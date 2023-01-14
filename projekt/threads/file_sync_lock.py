@@ -5,7 +5,7 @@ import threading
 
 # TODO chyba nie trzeba w kazdym miejscu tego locka stosowac
 
-class Lock:
+class FileSyncLock:
     def __init__(self):
         self.lock = threading.Lock()
 
@@ -19,4 +19,4 @@ class Lock:
 
 # TODO zalozyc locki? jak chronic dostep wielowatkowy?
 
-lock = Lock()
+file_sync_lock = FileSyncLock()

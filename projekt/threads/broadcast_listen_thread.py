@@ -4,19 +4,21 @@ import socket
 import struct
 from datetime import datetime
 
+from file_system.fs import get_files_in_dir, save_file
 from utils.consts import TCP_PORT, UDP_PORT
 from deleted_files import deleted_files
-from model.file import File
-from lock import lock
+from file_system.file import File
+from file_sync_lock import file_sync_lock
 from stoppable_thread import StoppableThread
-from utils.utils import get_files_in_dir, recvall, get_nic_ip_address
+from utils.utils import recvall, get_ip_address
 
 
+# TODO rename to SeverThread?
 class BroadcastListenThread(StoppableThread):
-    def __init__(self, path, if_name):
+    def __init__(self, path):
         super().__init__()
         self.path = path
-        self.server_ip = get_nic_ip_address(if_name)
+        self.host_ip = get_ip_address()
 
     def download_file(self, ip: str, filename: str):
         # TODO odbieranie duzych plikow nie dziala! nie wiem czemu
@@ -28,13 +30,6 @@ class BroadcastListenThread(StoppableThread):
         if data is None:
             return bytearray()
         return data
-
-    # TODO przeniesc do file system providera
-    def save_file(self, file: File, content):
-        path = os.path.join(self.path, file.filename)
-        with open(path, 'wb') as f:
-            f.write(content)
-        os.utime(path, (file.modified_at.timestamp(), file.modified_at.timestamp()))
 
     def unpack_structs(self, data):
         # TODO tutaj cos nie dziala, jezeli sie alignment nie zgadza
@@ -67,8 +62,8 @@ class BroadcastListenThread(StoppableThread):
 
                 # ignore own messages
                 # TODO przeciez tak nie mozna, bo IP bedzie takie samo. To jak to zrobic?
-                if addr[0] != self.server_ip:
-                    lock.acquire()
+                if addr[0] != self.host_ip:
+                    file_sync_lock.acquire()
                     files = pickle.loads(data)
                     # files = self.unpack_structs(data)  # TODO
                     print(f'received {list(map(lambda f: f"{f.filename} {f.is_deleted}", files))} from {addr}')
@@ -103,7 +98,7 @@ class BroadcastListenThread(StoppableThread):
                             # TODO trzeba podmienic metadane (daty np.)
                             print(f'HAVE TO DOWNLOAD {file.filename}, BECAUSE NOT IN LOCAL')
                             downloaded_file_content = self.download_file(addr[0], file.filename)
-                            self.save_file(file, downloaded_file_content)
+                            save_file(self.path, file, downloaded_file_content)
                         else:
                             # we have the file locally, we have to check if we have to update it
                             # TODO if local_file.modified_at < file.modified_at and local_file.size != file.size:
@@ -115,8 +110,8 @@ class BroadcastListenThread(StoppableThread):
                                 print(local_file)
                                 print(file)
                                 downloaded_file_content = self.download_file(addr[0], file.filename)
-                                self.save_file(file, downloaded_file_content)
-                    lock.release()
+                                save_file(self.path, file, downloaded_file_content)
+                    file_sync_lock.release()
             except socket.timeout:
                 continue
 
