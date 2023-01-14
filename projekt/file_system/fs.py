@@ -3,6 +3,8 @@ from datetime import datetime
 
 from file_system.file import File
 
+# TODO zrobic z tego klasę?
+
 
 def get_files_in_dir(path) -> list[File]:
     files = []

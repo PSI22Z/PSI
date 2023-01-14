@@ -4,7 +4,6 @@ from file_system.fs import read_file
 from utils.consts import TCP_PORT, BUFF_SIZE, ENCODING
 from threads.file_sync_lock import file_sync_lock
 from threads.stoppable_thread import StoppableThread
-from utils.utils import recvall
 
 
 # TODO rename to FileSeverThread?

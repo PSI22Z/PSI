@@ -3,7 +3,6 @@ from time import sleep
 
 from file_system.deleted_files import deleted_files
 from file_system.fs import get_files_in_dir
-from threads.file_sync_lock import file_sync_lock
 from threads.stoppable_thread import StoppableThread
 
 
