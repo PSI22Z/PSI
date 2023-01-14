@@ -36,8 +36,8 @@ class FileTransferThread(StoppableThread):
             try:
                 conn = self.accept_connection()
 
-                # filename = conn.recv(BUFF_SIZE).decode('utf-8')  # TODO mozna tu uzywac recvall?
-                filename = recvall(conn).decode('utf-8')
+                filename = conn.recv(BUFF_SIZE).decode('utf-8')  # TODO mozna tu uzywac recvall?
+                # filename = recvall(conn).decode('utf-8')
                 print(f'received download request for {filename}')
 
                 file_sync_lock.acquire()
