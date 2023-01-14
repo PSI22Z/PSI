@@ -4,30 +4,26 @@ import socket
 import struct
 from datetime import datetime
 
-from consts import TCP_PORT, UDP_PORT
+from utils.consts import TCP_PORT, UDP_PORT
 from deleted_files import deleted_files
-from file import File
+from model.file import File
 from lock import lock
 from stoppable_thread import StoppableThread
-from utils import get_files_in_dir, recvall, get_ip_address
-
-# TODO to jest czesto uzywane, moze wyniesc do providera
-IP = get_ip_address()  # TODO move to class
+from utils.utils import get_files_in_dir, recvall, get_nic_ip_address
 
 
 class BroadcastListenThread(StoppableThread):
-    def __init__(self, path):
+    def __init__(self, path, if_name):
         super().__init__()
         self.path = path
+        self.server_ip = get_nic_ip_address(if_name)
 
     def download_file(self, ip: str, filename: str):
         # TODO odbieranie duzych plikow nie dziala! nie wiem czemu
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((ip, TCP_PORT))
-        # send_msg(sock, filename.encode('utf-8'))
         sock.sendall(filename.encode('utf-8'))
         data = recvall(sock)
-        # data = recvall(sock)
         sock.close()
         if data is None:
             return bytearray()
@@ -71,7 +67,7 @@ class BroadcastListenThread(StoppableThread):
 
                 # ignore own messages
                 # TODO przeciez tak nie mozna, bo IP bedzie takie samo. To jak to zrobic?
-                if addr[0] != IP:
+                if addr[0] != self.server_ip:
                     lock.acquire()
                     files = pickle.loads(data)
                     # files = self.unpack_structs(data)  # TODO

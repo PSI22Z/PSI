@@ -2,17 +2,22 @@ import sys
 
 from time import sleep
 
-from broadcast_listen_thread import BroadcastListenThread
-from broadcast_send_thread import BroadcastSendThread
-from file_transfer_thread import FileTransferThread
-from lock import lock
+from threads.broadcast_listen_thread import BroadcastListenThread
+from threads.broadcast_send_thread import BroadcastSendThread
+from threads.file_transfer_thread import FileTransferThread
+from threads.lock import lock
 
 
 def main():
+    if len(sys.argv) != 2:
+        print("Usage: python main.py <path> <network_interface>")
+        return
+
     syncing_path = sys.argv[1]
+    if_name = sys.argv[2]
 
     broadcast_send_thread = BroadcastSendThread(syncing_path)
-    broadcast_listen_thread = BroadcastListenThread(syncing_path)
+    broadcast_listen_thread = BroadcastListenThread(syncing_path, if_name)
     file_transfer_thread = FileTransferThread(syncing_path)
 
     broadcast_send_thread.start()
@@ -29,8 +34,7 @@ def main():
             sleep(1)
         except KeyboardInterrupt:
             print('KeyboardInterrupt')
-            if lock.locked():
-                lock.release()
+            lock.release()
 
             broadcast_send_thread.stop()
             broadcast_listen_thread.stop()

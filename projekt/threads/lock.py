@@ -3,6 +3,8 @@ import threading
 
 # TODO rename
 
+# TODO chyba nie trzeba w kazdym miejscu tego locka stosowac
+
 class Lock:
     def __init__(self):
         self.lock = threading.Lock()
@@ -11,10 +13,8 @@ class Lock:
         self.lock.acquire()
 
     def release(self):
-        self.lock.release()
-
-    def locked(self):
-        return self.lock.locked()
+        if self.lock.locked():
+            self.lock.release()
 
 
 # TODO zalozyc locki? jak chronic dostep wielowatkowy?

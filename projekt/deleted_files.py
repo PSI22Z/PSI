@@ -1,12 +1,20 @@
+import threading
+
+
 class DeletedFiles:
     def __init__(self):
         self.deleted_files = set()
+        self.lock = threading.Lock()
 
     def add(self, file):
+        self.lock.acquire()
         self.deleted_files.add(file)
+        self.lock.release()
 
     def remove(self, file):
+        self.lock.acquire()
         self.deleted_files.remove(file)
+        self.lock.release()
 
     def to_list(self):
         return list(self.deleted_files)

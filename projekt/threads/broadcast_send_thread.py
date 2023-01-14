@@ -5,14 +5,11 @@ import struct
 from datetime import datetime
 from time import sleep
 
-from consts import UDP_PORT
+from utils.consts import UDP_PORT
 from deleted_files import deleted_files
 from lock import lock
 from stoppable_thread import StoppableThread
-from utils import get_files_in_dir, get_ip_address
-
-# TODO to jest czesto uzywane, moze wyniesc do providera
-IP = get_ip_address()  # TODO move to class
+from utils.utils import get_files_in_dir
 
 
 class BroadcastSendThread(StoppableThread):

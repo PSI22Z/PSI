@@ -1,13 +1,9 @@
 import os
 import socket
 
-from consts import TCP_PORT, BUFF_SIZE
+from utils.consts import TCP_PORT, BUFF_SIZE
 from lock import lock
 from stoppable_thread import StoppableThread
-from utils import get_ip_address
-
-# TODO to jest czesto uzywane, moze wyniesc do providera
-IP = get_ip_address()  # TODO move to class
 
 
 class FileTransferThread(StoppableThread):
@@ -18,7 +14,7 @@ class FileTransferThread(StoppableThread):
     def run(self) -> None:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM, socket.IPPROTO_TCP)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        sock.bind((IP, TCP_PORT))
+        sock.bind(("", TCP_PORT))
         sock.listen(5)
         sock.settimeout(1)
 
