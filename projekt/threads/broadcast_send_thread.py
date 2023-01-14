@@ -8,8 +8,7 @@ from threads.stoppable_thread import StoppableThread
 from utils.utils import get_broadcast_address
 
 
-# TODO rename to ServerThread?
-class BroadcastSendThread(StoppableThread):
+class FileSyncServerThread(StoppableThread):
     def __init__(self, fs):
         super().__init__()
         self.sock = None
@@ -42,5 +41,5 @@ class BroadcastSendThread(StoppableThread):
                 file_sync_lock.release()
             sleep(15)  # TODO konfigurowalny czas?
 
-        print('BroadcastSendThread stopped')
+        print('FileSyncServerThread stopped')
         self.close_udp_server_socket()

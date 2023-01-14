@@ -5,10 +5,7 @@ from threads.file_sync_lock import file_sync_lock
 from threads.stoppable_thread import StoppableThread
 
 
-# TODO rename to FileSeverThread?
-
-
-class FileTransferThread(StoppableThread):
+class FileServerThread(StoppableThread):
     def __init__(self, fs):
         super().__init__()
         self.sock = None
@@ -51,5 +48,5 @@ class FileTransferThread(StoppableThread):
             except socket.timeout:
                 continue
 
-        print('FileTransferThread stopped')
+        print('FileServerThread stopped')
         self.close_tcp_server_socket()

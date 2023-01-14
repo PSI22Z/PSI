@@ -8,8 +8,7 @@ from threads.stoppable_thread import StoppableThread
 from utils.utils import get_ip_address
 
 
-# TODO rename to ClientThread?
-class BroadcastListenThread(StoppableThread):
+class FileSyncClientThread(StoppableThread):
     def __init__(self, fs):
         super().__init__()
         self.sock = None
@@ -105,5 +104,5 @@ class BroadcastListenThread(StoppableThread):
             except socket.timeout:
                 continue
 
-        print('BroadcastListenThread stopped')
+        print('FileSyncClientThread stopped')
         self.close_udp_client_socket()

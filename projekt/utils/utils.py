@@ -4,6 +4,8 @@ import socket
 from utils.consts import BUFF_SIZE
 
 
+# TODO dodac libke na pobieranie adres ip interfejsu i jego adresu broadcast
+
 def get_ip_address():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("8.8.8.8", 80))
