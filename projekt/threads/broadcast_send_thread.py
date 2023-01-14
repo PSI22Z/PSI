@@ -7,8 +7,8 @@ from time import sleep
 
 from utils.consts import UDP_PORT
 from deleted_files import deleted_files
-from file_sync_lock import file_sync_lock
-from stoppable_thread import StoppableThread
+from threads.file_sync_lock import file_sync_lock
+from threads.stoppable_thread import StoppableThread
 from file_system.fs import get_files_in_dir
 
 
@@ -44,6 +44,8 @@ class BroadcastSendThread(StoppableThread):
     # uruchamiana cyklicznie (np. co 1 s) żeby wykrywać usunięte pliki
     # musi być często odpalana, żeby nie było sytuacji, że plik zostanie usunięty
     # a przyjdzie wiadomość od innego klienta, że taki plik istnieje
+
+    # TODO moze to powinno byc sledzone w osobnym watku?
     def update_deleted_files(self):
         # save current snapshot as previous
         previous_local_files_snapshot = self.current_local_files_snapshot
@@ -90,7 +92,7 @@ class BroadcastSendThread(StoppableThread):
                 self.broadcast(msg)
             finally:
                 file_sync_lock.release()
-            for _ in range(15):
+            for _ in range(15):  # TODO konfigurowalny czas?
                 # TODO da sie to poprawic?
                 self.update_deleted_files()
                 sleep(1)

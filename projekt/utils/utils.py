@@ -1,6 +1,6 @@
 import socket
 
-from consts import BUFF_SIZE
+from utils.consts import BUFF_SIZE
 
 
 def get_ip_address():
