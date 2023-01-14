@@ -1,7 +1,7 @@
 import socket
 
 from file_system.fs import read_file
-from utils.consts import TCP_PORT, BUFF_SIZE
+from utils.consts import TCP_PORT, BUFF_SIZE, ENCODING
 from threads.file_sync_lock import file_sync_lock
 from threads.stoppable_thread import StoppableThread
 from utils.utils import recvall
@@ -36,8 +36,10 @@ class FileTransferThread(StoppableThread):
             try:
                 conn = self.accept_connection()
 
-                filename = conn.recv(BUFF_SIZE).decode('utf-8')  # TODO mozna tu uzywac recvall?
-                # filename = recvall(conn).decode('utf-8')
+                received = conn.recv(BUFF_SIZE)
+                if len(received) == 0:
+                    continue
+                filename = received.decode(ENCODING)
                 print(f'received download request for {filename}')
 
                 file_sync_lock.acquire()

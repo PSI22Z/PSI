@@ -6,7 +6,7 @@ from datetime import datetime
 
 from file_system.fs import get_files_in_dir, save_file
 from threads.file_sync_lock import file_sync_lock
-from utils.consts import TCP_PORT, UDP_PORT
+from utils.consts import TCP_PORT, UDP_PORT, ENCODING
 from deleted_files import deleted_files
 from file_system.file import File
 from threads.stoppable_thread import StoppableThread
@@ -24,7 +24,7 @@ class BroadcastListenThread(StoppableThread):
         # TODO odbieranie duzych plikow nie dziala! nie wiem czemu
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((ip, TCP_PORT))
-        sock.sendall(filename.encode('utf-8'))
+        sock.sendall(filename.encode(ENCODING))
         data = recvall(sock)
         sock.close()
         if data is None:
@@ -40,7 +40,7 @@ class BroadcastListenThread(StoppableThread):
         files = []
         for strct in structs:
             filename, created_at, modified_at, size, is_deleted = struct.unpack('!100sddi?', strct)
-            files.append(File(filename.decode('utf-8').split('\0', 1)[0],
+            files.append(File(filename.decode(ENCODING).split('\0', 1)[0],
                               datetime.fromtimestamp(created_at),
                               datetime.fromtimestamp(modified_at),
                               size,

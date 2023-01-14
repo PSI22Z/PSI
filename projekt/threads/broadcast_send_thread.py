@@ -5,7 +5,7 @@ import struct
 from datetime import datetime
 from time import sleep
 
-from utils.consts import UDP_PORT
+from utils.consts import UDP_PORT, ENCODING
 from deleted_files import deleted_files
 from threads.file_sync_lock import file_sync_lock
 from threads.stoppable_thread import StoppableThread
@@ -69,7 +69,7 @@ class BroadcastSendThread(StoppableThread):
     # def prepare_struct(self, files):
     #     structs = []
     #     for file in files:
-    #         filename = bytes(file.filename, "utf-8")
+    #         filename = bytes(file.filename, ENCODING)
     #         structs.append(struct.pack('!100sddi?',
     #                                    filename,
     #                                    file.created_at.timestamp(),

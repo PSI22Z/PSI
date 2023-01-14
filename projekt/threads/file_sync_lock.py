@@ -10,13 +10,13 @@ class FileSyncLock:
         self.lock = threading.Lock()
 
     def acquire(self):
-        print('acquire')
+        # print('acquire')
         self.lock.acquire()
 
     def release(self):
-        print('release if locked')
+        # print('release if locked')
         if self.lock.locked():
-            print('release')
+            # print('release')
             self.lock.release()
 
 
