@@ -17,6 +17,7 @@ def serialize(files: List[File]) -> bytes:
 
 def deserialize(msg: bytes) -> List[File]:
     files = []
+    print(msg)
     for file in msg.decode(ENCODING).split(';')[:-1]:
         filename, created_at, modified_at, size, is_deleted = file.split(',')
         files.append(
