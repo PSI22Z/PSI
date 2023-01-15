@@ -647,3 +647,17 @@
 2023-01-15 21:34:00.669 DEBUG    FileSyncClient     FileSyncClientThread stopped
 2023-01-15 21:34:00.669 DEBUG    FileServer         FileServerThread stopped
 2023-01-15 21:34:00.669 INFO     FileSync           FileSync stopped
+2023-01-15 22:31:29.829 INFO     FileSync           Starting FileSync
+2023-01-15 22:31:29.849 DEBUG    FileSyncServer     Broadcasting 1 local files and 0 deleted files
+2023-01-15 22:31:38.854 DEBUG    FileSyncServer     FileSyncServerThread stopped
+2023-01-15 22:31:38.858 DEBUG    FileSystemWatcher  FileSystemWatcherThread stopped
+2023-01-15 22:31:38.907 DEBUG    FileSyncClient     FileSyncClientThread stopped
+2023-01-15 22:31:38.907 DEBUG    FileServer         FileServerThread stopped
+2023-01-15 22:31:38.908 INFO     FileSync           FileSync stopped
+2023-01-15 22:31:53.644 INFO     FileSync           Starting FileSync
+2023-01-15 22:31:53.656 DEBUG    FileSyncServer     Broadcasting 1 local files and 0 deleted files
+2023-01-15 22:31:55.659 DEBUG    FileSyncServer     FileSyncServerThread stopped
+2023-01-15 22:31:55.659 DEBUG    FileSystemWatcher  FileSystemWatcherThread stopped
+2023-01-15 22:31:55.667 DEBUG    FileSyncClient     FileSyncClientThread stopped
+2023-01-15 22:31:55.667 DEBUG    FileServer         FileServerThread stopped
+2023-01-15 22:31:55.667 INFO     FileSync           FileSync stopped

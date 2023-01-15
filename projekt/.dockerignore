@@ -1,0 +1,5 @@
+dir_to_sync
+venv
+.gitignore
+Dockerfile
+filesync.log
