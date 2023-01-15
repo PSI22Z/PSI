@@ -14,10 +14,7 @@ class FileSystemWatcherThread(StoppableThread):
 
     def run(self) -> None:
         while True and not self.stopped():
-            # TODO trzeba ten lock?
-            # file_sync_lock.acquire()  # wait for file sync to finish
             self.fs.update_local_and_deleted_files()
-            # file_sync_lock.release()
             safe_sleep(self.fs_check_interval, self.stopped)
 
         self.logger.debug('FileSystemWatcherThread stopped')

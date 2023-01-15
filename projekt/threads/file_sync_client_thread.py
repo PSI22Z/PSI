@@ -5,7 +5,6 @@ from network.deser import deserialize
 from network.file_downloader import download_file
 from network.network import recvfrom
 from threads.file_sync_lock import file_sync_lock
-from utils.consts import MAX_UDP_PACKET_SIZE
 from threads.stoppable_thread import StoppableThread
 from utils.logger import get_logger
 from utils.utils import get_ip_address, get_files_stats

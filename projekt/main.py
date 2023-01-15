@@ -1,10 +1,10 @@
+import signal
 import sys
 
 from dotenv import load_dotenv
 from time import sleep
 
 from file_system.fs import FileSystem
-from network.cipher import xor
 from threads.file_sync_client_thread import FileSyncClientThread
 from threads.file_sync_server_thread import FileSyncServerThread
 from threads.file_system_watcher_thread import FileSystemWatcherThread
@@ -28,8 +28,7 @@ def stop():
     sys.exit(0)
 
 
-def sigint_handler(sig, frame):
-    print("SIGINT")
+def signal_handler(sig, frame):
     stop()
 
 
@@ -37,6 +36,9 @@ def main():
     if len(sys.argv) != 3:
         print("Usage: python main.py <path> <network_interface>")
         return
+
+    signal.signal(signal.SIGINT, signal_handler)
+    signal.signal(signal.SIGTERM, signal_handler)
 
     load_dotenv()
 
@@ -58,19 +60,11 @@ def main():
     for t in threads:
         t.start()
 
-    # TODO naprawic lub usunac struct, pickle jest w porządku ? a moze wlasny format
-    # TODO dodac logging
-    # TODO dodac libke dotenv?
-    # TODO przeniesc komunikacje do network (?)
-    # TODO dodac szyfrowanie
-
-    # TODO da sie to zrobic lepiej?
     while True:
         try:
             # could have used signal.pause() on linux, but it's not available on windows
             sleep(1)
         except KeyboardInterrupt:
-            print("KeyboardInterrupt")
             stop()
 
 

@@ -2,7 +2,7 @@ import os
 import socket
 
 from network.network import recv, sendall
-from utils.consts import BUFF_SIZE, ENCODING
+from utils.consts import ENCODING
 from threads.file_sync_lock import file_sync_lock
 from threads.stoppable_thread import StoppableThread
 from utils.logger import get_logger

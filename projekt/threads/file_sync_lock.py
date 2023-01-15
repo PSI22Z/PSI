@@ -1,8 +1,6 @@
 import threading
 
 
-# TODO chyba nie trzeba w kazdym miejscu tego locka stosowac
-
 class FileSyncLock:
     def __init__(self):
         self.lock = threading.Lock()

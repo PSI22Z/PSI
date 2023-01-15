@@ -4,8 +4,6 @@ from network.cipher import xor
 from utils.consts import BUFF_SIZE, MAX_UDP_PACKET_SIZE
 
 
-# TODO add cipher/decipher
-
 def recv(sock) -> bytes | None:
     received = sock.recv(BUFF_SIZE)
     if not received:
