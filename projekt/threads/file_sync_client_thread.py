@@ -1,9 +1,10 @@
+import os
 import socket
 
 from network.deser import deserialize
 from network.file_downloader import download_file
 from threads.file_sync_lock import file_sync_lock
-from utils.consts import UDP_PORT, MAX_UDP_PACKET_SIZE
+from utils.consts import  MAX_UDP_PACKET_SIZE
 from threads.stoppable_thread import StoppableThread
 from utils.utils import get_ip_address
 
@@ -12,6 +13,7 @@ class FileSyncClientThread(StoppableThread):
     def __init__(self, fs, network_interface):
         super().__init__()
         self.sock = None
+        self.port = int(os.getenv('PORT'))
         self.fs = fs
         self.host_ip = get_ip_address(network_interface)
         self.prepare_udp_client_socket()
@@ -21,7 +23,7 @@ class FileSyncClientThread(StoppableThread):
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
         self.sock.settimeout(1)
-        self.sock.bind(("", UDP_PORT))
+        self.sock.bind(("", self.port))
 
     def receive(self):
         data, addr = self.sock.recvfrom(MAX_UDP_PACKET_SIZE)

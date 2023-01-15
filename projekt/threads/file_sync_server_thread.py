@@ -1,18 +1,17 @@
 import os
 import socket
-from time import sleep
 
 from network.deser import serialize
-from utils.consts import UDP_PORT
 from threads.file_sync_lock import file_sync_lock
 from threads.stoppable_thread import StoppableThread
-from utils.utils import get_broadcast_address
+from utils.utils import get_broadcast_address, safe_sleep
 
 
 class FileSyncServerThread(StoppableThread):
     def __init__(self, fs, network_interface):
         super().__init__()
         self.sock = None
+        self.port = int(os.getenv('PORT'))
         self.fs = fs
         self.current_local_files_snapshot = []
         self.broadcast_address = get_broadcast_address(network_interface)
@@ -26,7 +25,7 @@ class FileSyncServerThread(StoppableThread):
         self.sock.settimeout(1)
 
     def broadcast(self, msg):
-        self.sock.sendto(msg, (self.broadcast_address, UDP_PORT))
+        self.sock.sendto(msg, (self.broadcast_address, self.port))
 
     def close_udp_server_socket(self):
         self.sock.close()
@@ -41,7 +40,7 @@ class FileSyncServerThread(StoppableThread):
                 self.broadcast(msg)
             finally:
                 file_sync_lock.release()
-            sleep(self.broadcast_interval)
+            safe_sleep(self.broadcast_interval, self.stopped)
 
         print('FileSyncServerThread stopped')
         self.close_udp_server_socket()

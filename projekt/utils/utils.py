@@ -1,3 +1,5 @@
+from time import sleep
+
 import netifaces
 
 from utils.consts import BUFF_SIZE
@@ -19,3 +21,10 @@ def recvall(conn):
             break
         data.extend(part)
     return data
+
+
+def safe_sleep(seconds, should_stop_func):
+    for _ in range(seconds):
+        if should_stop_func():
+            return
+        sleep(1)
