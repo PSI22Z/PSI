@@ -37,7 +37,7 @@ class FileServerThread(StoppableThread):
                 conn, addr = self.accept_connection()
 
                 received = recv(conn)
-                if len(received) == 0:
+                if received is None or len(received) == 0:
                     continue
                 filename = received.decode(ENCODING)
                 self.logger.info(f"Received download request for {filename} from {addr[0]}")

@@ -6,15 +6,17 @@ from utils.consts import BUFF_SIZE, MAX_UDP_PACKET_SIZE
 
 # TODO add cipher/decipher
 
-def recv(conn) -> bytes:
-    received = conn.recv(BUFF_SIZE)
-    # TODO handle exceptions
+def recv(sock) -> bytes | None:
+    received = sock.recv(BUFF_SIZE)
+    if not received:
+        return None
     return xor(received)
 
 
-def recvfrom(sock) -> Tuple[bytes, Any]:
+def recvfrom(sock) -> Tuple[bytes, Any] | Tuple[None, None]:
     received, addr = sock.recvfrom(MAX_UDP_PACKET_SIZE)
-    # TODO handle exceptions
+    if not received:
+        return None, None
     return xor(received), addr
 
 
@@ -22,18 +24,17 @@ def recvall(sock) -> bytes:
     data = bytearray()
     while True:
         part = sock.recv(BUFF_SIZE)
-        # TODO handle exceptions
-        if not len(part):
+        if part is None or not len(part):
             break
         data.extend(part)
     return xor(data)
 
 
 def sendto(sock, data: bytes, address):
-    sock.sendto(xor(data), address)
-    # TODO handle exceptions
+    result = sock.sendto(xor(data), address)
+    if result != len(data):
+        raise Exception("Not all data was sent")
 
 
-def sendall(conn, data: bytes):
-    conn.sendall(xor(data))
-    # TODO handle exceptions
+def sendall(sock, data: bytes):
+    sock.sendall(xor(data))

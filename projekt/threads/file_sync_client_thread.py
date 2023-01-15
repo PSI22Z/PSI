@@ -101,6 +101,8 @@ class FileSyncClientThread(StoppableThread):
         while True and not self.stopped():
             try:
                 data, addr = self.receive()
+                if data is None:
+                    continue
                 server_ip = addr[0]
 
                 # ignore own messages
