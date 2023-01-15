@@ -28,7 +28,7 @@ def deserialize(msg: bytes) -> List[File]:
                  datetime.datetime.fromtimestamp(float(created_at)),
                  datetime.datetime.fromtimestamp(float(modified_at)),
                  int(size),
-                 str_to_bool(is_deleted)))
+                 str_to_bool(is_deleted))
         )
     print(files)
     return files
