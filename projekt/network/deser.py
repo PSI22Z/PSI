@@ -4,6 +4,9 @@ from typing import List
 from file_system.file import File
 from utils.consts import ENCODING
 
+def str_to_bool(s: str) -> bool:
+    return s == 'True'
+
 
 def serialize(files: List[File]) -> bytes:
     msg = bytearray()
@@ -22,10 +25,10 @@ def deserialize(msg: bytes) -> List[File]:
         filename, created_at, modified_at, size, is_deleted = file.split(',')
         files.append(
             File(filename,
-                 datetime.datetime.fromtimestamp(created_at),
-                 datetime.datetime.fromtimestamp(modified_at),
-                 size,
-                 is_deleted)
+                 datetime.datetime.fromtimestamp(float(created_at)),
+                 datetime.datetime.fromtimestamp(float(modified_at)),
+                 int(size),
+                 str_to_bool(is_deleted)))
         )
     print(files)
     return files
