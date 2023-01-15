@@ -1,3 +1,4 @@
+import os
 import socket
 from time import sleep
 
@@ -16,6 +17,7 @@ class FileSyncServerThread(StoppableThread):
         self.current_local_files_snapshot = []
         self.broadcast_address = get_broadcast_address(network_interface)
         self.prepare_udp_server_socket()
+        self.broadcast_interval = int(os.getenv('BROADCAST_INTERVAL'))
 
     def prepare_udp_server_socket(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
@@ -39,7 +41,7 @@ class FileSyncServerThread(StoppableThread):
                 self.broadcast(msg)
             finally:
                 file_sync_lock.release()
-            sleep(15)  # TODO konfigurowalny czas?
+            sleep(self.broadcast_interval)
 
         print('FileSyncServerThread stopped')
         self.close_udp_server_socket()

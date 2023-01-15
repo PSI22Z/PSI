@@ -1,5 +1,6 @@
 import sys
 
+from dotenv import load_dotenv
 from time import sleep
 
 from file_system.fs import FileSystem
@@ -14,6 +15,8 @@ def main():
     if len(sys.argv) != 3:
         print("Usage: python main.py <path> <network_interface>")
         return
+
+    load_dotenv()
 
     syncing_path = sys.argv[1]
     network_interface = sys.argv[2]
