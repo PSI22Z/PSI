@@ -1,6 +1,7 @@
 import os
 
 from threads.stoppable_thread import StoppableThread
+from utils.logger import get_logger
 from utils.utils import safe_sleep
 
 
@@ -9,6 +10,7 @@ class FileSystemWatcherThread(StoppableThread):
         super().__init__()
         self.fs = fs
         self.fs_check_interval = int(os.getenv('FILE_SYSTEM_CHECK_INTERVAL'))
+        self.logger = get_logger("FileSystemWatcher")
 
     def run(self) -> None:
         while True and not self.stopped():
@@ -18,4 +20,4 @@ class FileSystemWatcherThread(StoppableThread):
             # file_sync_lock.release()
             safe_sleep(self.fs_check_interval, self.stopped)
 
-        print('FileSystemWatcherThread stopped')
+        self.logger.debug('FileSystemWatcherThread stopped')

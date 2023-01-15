@@ -9,6 +9,7 @@ from threads.file_sync_server_thread import FileSyncServerThread
 from threads.file_system_watcher_thread import FileSystemWatcherThread
 from threads.file_server_thread import FileServerThread
 from threads.file_sync_lock import file_sync_lock
+from utils.logger import get_logger
 
 
 def main():
@@ -22,6 +23,9 @@ def main():
     network_interface = sys.argv[2]
 
     fs = FileSystem(syncing_path)
+
+    logger = get_logger("FileSync")
+    logger.info('Starting FileSync')
 
     file_system_watcher_thread = FileSystemWatcherThread(fs)
     broadcast_send_thread = FileSyncServerThread(fs, network_interface)
@@ -45,7 +49,6 @@ def main():
             # could have used signal.pause() on linux, but it's not available on windows
             sleep(1)
         except KeyboardInterrupt:
-            print('KeyboardInterrupt')
             file_sync_lock.release()
 
             file_system_watcher_thread.stop()
@@ -57,6 +60,8 @@ def main():
             broadcast_send_thread.join()
             file_sync_client_thread.join()
             file_server_thread.join()
+
+            logger.info('FileSync stopped')
 
             sys.exit(0)
 

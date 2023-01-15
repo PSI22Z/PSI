@@ -4,6 +4,7 @@ import socket
 from utils.consts import BUFF_SIZE, ENCODING
 from threads.file_sync_lock import file_sync_lock
 from threads.stoppable_thread import StoppableThread
+from utils.logger import get_logger
 
 
 class FileServerThread(StoppableThread):
@@ -13,6 +14,7 @@ class FileServerThread(StoppableThread):
         self.port = int(os.getenv('PORT'))
         self.fs = fs
         self.prepare_tcp_server_socket()
+        self.logger = get_logger("FileServer")
 
     def prepare_tcp_server_socket(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM, socket.IPPROTO_TCP)
@@ -22,8 +24,8 @@ class FileServerThread(StoppableThread):
         self.sock.settimeout(1)
 
     def accept_connection(self):
-        conn, _ = self.sock.accept()
-        return conn
+        conn, addr = self.sock.accept()
+        return conn, addr
 
     def close_tcp_server_socket(self):
         self.sock.close()
@@ -31,13 +33,13 @@ class FileServerThread(StoppableThread):
     def run(self) -> None:
         while True and not self.stopped():
             try:
-                conn = self.accept_connection()
+                conn, addr = self.accept_connection()
 
                 received = conn.recv(BUFF_SIZE)
                 if len(received) == 0:
                     continue
                 filename = received.decode(ENCODING)
-                print(f'received download request for {filename}')
+                self.logger.info(f"Received download request for {filename} from {addr}")
 
                 file_sync_lock.acquire()
 
@@ -50,5 +52,5 @@ class FileServerThread(StoppableThread):
             except socket.timeout:
                 continue
 
-        print('FileServerThread stopped')
         self.close_tcp_server_socket()
+        self.logger.debug('FileServerThread stopped')

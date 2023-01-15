@@ -8,13 +8,10 @@ class FileSyncLock:
         self.lock = threading.Lock()
 
     def acquire(self):
-        # print('acquire')
         self.lock.acquire()
 
     def release(self):
-        # print('release if locked')
         if self.lock.locked():
-            # print('release')
             self.lock.release()
 
 

@@ -4,6 +4,7 @@ import socket
 from network.deser import serialize
 from threads.file_sync_lock import file_sync_lock
 from threads.stoppable_thread import StoppableThread
+from utils.logger import get_logger
 from utils.utils import get_broadcast_address, safe_sleep
 
 
@@ -17,6 +18,7 @@ class FileSyncServerThread(StoppableThread):
         self.broadcast_address = get_broadcast_address(network_interface)
         self.prepare_udp_server_socket()
         self.broadcast_interval = int(os.getenv('BROADCAST_INTERVAL'))
+        self.logger = get_logger("FileSyncServer")
 
     def prepare_udp_server_socket(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
@@ -36,11 +38,11 @@ class FileSyncServerThread(StoppableThread):
             try:
                 files = self.fs.local_files + self.fs.deleted_files.to_list()
                 msg = serialize(files)
-                print(f'broadcasting {list(map(lambda f: f"{f.filename} {f.is_deleted}", files))}')  # TODO logging
+                self.logger.debug(f"Broadcasting {len(files)} files")
                 self.broadcast(msg)
             finally:
                 file_sync_lock.release()
             safe_sleep(self.broadcast_interval, self.stopped)
 
-        print('FileSyncServerThread stopped')
         self.close_udp_server_socket()
+        self.logger.debug('FileSyncServerThread stopped')

@@ -1,0 +1,6 @@
+2023-01-15 19:25:46.532 INFO     FileSync           Starting FileSync
+2023-01-15 19:25:47.545 DEBUG    FileSystemWatcher  FileSystemWatcherThread stopped
+2023-01-15 19:25:47.545 DEBUG    FileSyncServer     FileSyncServerThread stopped
+2023-01-15 19:25:47.546 DEBUG    FileSyncClient     FileSyncClientThread stopped
+2023-01-15 19:25:47.546 DEBUG    FileServer         FileServerThread stopped
+2023-01-15 19:25:47.546 INFO     FileSync           FileSync stopped
