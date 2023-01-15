@@ -9,12 +9,12 @@ from utils.utils import get_broadcast_address
 
 
 class FileSyncServerThread(StoppableThread):
-    def __init__(self, fs):
+    def __init__(self, fs, network_interface):
         super().__init__()
         self.sock = None
         self.fs = fs
         self.current_local_files_snapshot = []
-        self.broadcast_address = get_broadcast_address()
+        self.broadcast_address = get_broadcast_address(network_interface)
         self.prepare_udp_server_socket()
 
     def prepare_udp_server_socket(self):

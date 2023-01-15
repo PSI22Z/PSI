@@ -9,11 +9,11 @@ from utils.utils import get_ip_address
 
 
 class FileSyncClientThread(StoppableThread):
-    def __init__(self, fs):
+    def __init__(self, fs, network_interface):
         super().__init__()
         self.sock = None
         self.fs = fs
-        self.host_ip = get_ip_address()
+        self.host_ip = get_ip_address(network_interface)
         self.prepare_udp_client_socket()
 
     def prepare_udp_client_socket(self):
