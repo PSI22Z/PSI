@@ -1,6 +1,7 @@
 import os
 import socket
 
+from network.network import recv, sendall
 from utils.consts import BUFF_SIZE, ENCODING
 from threads.file_sync_lock import file_sync_lock
 from threads.stoppable_thread import StoppableThread
@@ -35,7 +36,7 @@ class FileServerThread(StoppableThread):
             try:
                 conn, addr = self.accept_connection()
 
-                received = conn.recv(BUFF_SIZE)
+                received = recv(conn)
                 if len(received) == 0:
                     continue
                 filename = received.decode(ENCODING)
@@ -45,7 +46,7 @@ class FileServerThread(StoppableThread):
 
                 file_content = self.fs.read_file(filename)
                 if file_content is not None:
-                    conn.sendall(file_content)
+                    sendall(conn, file_content)
                 conn.close()
 
                 file_sync_lock.release()

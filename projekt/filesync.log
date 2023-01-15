@@ -206,3 +206,10 @@
 2023-01-15 20:24:59.772 DEBUG    FileServer         FileServerThread stopped
 2023-01-15 20:24:59.772 DEBUG    FileSyncClient     FileSyncClientThread stopped
 2023-01-15 20:24:59.772 INFO     FileSync           FileSync stopped
+2023-01-15 20:30:57.901 INFO     FileSync           Starting FileSync
+2023-01-15 20:30:57.913 DEBUG    FileSyncServer     Broadcasting 0 files
+2023-01-15 20:30:59.914 DEBUG    FileSystemWatcher  FileSystemWatcherThread stopped
+2023-01-15 20:30:59.914 DEBUG    FileSyncServer     FileSyncServerThread stopped
+2023-01-15 20:30:59.935 DEBUG    FileSyncClient     FileSyncClientThread stopped
+2023-01-15 20:30:59.935 DEBUG    FileServer         FileServerThread stopped
+2023-01-15 20:30:59.936 INFO     FileSync           FileSync stopped

@@ -2,6 +2,7 @@ import os
 import socket
 
 from network.deser import serialize
+from network.network import sendto
 from threads.file_sync_lock import file_sync_lock
 from threads.stoppable_thread import StoppableThread
 from utils.logger import get_logger
@@ -27,7 +28,7 @@ class FileSyncServerThread(StoppableThread):
         self.sock.settimeout(1)
 
     def broadcast(self, msg):
-        self.sock.sendto(msg, (self.broadcast_address, self.port))
+        sendto(self.sock, msg, (self.broadcast_address, self.port))
 
     def close_udp_server_socket(self):
         self.sock.close()

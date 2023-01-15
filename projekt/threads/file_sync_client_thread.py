@@ -3,6 +3,7 @@ import socket
 
 from network.deser import deserialize
 from network.file_downloader import download_file
+from network.network import recvfrom
 from threads.file_sync_lock import file_sync_lock
 from utils.consts import MAX_UDP_PACKET_SIZE
 from threads.stoppable_thread import StoppableThread
@@ -28,7 +29,7 @@ class FileSyncClientThread(StoppableThread):
         self.sock.bind(("", self.port))
 
     def receive(self):
-        data, addr = self.sock.recvfrom(MAX_UDP_PACKET_SIZE)
+        data, addr = recvfrom(self.sock)
         return data, addr
 
     def close_udp_client_socket(self):
