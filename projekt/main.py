@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from time import sleep
 
 from file_system.fs import FileSystem
+from network.cipher import xor
 from threads.file_sync_client_thread import FileSyncClientThread
 from threads.file_sync_server_thread import FileSyncServerThread
 from threads.file_system_watcher_thread import FileSystemWatcherThread

@@ -10,10 +10,8 @@ class File:
     size: int
     is_deleted: bool = False
 
-    # tymczasowe rozwiazanie, zeby ulatwic sprawdzanie istnienia pliku w kolekcji
     def __eq__(self, other):
         return self.filename == other.filename
 
-    # tymczasowe rozwiazanie, zeby moc wsadzac File do setów
     def __hash__(self):
         return hash(self.filename)
