@@ -4,6 +4,7 @@ from typing import List
 from file_system.file import File
 from utils.consts import ENCODING
 
+
 def str_to_bool(s: str) -> bool:
     return s == 'True'
 
