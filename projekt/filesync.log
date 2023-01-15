@@ -1,3 +1,71 @@
 2023-01-15 19:37:59.779 INFO     FileSync           Starting FileSync
 2023-01-15 19:37:59.792 DEBUG    FileSyncServer     Broadcasting 1 files
 2023-01-15 19:38:14.797 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 19:38:29.801 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 19:38:44.806 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 19:38:45.508 DEBUG    FileSyncClient     Received 1 from 192.168.0.183
+2023-01-15 19:38:45.508 INFO     FileSyncClient     Downloading a.txt from 192.168.0.183, because it's modified
+2023-01-15 19:38:59.811 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 19:39:00.523 DEBUG    FileSyncClient     Received 1 from 192.168.0.183
+2023-01-15 19:39:14.823 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 19:39:15.539 DEBUG    FileSyncClient     Received 1 from 192.168.0.183
+2023-01-15 19:39:29.828 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 19:39:30.552 DEBUG    FileSyncClient     Received 1 from 192.168.0.183
+2023-01-15 19:39:44.851 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 19:39:45.570 DEBUG    FileSyncClient     Received 1 from 192.168.0.183
+2023-01-15 19:39:59.857 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 19:40:00.633 DEBUG    FileSyncClient     Received 1 from 192.168.0.183
+2023-01-15 19:40:00.633 INFO     FileSyncClient     Downloading a.txt from 192.168.0.183, because it's modified
+2023-01-15 19:40:14.861 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 19:40:15.687 DEBUG    FileSyncClient     Received 1 from 192.168.0.183
+2023-01-15 19:40:29.867 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 19:40:30.744 DEBUG    FileSyncClient     Received 1 from 192.168.0.183
+2023-01-15 19:40:30.744 INFO     FileSyncClient     Deleting local a.txt, because it is marked as deleted
+2023-01-15 19:40:30.883 INFO     FileSystem         File a.txt is now marked as deleted
+2023-01-15 19:40:44.873 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 19:40:45.812 DEBUG    FileSyncClient     Received 1 from 192.168.0.183
+2023-01-15 19:40:59.878 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 19:41:00.869 DEBUG    FileSyncClient     Received 1 from 192.168.0.183
+2023-01-15 19:41:14.885 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 19:41:15.928 DEBUG    FileSyncClient     Received 1 from 192.168.0.183
+2023-01-15 19:41:29.890 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 19:41:30.997 DEBUG    FileSyncClient     Received 1 from 192.168.0.183
+2023-01-15 19:41:30.997 INFO     FileSyncClient     Removing a.txt from deleted files
+2023-01-15 19:41:44.895 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 19:41:46.62  DEBUG    FileSyncClient     Received 1 from 192.168.0.183
+2023-01-15 19:41:59.905 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 19:42:01.119 DEBUG    FileSyncClient     Received 1 from 192.168.0.183
+2023-01-15 19:42:04.142 DEBUG    FileSyncClient     FileSyncClientThread stopped
+2023-01-15 19:42:04.219 DEBUG    FileServer         FileServerThread stopped
+2023-01-15 19:42:04.906 DEBUG    FileSyncServer     FileSyncServerThread stopped
+2023-01-15 19:42:04.931 DEBUG    FileSystemWatcher  FileSystemWatcherThread stopped
+2023-01-15 19:42:04.931 INFO     FileSync           FileSync stopped
+2023-01-15 19:42:17.340 INFO     FileSync           Starting FileSync
+2023-01-15 19:42:17.353 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 19:42:29.410 DEBUG    FileSyncClient     Received 1 files from 192.168.0.183
+2023-01-15 19:42:29.410 INFO     FileSyncClient     Downloading a.txt from 192.168.0.183, because it's modified
+2023-01-15 19:42:32.358 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 19:42:44.469 DEBUG    FileSyncClient     Received 2 files from 192.168.0.183
+2023-01-15 19:42:44.469 INFO     FileSyncClient     Downloading b.txt from 192.168.0.183, because it's not in local files
+2023-01-15 19:42:47.364 DEBUG    FileSyncServer     Broadcasting 2 files
+2023-01-15 19:42:59.531 DEBUG    FileSyncClient     Received 2 files from 192.168.0.183
+2023-01-15 19:43:02.369 DEBUG    FileSyncServer     Broadcasting 2 files
+2023-01-15 19:43:02.462 INFO     FileServer         Received download request for a.txt from 192.168.0.183
+2023-01-15 19:43:02.470 INFO     FileServer         Received download request for b.txt from 192.168.0.183
+2023-01-15 19:43:14.592 DEBUG    FileSyncClient     Received 2 files from 192.168.0.183
+2023-01-15 19:43:14.592 INFO     FileSyncClient     Deleting local b.txt, because it is marked as deleted
+2023-01-15 19:43:14.592 INFO     FileSyncClient     Deleting local a.txt, because it is marked as deleted
+2023-01-15 19:43:15.385 INFO     FileSystem         File a.txt is now marked as deleted
+2023-01-15 19:43:15.385 INFO     FileSystem         File b.txt is now marked as deleted
+2023-01-15 19:43:17.374 DEBUG    FileSyncServer     Broadcasting 2 files
+2023-01-15 19:43:29.648 DEBUG    FileSyncClient     Received 2 files from 192.168.0.183
+2023-01-15 19:43:32.380 DEBUG    FileSyncServer     Broadcasting 2 files
+2023-01-15 19:43:44.710 DEBUG    FileSyncClient     Received 2 files from 192.168.0.183
+2023-01-15 19:43:44.710 INFO     FileSyncClient     Removing b.txt from deleted files. Downloading it from 192.168.0.183
+2023-01-15 19:43:44.721 INFO     FileSyncClient     Removing a.txt from deleted files. Downloading it from 192.168.0.183
+2023-01-15 19:43:47.385 DEBUG    FileSyncServer     Broadcasting 2 files
+2023-01-15 19:43:52.992 DEBUG    FileServer         FileServerThread stopped
+2023-01-15 19:43:53.387 DEBUG    FileSyncServer     FileSyncServerThread stopped
+2023-01-15 19:43:53.404 DEBUG    FileSystemWatcher  FileSystemWatcherThread stopped
+2023-01-15 19:43:53.447 DEBUG    FileSyncClient     FileSyncClientThread stopped
+2023-01-15 19:43:53.447 INFO     FileSync           FileSync stopped

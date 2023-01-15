@@ -44,7 +44,6 @@ class FileSyncClientThread(StoppableThread):
             # if we have a file locally, and it is older than the deleted file, we delete it
             self.logger.info(f"Deleting local {remote_file.filename}, because it is marked as deleted")
             self.fs.delete_file(remote_file.filename)
-            self.fs.deleted_files.add(remote_file)
 
     def handle_undeleted_remote_file(self, remote_file, server_ip):
         # file is not deleted, but we have it marked as deleted
