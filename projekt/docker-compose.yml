@@ -4,7 +4,7 @@ services:
     build: .
     volumes:
       - ./dir_to_sync_A:/filesync/dir_to_sync
-#  clientB:
-#    build: .
-#    volumes:
-#      - ./dir_to_sync_B:/filesync/dir_to_sync
+  client_b:
+    build: .
+    volumes:
+      - ./dir_to_sync_B:/filesync/dir_to_sync
