@@ -6,7 +6,7 @@ from network.network import sendto
 from threads.file_sync_lock import file_sync_lock
 from threads.stoppable_thread import StoppableThread
 from utils.logger import get_logger
-from utils.utils import get_broadcast_address, safe_sleep
+from utils.utils import get_broadcast_address, safe_sleep, get_files_stats
 
 
 class FileSyncServerThread(StoppableThread):
@@ -39,7 +39,8 @@ class FileSyncServerThread(StoppableThread):
             try:
                 files = self.fs.local_files + self.fs.deleted_files.to_list()
                 msg = serialize(files)
-                self.logger.debug(f"Broadcasting {len(files)} files")
+                files_stats = get_files_stats(files)
+                self.logger.debug(f"Broadcasting {files_stats[0]} local files and {files_stats[1]} deleted files")
                 self.broadcast(msg)
             finally:
                 file_sync_lock.release()

@@ -8,7 +8,7 @@ from threads.file_sync_lock import file_sync_lock
 from utils.consts import MAX_UDP_PACKET_SIZE
 from threads.stoppable_thread import StoppableThread
 from utils.logger import get_logger
-from utils.utils import get_ip_address
+from utils.utils import get_ip_address, get_files_stats
 
 
 class FileSyncClientThread(StoppableThread):
@@ -75,7 +75,8 @@ class FileSyncClientThread(StoppableThread):
         file_sync_lock.acquire()  # wait for file sync to finish
 
         remote_files = deserialize(data)
-        self.logger.debug(f"Received {len(remote_files)} files from {server_ip}")
+        files_stats = get_files_stats(remote_files)
+        self.logger.debug(f"Received {files_stats[0]} local files and {files_stats[1]} deleted files from {server_ip}")
 
         local_files = self.fs.local_files
 

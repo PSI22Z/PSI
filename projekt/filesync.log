@@ -213,3 +213,437 @@
 2023-01-15 20:30:59.935 DEBUG    FileSyncClient     FileSyncClientThread stopped
 2023-01-15 20:30:59.935 DEBUG    FileServer         FileServerThread stopped
 2023-01-15 20:30:59.936 INFO     FileSync           FileSync stopped
+2023-01-15 20:33:39.287 INFO     FileSync           Starting FileSync
+2023-01-15 20:33:39.300 DEBUG    FileSyncServer     Broadcasting 0 files
+2023-01-15 20:33:54.306 DEBUG    FileSyncServer     Broadcasting 0 files
+2023-01-15 20:34:09.310 DEBUG    FileSyncServer     Broadcasting 0 files
+2023-01-15 20:34:24.316 DEBUG    FileSyncServer     Broadcasting 0 files
+2023-01-15 20:34:39.322 DEBUG    FileSyncServer     Broadcasting 0 files
+2023-01-15 20:34:54.325 DEBUG    FileSyncServer     Broadcasting 0 files
+2023-01-15 20:35:09.330 DEBUG    FileSyncServer     Broadcasting 0 files
+2023-01-15 20:35:09.488 DEBUG    FileSyncClient     Received 0 files from 192.168.0.183
+2023-01-15 20:35:24.336 DEBUG    FileSyncServer     Broadcasting 0 files
+2023-01-15 20:35:24.500 DEBUG    FileSyncClient     Received 0 files from 192.168.0.183
+2023-01-15 20:35:39.341 DEBUG    FileSyncServer     Broadcasting 0 files
+2023-01-15 20:35:39.517 DEBUG    FileSyncClient     Received 1 files from 192.168.0.183
+2023-01-15 20:35:39.517 INFO     FileSyncClient     Downloading a.txt from 192.168.0.183, because it's not in local files
+2023-01-15 20:35:54.346 DEBUG    FileSyncServer     Broadcasting 1 files
+2023-01-15 20:35:54.573 DEBUG    FileSyncClient     Received 2 files from 192.168.0.183
+2023-01-15 20:35:54.574 INFO     FileSyncClient     Downloading b.txt from 192.168.0.183, because it's not in local files
+2023-01-15 20:36:09.351 DEBUG    FileSyncServer     Broadcasting 2 files
+2023-01-15 20:36:09.386 INFO     FileServer         Received download request for b.txt from 192.168.0.183
+2023-01-15 20:36:09.627 DEBUG    FileSyncClient     Received 2 files from 192.168.0.183
+2023-01-15 20:36:24.357 DEBUG    FileSyncServer     Broadcasting 2 files
+2023-01-15 20:36:24.692 DEBUG    FileSyncClient     Received 2 files from 192.168.0.183
+2023-01-15 20:36:24.692 INFO     FileSyncClient     Deleting local b.txt, because it is marked as deleted
+2023-01-15 20:36:25.378 INFO     FileSystem         File b.txt is now marked as deleted
+2023-01-15 20:36:33.381 INFO     FileSystem         File a.txt is now marked as deleted
+2023-01-15 20:36:39.362 DEBUG    FileSyncServer     Broadcasting 2 files
+2023-01-15 20:36:39.746 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:36:54.366 DEBUG    FileSyncServer     Broadcasting 2 files
+2023-01-15 20:36:54.803 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:36:54.803 INFO     FileSyncClient     Downloading c.txt from 192.168.0.183, because it's not in local files
+2023-01-15 20:37:09.373 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:37:09.867 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:37:24.380 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:37:24.925 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:37:39.397 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:37:39.984 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:37:54.402 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:37:55.40  DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:38:09.410 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:38:10.94  DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:38:24.419 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:38:25.153 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:38:39.424 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:38:40.217 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:38:54.431 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:38:55.276 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:39:09.436 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:39:10.341 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:39:24.450 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:39:25.398 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:39:39.456 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:39:40.460 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:39:54.463 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:39:55.525 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:40:09.468 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:40:10.589 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:40:24.473 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:40:25.652 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:40:39.479 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:40:40.711 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:40:54.484 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:40:55.771 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:41:09.489 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:41:10.826 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:41:24.495 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:41:25.882 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:41:39.502 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:41:40.940 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:41:54.506 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:41:56.5   DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:42:09.515 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:42:11.61  DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:42:24.521 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:42:26.113 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:42:39.525 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:42:41.162 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:42:54.531 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:42:56.229 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:43:09.536 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:43:11.284 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:43:24.541 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:43:26.345 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:43:39.547 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:43:41.404 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:43:54.552 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:43:56.457 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:44:09.557 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:44:11.516 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:44:24.562 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:44:26.577 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:44:39.567 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:44:41.637 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:44:54.573 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:44:56.695 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:45:09.578 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:45:11.755 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:45:24.583 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:45:26.816 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:45:39.588 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:45:41.875 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:45:54.593 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:45:56.937 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:46:09.598 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:46:11.997 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:46:24.603 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:46:27.60  DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:46:39.608 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:46:42.119 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:46:54.614 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:46:57.179 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:47:09.618 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:47:12.238 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:47:24.623 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:47:27.298 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:47:39.628 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:47:42.358 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:47:54.634 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:47:57.417 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:48:09.639 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:48:12.471 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:48:24.644 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:48:27.525 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:48:39.649 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:48:42.588 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:48:54.654 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:48:57.642 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:49:09.660 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:49:12.702 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:49:24.665 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:49:27.760 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:49:39.670 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:49:42.825 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:49:54.675 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:49:57.883 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:50:09.680 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:50:12.938 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:50:24.686 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:50:27.995 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:50:39.691 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:50:43.51  DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:50:54.697 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:50:58.113 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:51:09.702 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:51:13.174 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:51:24.707 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:51:28.235 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:51:39.712 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:51:43.294 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:51:54.717 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:51:58.355 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:52:09.722 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:52:13.421 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:52:24.728 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:52:28.481 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:52:39.733 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:52:43.536 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:52:54.738 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:52:58.595 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:53:09.743 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:53:13.650 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:53:24.749 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:53:28.719 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:53:39.753 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:53:43.776 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:53:54.761 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:53:58.843 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:54:09.767 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:54:13.905 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:54:24.771 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:54:28.960 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:54:39.775 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:54:44.15  DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:54:54.780 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:54:59.78  DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:55:09.786 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:55:14.140 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:55:24.790 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:55:29.201 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:55:39.796 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:55:44.259 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:55:54.801 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:55:59.319 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:56:09.806 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:56:14.379 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:56:24.811 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:56:29.439 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:56:39.817 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:56:44.498 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:56:54.821 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:56:59.553 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:57:09.826 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:57:14.605 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:57:24.832 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:57:29.663 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:57:39.836 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:57:44.723 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:57:54.840 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:57:59.786 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:58:09.845 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:58:14.840 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:58:24.850 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:58:29.895 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:58:39.855 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:58:44.953 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:58:54.859 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:59:00.13  DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:59:09.865 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:59:15.71  DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:59:24.869 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:59:30.129 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:59:39.876 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 20:59:45.189 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 20:59:54.880 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:00:00.249 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:00:09.886 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:00:15.310 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:00:24.891 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:00:30.368 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:00:39.897 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:00:45.432 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:00:54.902 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:01:00.488 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:01:09.908 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:01:15.546 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:01:24.912 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:01:30.611 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:01:39.917 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:01:45.672 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:01:54.922 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:02:00.731 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:02:09.927 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:02:15.793 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:02:24.932 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:02:30.850 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:02:39.938 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:02:45.907 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:02:54.943 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:03:00.971 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:03:09.948 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:03:16.33  DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:03:24.954 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:03:31.88  DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:03:39.958 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:03:46.147 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:03:54.962 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:04:01.216 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:04:09.967 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:04:16.305 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:04:24.972 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:04:31.345 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:04:39.978 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:04:46.401 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:04:54.984 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:05:01.460 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:05:09.990 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:05:16.522 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:05:24.995 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:05:31.581 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:05:40.1   DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:05:46.636 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:05:55.6   DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:06:01.701 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:06:10.11  DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:06:16.754 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:06:25.16  DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:06:31.810 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:06:40.22  DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:06:46.867 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:06:55.27  DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:07:01.921 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:07:10.32  DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:07:16.984 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:07:25.37  DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:07:32.41  DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:07:40.42  DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:07:47.101 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:07:55.48  DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:08:02.172 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:08:10.53  DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:08:17.234 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:08:25.58  DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:08:32.291 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:08:40.62  DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:08:47.355 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:08:55.67  DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:09:02.415 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:09:10.71  DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:09:17.476 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:09:25.77  DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:09:32.527 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:09:40.82  DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:09:47.589 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:09:55.87  DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:10:02.648 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:10:10.91  DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:10:17.706 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:10:25.96  DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:10:32.760 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:10:40.101 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:10:47.821 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:10:55.107 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:11:02.883 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:11:10.112 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:11:17.947 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:11:25.117 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:11:33.7   DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:11:40.123 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:11:48.68  DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:11:55.128 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:12:03.126 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:12:10.134 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:12:18.179 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:12:25.139 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:12:33.241 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:12:40.144 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:12:48.299 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:12:55.150 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:13:03.351 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:13:10.155 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:13:18.415 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:13:25.159 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:13:33.476 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:13:40.164 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:13:48.536 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:13:55.169 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:14:03.590 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:14:10.173 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:14:18.648 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:14:25.180 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:14:33.710 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:14:40.184 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:14:48.768 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:14:55.190 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:15:03.826 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:15:10.194 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:15:18.883 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:15:25.200 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:15:33.948 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:15:40.205 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:15:49.4   DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:15:55.209 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:16:04.63  DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:16:10.214 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:16:19.123 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:16:25.220 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:16:34.182 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:16:40.225 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:16:49.247 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:16:55.231 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:17:04.308 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:17:10.237 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:17:19.368 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:17:25.242 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:17:34.426 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:17:40.247 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:17:49.487 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:17:55.253 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:18:04.545 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:18:10.258 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:18:19.603 DEBUG    FileSyncClient     Received 3 files from 192.168.0.183
+2023-01-15 21:18:25.261 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:18:40.266 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:18:55.271 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:19:10.276 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:19:25.282 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:19:40.287 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:19:55.292 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:20:10.297 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:20:25.303 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:20:40.309 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:20:55.315 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:21:10.322 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:21:25.327 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:21:40.331 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:21:55.335 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:22:10.339 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:22:25.345 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:22:40.349 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:22:55.355 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:23:10.360 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:23:25.366 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:23:40.371 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:23:55.376 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:24:10.381 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:24:25.387 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:24:40.392 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:24:55.398 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:25:10.404 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:25:25.409 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:25:40.414 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:25:55.418 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:26:10.423 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:26:25.428 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:26:40.433 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:26:55.438 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:27:10.443 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:27:25.449 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:27:40.454 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:27:55.459 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:28:10.465 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:28:25.470 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:28:40.474 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:28:55.479 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:29:10.486 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:29:25.489 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:29:40.494 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:29:55.499 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:30:10.505 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:30:25.512 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:30:40.517 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:30:55.522 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:31:10.525 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:31:25.529 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:31:40.535 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:31:55.540 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:32:10.545 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:32:25.551 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:32:40.555 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:32:55.561 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:33:10.567 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:33:25.571 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:33:40.577 DEBUG    FileSyncServer     Broadcasting 3 files
+2023-01-15 21:33:54.581 DEBUG    FileSyncServer     FileSyncServerThread stopped
+2023-01-15 21:33:54.739 DEBUG    FileSyncClient     FileSyncClientThread stopped
+2023-01-15 21:33:54.899 DEBUG    FileServer         FileServerThread stopped
+2023-01-15 21:33:55.186 DEBUG    FileSystemWatcher  FileSystemWatcherThread stopped
+2023-01-15 21:33:55.186 INFO     FileSync           FileSync stopped
+2023-01-15 21:33:57.627 INFO     FileSync           Starting FileSync
+2023-01-15 21:33:57.639 DEBUG    FileSyncServer     Broadcasting 1 local files and 0 deleted files
+2023-01-15 21:34:00.642 DEBUG    FileSystemWatcher  FileSystemWatcherThread stopped
+2023-01-15 21:34:00.642 DEBUG    FileSyncServer     FileSyncServerThread stopped
+2023-01-15 21:34:00.669 DEBUG    FileSyncClient     FileSyncClientThread stopped
+2023-01-15 21:34:00.669 DEBUG    FileServer         FileServerThread stopped
+2023-01-15 21:34:00.669 INFO     FileSync           FileSync stopped
