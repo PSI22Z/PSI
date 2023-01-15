@@ -44,15 +44,15 @@ class FileSyncClientThread(StoppableThread):
             # if we have a file locally, and it is older than the deleted file, we delete it
             self.logger.info(f"Deleting local {remote_file.filename}, because it is marked as deleted")
             self.fs.delete_file(remote_file.filename)
+            self.fs.deleted_files.add(remote_file)
 
     def handle_undeleted_remote_file(self, remote_file, server_ip):
         # file is not deleted, but we have it marked as deleted
         # we have to remove it from deleted_files if it is newer than the deleted file
         deleted_file = next((f for f in self.fs.deleted_files if f.filename == remote_file.filename), None)
         if deleted_file is not None and deleted_file.modified_at < remote_file.modified_at:
-            self.logger.info(f"Removing {remote_file.filename} from deleted files")
+            self.logger.info(f"Removing {remote_file.filename} from deleted files. Downloading it from {server_ip}")
             self.fs.deleted_files.remove(remote_file)
-            # TODO najlepiej by bylo od razu sciagnac ten plik, zawolac upsert_local_file?
             self.upsert_local_file(remote_file, server_ip)
 
     def handle_new_remote_file(self, remote_file, server_ip):
@@ -75,7 +75,7 @@ class FileSyncClientThread(StoppableThread):
         file_sync_lock.acquire()  # wait for file sync to finish
 
         remote_files = deserialize(data)
-        self.logger.debug(f"Received {len(remote_files)} from {server_ip}")
+        self.logger.debug(f"Received {len(remote_files)} files from {server_ip}")
 
         local_files = self.fs.local_files
 

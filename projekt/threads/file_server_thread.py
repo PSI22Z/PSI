@@ -39,7 +39,7 @@ class FileServerThread(StoppableThread):
                 if len(received) == 0:
                     continue
                 filename = received.decode(ENCODING)
-                self.logger.info(f"Received download request for {filename} from {addr}")
+                self.logger.info(f"Received download request for {filename} from {addr[0]}")
 
                 file_sync_lock.acquire()
 
