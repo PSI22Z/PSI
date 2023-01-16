@@ -31,7 +31,7 @@ class FileSyncServerThread(StoppableThread):
         try:
             sendto(self.sock, msg, (self.broadcast_address, self.port))
         except Exception as e:
-            self.logger.error(f"Broadcasting failed: {e}")
+            self.logger.error(f"Broadcasting failed: {e}, message length: {len(msg)}")
 
     def close_udp_server_socket(self):
         self.sock.close()
