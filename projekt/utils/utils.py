@@ -7,7 +7,6 @@ from file_system.file import File
 
 
 def get_ip_address(network_interface):
-    print(netifaces.ifaddresses(network_interface)[netifaces.AF_INET][0])
     return netifaces.ifaddresses(network_interface)[netifaces.AF_INET][0]['addr']
 
 

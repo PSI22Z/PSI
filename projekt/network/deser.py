@@ -18,15 +18,18 @@ def serialize(files: List[File]) -> bytes:
     return msg
 
 
-def deserialize(msg: bytes) -> List[File]:
+def deserialize(msg: bytes, logger) -> List[File]:
     files = []
-    for file in msg.decode(ENCODING).split(';')[:-1]:
-        filename, created_at, modified_at, size, is_deleted = file.split(',')
-        files.append(
-            File(filename,
-                 datetime.datetime.fromtimestamp(float(created_at)),
-                 datetime.datetime.fromtimestamp(float(modified_at)),
-                 int(size),
-                 str_to_bool(is_deleted))
-        )
+    try:
+        for file in msg.decode(ENCODING).split(';')[:-1]:
+            filename, created_at, modified_at, size, is_deleted = file.split(',')
+            files.append(
+                File(filename,
+                     datetime.datetime.fromtimestamp(float(created_at)),
+                     datetime.datetime.fromtimestamp(float(modified_at)),
+                     int(size),
+                     str_to_bool(is_deleted))
+            )
+    except Exception as e:
+        logger.error(f"Error while deserializing: {e}")
     return files

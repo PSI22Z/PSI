@@ -73,7 +73,7 @@ class FileSyncClientThread(StoppableThread):
     def handle_remote_files(self, data, server_ip):
         file_sync_lock.acquire()  # wait for file sync to finish
 
-        remote_files = deserialize(data)
+        remote_files = deserialize(data, self.logger)
         files_stats = get_files_stats(remote_files)
         self.logger.debug(f"Received {files_stats[0]} local files and {files_stats[1]} deleted files from {server_ip}")
 
