@@ -31,5 +31,5 @@ def deserialize(msg: bytes, logger) -> List[File]:
                      str_to_bool(is_deleted))
             )
     except Exception as e:
-        logger.error(f"Error while deserializing: {e}")
+        logger.error(f"Error while deserializing message {msg}: {e}")
     return files
