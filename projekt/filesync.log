@@ -661,3 +661,548 @@
 2023-01-15 22:31:55.667 DEBUG    FileSyncClient     FileSyncClientThread stopped
 2023-01-15 22:31:55.667 DEBUG    FileServer         FileServerThread stopped
 2023-01-15 22:31:55.667 INFO     FileSync           FileSync stopped
+2023-01-18 14:53:25.469 INFO     FileSync           Starting FileSync
+2023-01-18 14:53:37.714 INFO     FileSync           Starting FileSync
+2023-01-18 14:53:37.776 DEBUG    FileSyncServer     Broadcasting 1 local files and 0 deleted files
+2023-01-18 14:53:39.778 DEBUG    FileSyncServer     FileSyncServerThread stopped
+2023-01-18 14:53:39.779 DEBUG    FileSystemWatcher  FileSystemWatcherThread stopped
+2023-01-18 14:53:39.790 DEBUG    FileSyncClient     FileSyncClientThread stopped
+2023-01-18 14:53:39.790 DEBUG    FileServer         FileServerThread stopped
+2023-01-18 14:53:39.790 INFO     FileSync           FileSync stopped
+2023-01-18 14:53:54.305 INFO     FileSync           Starting FileSync
+2023-01-18 14:53:54.358 DEBUG    FileSyncServer     Broadcasting 1 local files and 0 deleted files
+2023-01-18 14:53:56.360 DEBUG    FileSystemWatcher  FileSystemWatcherThread stopped
+2023-01-18 14:53:56.360 DEBUG    FileSyncServer     FileSyncServerThread stopped
+2023-01-18 14:53:56.367 DEBUG    FileServer         FileServerThread stopped
+2023-01-18 14:53:56.367 DEBUG    FileSyncClient     FileSyncClientThread stopped
+2023-01-18 14:53:56.367 INFO     FileSync           FileSync stopped
+2023-01-18 14:54:37.219 INFO     FileSync           Starting FileSync
+2023-01-18 14:54:37.295 DEBUG    FileSyncServer     Broadcasting 1 local files and 0 deleted files
+2023-01-18 14:54:41.297 DEBUG    FileSyncServer     FileSyncServerThread stopped
+2023-01-18 14:54:41.298 DEBUG    FileSystemWatcher  FileSystemWatcherThread stopped
+2023-01-18 14:54:41.327 DEBUG    FileServer         FileServerThread stopped
+2023-01-18 14:54:41.327 DEBUG    FileSyncClient     FileSyncClientThread stopped
+2023-01-18 14:54:41.328 INFO     FileSync           FileSync stopped
+2023-01-18 14:54:41.547 INFO     FileSync           Starting FileSync
+2023-01-18 14:54:41.561 DEBUG    FileSyncServer     Broadcasting 1 local files and 0 deleted files
+2023-01-18 14:54:56.567 DEBUG    FileSyncServer     Broadcasting 1 local files and 0 deleted files
+2023-01-18 14:54:56.567 INFO     FileServer         Received download request for c.txt from 172.25.67.0
+2023-01-18 14:54:59.959 DEBUG    FileSyncClient     Received 1 local files and 0 deleted files from 172.25.67.0
+2023-01-18 14:55:11.572 DEBUG    FileSyncServer     Broadcasting 1 local files and 0 deleted files
+2023-01-18 14:55:11.573 INFO     FileServer         Received download request for c.txt from 172.25.67.0
+2023-01-18 14:55:14.975 DEBUG    FileSyncClient     Received 1 local files and 0 deleted files from 172.25.67.0
+2023-01-18 14:55:26.577 DEBUG    FileSyncServer     Broadcasting 1 local files and 0 deleted files
+2023-01-18 14:55:29.991 DEBUG    FileSyncClient     Received 1 local files and 0 deleted files from 172.25.67.0
+2023-01-18 14:55:33.581 DEBUG    FileSyncServer     FileSyncServerThread stopped
+2023-01-18 14:55:33.606 DEBUG    FileSystemWatcher  FileSystemWatcherThread stopped
+2023-01-18 14:55:33.734 DEBUG    FileServer         FileServerThread stopped
+2023-01-18 14:55:34.15  DEBUG    FileSyncClient     FileSyncClientThread stopped
+2023-01-18 14:55:34.15  INFO     FileSync           FileSync stopped
+2023-01-18 15:02:39.37  INFO     FileSync           Starting FileSync
+2023-01-18 15:02:39.53  DEBUG    FileSyncServer     Broadcasting 0 local files and 0 deleted files
+2023-01-18 15:02:54.59  DEBUG    FileSyncServer     Broadcasting 0 local files and 0 deleted files
+2023-01-18 15:03:09.64  DEBUG    FileSyncServer     Broadcasting 0 local files and 0 deleted files
+2023-01-18 15:03:24.70  DEBUG    FileSyncServer     Broadcasting 0 local files and 0 deleted files
+2023-01-18 15:03:39.75  DEBUG    FileSyncServer     Broadcasting 0 local files and 0 deleted files
+2023-01-18 15:03:42.508 DEBUG    FileServer         FileServerThread stopped
+2023-01-18 15:03:43.77  DEBUG    FileSyncServer     FileSyncServerThread stopped
+2023-01-18 15:03:43.83  DEBUG    FileSystemWatcher  FileSystemWatcherThread stopped
+2023-01-18 15:03:43.113 DEBUG    FileSyncClient     FileSyncClientThread stopped
+2023-01-18 15:03:43.114 INFO     FileSync           FileSync stopped
+2023-01-18 15:04:57.976 INFO     FileSync           Starting FileSync
+2023-01-18 15:04:57.991 DEBUG    FileSyncServer     Broadcasting 0 local files and 0 deleted files
+2023-01-18 15:05:12.997 DEBUG    FileSyncServer     Broadcasting 1 local files and 0 deleted files
+2023-01-18 15:05:12.999 INFO     FileServer         Received download request for a.txt from 172.25.69.181
+2023-01-18 15:05:12.999 INFO     FileServer         Received download request for a.txt from 172.25.75.17
+2023-01-18 15:05:12.999 INFO     FileServer         Received download request for a.txt from 172.25.66.251
+2023-01-18 15:05:13.0   INFO     FileServer         Received download request for a.txt from 172.25.67.0
+2023-01-18 15:05:20.791 DEBUG    FileSyncClient     Received 1 local files and 0 deleted files from 172.25.67.0
+2023-01-18 15:05:21.854 DEBUG    FileSyncClient     Received 1 local files and 0 deleted files from 172.25.69.181
+2023-01-18 15:05:25.38  DEBUG    FileSyncClient     Received 1 local files and 0 deleted files from 172.25.66.251
+2023-01-18 15:05:26.897 DEBUG    FileSyncClient     Received 1 local files and 0 deleted files from 172.25.75.17
+2023-01-18 15:05:28.3   DEBUG    FileSyncServer     Broadcasting 1 local files and 0 deleted files
+2023-01-18 15:05:35.807 DEBUG    FileSyncClient     Received 1 local files and 0 deleted files from 172.25.67.0
+2023-01-18 15:05:36.869 DEBUG    FileSyncClient     Received 1 local files and 0 deleted files from 172.25.69.181
+2023-01-18 15:05:40.53  DEBUG    FileSyncClient     Received 1 local files and 0 deleted files from 172.25.66.251
+2023-01-18 15:05:41.912 DEBUG    FileSyncClient     Received 1 local files and 0 deleted files from 172.25.75.17
+2023-01-18 15:05:43.8   DEBUG    FileSyncServer     Broadcasting 1 local files and 0 deleted files
+2023-01-18 15:05:50.823 DEBUG    FileSyncClient     Received 1 local files and 0 deleted files from 172.25.67.0
+2023-01-18 15:05:51.884 DEBUG    FileSyncClient     Received 2 local files and 0 deleted files from 172.25.69.181
+2023-01-18 15:05:51.885 INFO     FileSyncClient     Downloading .a.txt.swp from 172.25.69.181, because it's not in local files
+2023-01-18 15:05:55.70  DEBUG    FileSyncClient     Received 2 local files and 0 deleted files from 172.25.66.251
+2023-01-18 15:05:56.926 DEBUG    FileSyncClient     Received 2 local files and 0 deleted files from 172.25.75.17
+2023-01-18 15:05:58.14  DEBUG    FileSyncServer     Broadcasting 2 local files and 0 deleted files
+2023-01-18 15:06:05.839 DEBUG    FileSyncClient     Received 2 local files and 0 deleted files from 172.25.67.0
+2023-01-18 15:06:06.902 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:06:06.902 INFO     FileSyncClient     Downloading a.txt from 172.25.69.181, because it's modified
+2023-01-18 15:06:06.906 INFO     FileSyncClient     Deleting local .a.txt.swp, because it is marked as deleted
+2023-01-18 15:06:07.31  INFO     FileSystem         File .a.txt.swp is now marked as deleted
+2023-01-18 15:06:10.84  DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:06:11.941 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:06:13.20  DEBUG    FileSyncServer     Broadcasting 1 local files and 1 deleted files
+2023-01-18 15:06:20.855 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:06:21.916 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:06:25.100 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:06:26.957 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:06:28.25  DEBUG    FileSyncServer     Broadcasting 1 local files and 1 deleted files
+2023-01-18 15:06:35.870 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:06:36.932 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:06:40.115 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:06:41.972 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:06:43.31  DEBUG    FileSyncServer     Broadcasting 1 local files and 1 deleted files
+2023-01-18 15:06:50.886 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:06:51.946 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:06:55.130 DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.66.251
+2023-01-18 15:06:55.130 INFO     FileSyncClient     Deleting local a.txt, because it is marked as deleted
+2023-01-18 15:06:56.59  INFO     FileSystem         File a.txt is now marked as deleted
+2023-01-18 15:06:56.988 DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.75.17
+2023-01-18 15:06:58.36  DEBUG    FileSyncServer     Broadcasting 0 local files and 2 deleted files
+2023-01-18 15:07:05.903 DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.67.0
+2023-01-18 15:07:06.963 DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.69.181
+2023-01-18 15:07:10.145 DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.66.251
+2023-01-18 15:07:12.3   DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.75.17
+2023-01-18 15:07:13.42  DEBUG    FileSyncServer     Broadcasting 0 local files and 2 deleted files
+2023-01-18 15:07:20.916 DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.67.0
+2023-01-18 15:07:21.977 DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.69.181
+2023-01-18 15:07:25.161 DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.66.251
+2023-01-18 15:07:27.18  DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.75.17
+2023-01-18 15:07:28.49  DEBUG    FileSyncServer     Broadcasting 0 local files and 2 deleted files
+2023-01-18 15:07:35.931 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:07:35.932 INFO     FileSyncClient     Removing a.txt from deleted files. Downloading it from 172.25.67.0
+2023-01-18 15:07:36.992 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:07:40.176 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:07:42.35  DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:07:43.54  DEBUG    FileSyncServer     Broadcasting 1 local files and 1 deleted files
+2023-01-18 15:07:50.947 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:07:52.8   DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:07:55.192 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:07:57.49  DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:07:58.60  DEBUG    FileSyncServer     Broadcasting 1 local files and 1 deleted files
+2023-01-18 15:08:05.962 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:08:10.208 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:08:12.65  DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:08:13.69  DEBUG    FileSyncServer     Broadcasting 1 local files and 1 deleted files
+2023-01-18 15:08:20.979 DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.67.0
+2023-01-18 15:08:20.979 INFO     FileSyncClient     Deleting local a.txt, because it is marked as deleted
+2023-01-18 15:08:21.102 INFO     FileSystem         File a.txt is now marked as deleted
+2023-01-18 15:08:25.224 DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.66.251
+2023-01-18 15:08:27.81  DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.75.17
+2023-01-18 15:08:27.544 DEBUG    FileSyncClient     Received 1 local files and 0 deleted files from 172.25.69.181
+2023-01-18 15:08:28.74  DEBUG    FileSyncServer     Broadcasting 0 local files and 2 deleted files
+2023-01-18 15:08:35.994 DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.67.0
+2023-01-18 15:08:40.237 DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.66.251
+2023-01-18 15:08:42.96  DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.75.17
+2023-01-18 15:08:42.558 DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.69.181
+2023-01-18 15:08:43.79  DEBUG    FileSyncServer     Broadcasting 0 local files and 2 deleted files
+2023-01-18 15:08:51.9   DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.67.0
+2023-01-18 15:08:55.253 DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.66.251
+2023-01-18 15:08:57.112 DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.75.17
+2023-01-18 15:08:57.573 DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.69.181
+2023-01-18 15:08:58.85  DEBUG    FileSyncServer     Broadcasting 0 local files and 2 deleted files
+2023-01-18 15:09:06.24  DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.67.0
+2023-01-18 15:09:10.267 DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.66.251
+2023-01-18 15:09:12.128 DEBUG    FileSyncClient     Received 0 local files and 2 deleted files from 172.25.75.17
+2023-01-18 15:09:13.91  DEBUG    FileSyncServer     Broadcasting 0 local files and 2 deleted files
+2023-01-18 15:09:16.633 DEBUG    FileSyncClient     Received 1 local files and 0 deleted files from 172.25.69.181
+2023-01-18 15:09:16.633 INFO     FileSyncClient     Removing a.txt from deleted files. Downloading it from 172.25.69.181
+2023-01-18 15:09:21.40  DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:09:25.282 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:09:27.143 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:09:28.94  DEBUG    FileSyncServer     Broadcasting 1 local files and 1 deleted files
+2023-01-18 15:09:31.649 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:09:36.56  DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:09:40.297 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:09:42.159 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:09:43.101 DEBUG    FileSyncServer     Broadcasting 1 local files and 1 deleted files
+2023-01-18 15:09:46.664 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:09:51.72  DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:09:55.314 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:09:57.174 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:09:58.106 DEBUG    FileSyncServer     Broadcasting 1 local files and 1 deleted files
+2023-01-18 15:10:01.679 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:10:06.87  DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:10:10.329 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:10:12.189 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:10:13.111 DEBUG    FileSyncServer     Broadcasting 1 local files and 1 deleted files
+2023-01-18 15:10:16.695 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:10:21.103 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:10:25.344 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:10:27.205 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:10:28.115 DEBUG    FileSyncServer     Broadcasting 1 local files and 1 deleted files
+2023-01-18 15:10:31.710 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:10:36.118 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:10:40.360 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:10:42.220 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:10:43.120 DEBUG    FileSyncServer     Broadcasting 1 local files and 1 deleted files
+2023-01-18 15:10:46.725 DEBUG    FileSyncClient     Received 1 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:10:51.133 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:10:51.133 INFO     FileSyncClient     Downloading b.txt from 172.25.67.0, because it's not in local files
+2023-01-18 15:10:55.375 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:10:57.236 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:10:58.126 DEBUG    FileSyncServer     Broadcasting 2 local files and 1 deleted files
+2023-01-18 15:11:01.741 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:11:06.148 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:11:10.391 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:11:12.251 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:11:13.131 DEBUG    FileSyncServer     Broadcasting 2 local files and 1 deleted files
+2023-01-18 15:11:16.756 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:11:21.164 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:11:25.406 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:11:27.266 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:11:28.138 DEBUG    FileSyncServer     Broadcasting 2 local files and 1 deleted files
+2023-01-18 15:11:31.772 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:11:36.178 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:11:40.422 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:11:42.282 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:11:43.144 DEBUG    FileSyncServer     Broadcasting 2 local files and 1 deleted files
+2023-01-18 15:11:46.788 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:11:51.193 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:11:55.438 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:11:57.298 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:11:58.150 DEBUG    FileSyncServer     Broadcasting 2 local files and 1 deleted files
+2023-01-18 15:12:01.804 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:12:06.209 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:12:10.454 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:12:12.313 DEBUG    FileSyncClient     Received 2 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:12:13.156 DEBUG    FileSyncServer     Broadcasting 52 local files and 1 deleted files
+2023-01-18 15:12:13.158 INFO     FileServer         Received download request for addendum_type_config.bson.gz from 172.25.66.251
+2023-01-18 15:12:13.162 INFO     FileServer         Received download request for addendum_type_config.bson.gz from 172.25.75.17
+2023-01-18 15:12:13.168 INFO     FileServer         Received download request for addendum_type_config.bson.gz from 172.25.69.181
+2023-01-18 15:12:13.173 INFO     FileServer         Received download request for addendum_type_config.bson.gz from 172.25.67.0
+2023-01-18 15:12:13.177 INFO     FileServer         Received download request for addendum_type_config.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:13.177 INFO     FileServer         Received download request for addendum_type_config.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:13.178 INFO     FileServer         Received download request for address_type_metadata.bson.gz from 172.25.66.251
+2023-01-18 15:12:13.178 INFO     FileServer         Received download request for address_type_metadata.bson.gz from 172.25.75.17
+2023-01-18 15:12:13.179 INFO     FileServer         Received download request for addendum_type_config.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:13.179 INFO     FileServer         Received download request for address_type_metadata.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:13.180 INFO     FileServer         Received download request for address_type_metadata.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:13.180 INFO     FileServer         Received download request for address_type_metadata.bson.gz from 172.25.69.181
+2023-01-18 15:12:13.181 INFO     FileServer         Received download request for alert.bson.gz from 172.25.66.251
+2023-01-18 15:12:13.182 INFO     FileServer         Received download request for alert.bson.gz from 172.25.75.17
+2023-01-18 15:12:13.182 INFO     FileServer         Received download request for address_type_metadata.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:13.183 INFO     FileServer         Received download request for addendum_type_config.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:13.184 INFO     FileServer         Received download request for alert.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:13.184 INFO     FileServer         Received download request for alert.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:13.184 INFO     FileServer         Received download request for address_type_metadata.bson.gz from 172.25.67.0
+2023-01-18 15:12:13.185 INFO     FileServer         Received download request for alert.bson.gz from 172.25.69.181
+2023-01-18 15:12:13.186 INFO     FileServer         Received download request for attribute_metadata.bson.gz from 172.25.66.251
+2023-01-18 15:12:13.308 INFO     FileServer         Received download request for attribute_metadata.bson.gz from 172.25.75.17
+2023-01-18 15:12:13.441 INFO     FileServer         Received download request for address_type_metadata.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:13.442 INFO     FileServer         Received download request for alert.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:13.443 INFO     FileServer         Received download request for attribute_metadata.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:13.444 INFO     FileServer         Received download request for alert.bson.gz from 172.25.67.0
+2023-01-18 15:12:13.444 INFO     FileServer         Received download request for attribute_metadata.bson.gz from 172.25.69.181
+2023-01-18 15:12:13.584 INFO     FileServer         Received download request for contract.bson.gz from 172.25.66.251
+2023-01-18 15:12:13.591 INFO     FileServer         Received download request for alert.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:13.592 INFO     FileServer         Received download request for attribute_metadata.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:13.592 INFO     FileServer         Received download request for attribute_metadata.bson.gz from 172.25.67.0
+2023-01-18 15:12:13.728 INFO     FileServer         Received download request for contract.bson.gz from 172.25.75.17
+2023-01-18 15:12:13.737 INFO     FileServer         Received download request for contract.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:13.737 INFO     FileServer         Received download request for attribute_metadata.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:13.738 INFO     FileServer         Received download request for contract_type_config.bson.gz from 172.25.66.251
+2023-01-18 15:12:13.742 INFO     FileServer         Received download request for contract.bson.gz from 172.25.69.181
+2023-01-18 15:12:13.751 INFO     FileServer         Received download request for contract.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:13.751 INFO     FileServer         Received download request for contract_type_config.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:13.752 INFO     FileServer         Received download request for contract_type_config.bson.gz from 172.25.75.17
+2023-01-18 15:12:13.759 INFO     FileServer         Received download request for contract_type_config_backup.bson.gz from 172.25.66.251
+2023-01-18 15:12:13.761 INFO     FileServer         Received download request for contract.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:13.762 INFO     FileServer         Received download request for contract_type_config.bson.gz from 172.25.69.181
+2023-01-18 15:12:13.766 INFO     FileServer         Received download request for contract_type_config_backup.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:13.767 INFO     FileServer         Received download request for contract_type_config.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:13.768 INFO     FileServer         Received download request for contract_type_config_backup.bson.gz from 172.25.75.17
+2023-01-18 15:12:13.769 INFO     FileServer         Received download request for custom_attribute_definition.bson.gz from 172.25.66.251
+2023-01-18 15:12:13.833 INFO     FileServer         Received download request for contract_type_config_backup.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:13.833 INFO     FileServer         Received download request for contract_type_config.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:13.834 INFO     FileServer         Received download request for custom_attribute_definition.bson.gz from 172.25.75.17
+2023-01-18 15:12:13.883 INFO     FileServer         Received download request for contract_type_config_backup.bson.gz from 172.25.69.181
+2023-01-18 15:12:13.885 INFO     FileServer         Received download request for attribute_metadata.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:13.887 INFO     FileServer         Received download request for contract.bson.gz from 172.25.67.0
+2023-01-18 15:12:13.893 INFO     FileServer         Received download request for contract_type_config_backup.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:13.893 INFO     FileServer         Received download request for custom_attribute_definition.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:13.894 INFO     FileServer         Received download request for custom_attribute_definition.bson.gz from 172.25.69.181
+2023-01-18 15:12:13.941 INFO     FileServer         Received download request for employee.bson.gz from 172.25.66.251
+2023-01-18 15:12:13.959 INFO     FileServer         Received download request for contract.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:13.959 INFO     FileServer         Received download request for custom_attribute_definition.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:13.960 INFO     FileServer         Received download request for contract_type_config.bson.gz from 172.25.67.0
+2023-01-18 15:12:13.966 INFO     FileServer         Received download request for employee.bson.gz from 172.25.75.17
+2023-01-18 15:12:13.988 INFO     FileServer         Received download request for contract_type_config.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:13.989 INFO     FileServer         Received download request for employee.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:13.989 INFO     FileServer         Received download request for contract_type_config_backup.bson.gz from 172.25.67.0
+2023-01-18 15:12:13.991 INFO     FileServer         Received download request for employee_history_entry.bson.gz from 172.25.66.251
+2023-01-18 15:12:13.992 INFO     FileServer         Received download request for contract_type_config_backup.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:13.993 INFO     FileServer         Received download request for custom_attribute_definition.bson.gz from 172.25.67.0
+2023-01-18 15:12:14.45  INFO     FileServer         Received download request for employee_history_entry.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:14.46  INFO     FileServer         Received download request for custom_attribute_definition.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:14.46  INFO     FileServer         Received download request for employee.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:14.47  INFO     FileServer         Received download request for employee_integration.bson.gz from 172.25.66.251
+2023-01-18 15:12:14.50  INFO     FileServer         Received download request for employee.bson.gz from 172.25.69.181
+2023-01-18 15:12:14.76  INFO     FileServer         Received download request for employee_history_entry.bson.gz from 172.25.75.17
+2023-01-18 15:12:14.78  INFO     FileServer         Received download request for employee_integration.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:14.79  INFO     FileServer         Received download request for employee_onboarding_finished_failed_event_entry.bson.gz from 172.25.66.251
+2023-01-18 15:12:14.81  INFO     FileServer         Received download request for employee_history_entry.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:14.81  INFO     FileServer         Received download request for employee_onboarding_finished_failed_event_entry.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:14.81  INFO     FileServer         Received download request for employee_integration.bson.gz from 172.25.75.17
+2023-01-18 15:12:14.85  INFO     FileServer         Received download request for employer.bson.gz from 172.25.66.251
+2023-01-18 15:12:14.89  INFO     FileServer         Received download request for employee_integration.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:14.89  INFO     FileServer         Received download request for employer.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:14.90  INFO     FileServer         Received download request for employee_onboarding_finished_failed_event_entry.bson.gz from 172.25.75.17
+2023-01-18 15:12:14.91  INFO     FileServer         Received download request for employer_admin.bson.gz from 172.25.66.251
+2023-01-18 15:12:14.96  INFO     FileServer         Received download request for employee_onboarding_finished_failed_event_entry.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:14.97  INFO     FileServer         Received download request for employer.bson.gz from 172.25.75.17
+2023-01-18 15:12:14.99  INFO     FileServer         Received download request for employer_admin.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:14.99  INFO     FileServer         Received download request for employer.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:14.100 INFO     FileServer         Received download request for job_position.bson.gz from 172.25.66.251
+2023-01-18 15:12:14.102 INFO     FileServer         Received download request for employer_admin.bson.gz from 172.25.75.17
+2023-01-18 15:12:14.105 INFO     FileServer         Received download request for employee.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:14.105 INFO     FileServer         Received download request for job_position.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:14.106 INFO     FileServer         Received download request for employee_history_entry.bson.gz from 172.25.69.181
+2023-01-18 15:12:14.107 INFO     FileServer         Received download request for mongockChangeLog.bson.gz from 172.25.66.251
+2023-01-18 15:12:14.108 INFO     FileServer         Received download request for employer_admin.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:14.109 INFO     FileServer         Received download request for mongockChangeLog.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:14.109 INFO     FileServer         Received download request for job_position.bson.gz from 172.25.75.17
+2023-01-18 15:12:14.110 INFO     FileServer         Received download request for employee_history_entry.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:14.111 INFO     FileServer         Received download request for mongockLock.bson.gz from 172.25.66.251
+2023-01-18 15:12:14.111 INFO     FileServer         Received download request for custom_attribute_definition.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:14.111 INFO     FileServer         Received download request for employee_integration.bson.gz from 172.25.69.181
+2023-01-18 15:12:14.114 INFO     FileServer         Received download request for mongockLock.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:14.114 INFO     FileServer         Received download request for employee.bson.gz from 172.25.67.0
+2023-01-18 15:12:14.131 INFO     FileServer         Received download request for job_position.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:14.133 INFO     FileServer         Received download request for quartz_calendars.bson.gz from 172.25.66.251
+2023-01-18 15:12:14.133 INFO     FileServer         Received download request for employee_integration.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:14.134 INFO     FileServer         Received download request for mongockChangeLog.bson.gz from 172.25.75.17
+2023-01-18 15:12:14.135 INFO     FileServer         Received download request for quartz_calendars.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:14.135 INFO     FileServer         Received download request for employee_onboarding_finished_failed_event_entry.bson.gz from 172.25.69.181
+2023-01-18 15:12:14.136 INFO     FileServer         Received download request for mongockChangeLog.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:14.136 INFO     FileServer         Received download request for quartz_jobs.bson.gz from 172.25.66.251
+2023-01-18 15:12:14.137 INFO     FileServer         Received download request for employee_onboarding_finished_failed_event_entry.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:14.137 INFO     FileServer         Received download request for quartz_jobs.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:14.137 INFO     FileServer         Received download request for mongockLock.bson.gz from 172.25.75.17
+2023-01-18 15:12:14.138 INFO     FileServer         Received download request for employer.bson.gz from 172.25.69.181
+2023-01-18 15:12:14.139 INFO     FileServer         Received download request for quartz_locks.bson.gz from 172.25.66.251
+2023-01-18 15:12:14.140 INFO     FileServer         Received download request for mongockLock.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:14.140 INFO     FileServer         Received download request for quartz_locks.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:14.141 INFO     FileServer         Received download request for quartz_calendars.bson.gz from 172.25.75.17
+2023-01-18 15:12:14.141 INFO     FileServer         Received download request for quartz_schedulers.bson.gz from 172.25.66.251
+2023-01-18 15:12:14.141 INFO     FileServer         Received download request for quartz_calendars.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:14.143 INFO     FileServer         Received download request for employer.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:14.143 INFO     FileServer         Received download request for quartz_schedulers.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:14.143 INFO     FileServer         Received download request for quartz_jobs.bson.gz from 172.25.75.17
+2023-01-18 15:12:14.144 INFO     FileServer         Received download request for employer_admin.bson.gz from 172.25.69.181
+2023-01-18 15:12:14.146 INFO     FileServer         Received download request for quartz_triggers.bson.gz from 172.25.66.251
+2023-01-18 15:12:14.147 INFO     FileServer         Received download request for quartz_jobs.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:14.148 INFO     FileServer         Received download request for quartz_triggers.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:14.148 INFO     FileServer         Received download request for quartz_locks.bson.gz from 172.25.75.17
+2023-01-18 15:12:14.150 INFO     FileServer         Received download request for required_documents_config.bson.gz from 172.25.66.251
+2023-01-18 15:12:14.150 INFO     FileServer         Received download request for quartz_locks.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:14.151 INFO     FileServer         Received download request for required_documents_config.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:14.151 INFO     FileServer         Received download request for quartz_schedulers.bson.gz from 172.25.75.17
+2023-01-18 15:12:14.151 INFO     FileServer         Received download request for employer_admin.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:14.151 INFO     FileServer         Received download request for service_access_group.bson.gz from 172.25.66.251
+2023-01-18 15:12:14.154 INFO     FileServer         Received download request for quartz_schedulers.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:14.154 INFO     FileServer         Received download request for job_position.bson.gz from 172.25.69.181
+2023-01-18 15:12:14.156 INFO     FileServer         Received download request for quartz_triggers.bson.gz from 172.25.75.17
+2023-01-18 15:12:14.157 INFO     FileServer         Received download request for service_access_group.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:14.157 INFO     FileServer         Received download request for quartz_triggers.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:14.157 INFO     FileServer         Received download request for translation.bson.gz from 172.25.66.251
+2023-01-18 15:12:14.162 INFO     FileServer         Received download request for required_documents_config.bson.gz from 172.25.75.17
+2023-01-18 15:12:14.162 INFO     FileServer         Received download request for job_position.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:14.162 INFO     FileServer         Received download request for employee.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:14.163 INFO     FileServer         Received download request for required_documents_config.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:14.163 INFO     FileServer         Received download request for mongockChangeLog.bson.gz from 172.25.69.181
+2023-01-18 15:12:14.164 INFO     FileServer         Received download request for employee_history_entry.bson.gz from 172.25.67.0
+2023-01-18 15:12:14.166 INFO     FileServer         Received download request for service_access_group.bson.gz from 172.25.75.17
+2023-01-18 15:12:14.168 INFO     FileServer         Received download request for mongockChangeLog.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:14.168 INFO     FileServer         Received download request for translation.metadata.json.gz from 172.25.66.251
+2023-01-18 15:12:14.168 INFO     FileServer         Received download request for employee_history_entry.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:14.170 INFO     FileServer         Received download request for mongockLock.bson.gz from 172.25.69.181
+2023-01-18 15:12:14.170 INFO     FileServer         Received download request for service_access_group.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:14.170 INFO     FileServer         Received download request for employee_integration.bson.gz from 172.25.67.0
+2023-01-18 15:12:14.173 INFO     FileServer         Received download request for mongockLock.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:14.173 INFO     FileServer         Received download request for translation.bson.gz from 172.25.75.17
+2023-01-18 15:12:14.178 INFO     FileServer         Received download request for quartz_calendars.bson.gz from 172.25.69.181
+2023-01-18 15:12:14.179 INFO     FileServer         Received download request for employee_integration.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:14.179 INFO     FileServer         Received download request for quartz_calendars.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:14.180 INFO     FileServer         Received download request for employee_onboarding_finished_failed_event_entry.bson.gz from 172.25.67.0
+2023-01-18 15:12:14.182 INFO     FileServer         Received download request for quartz_jobs.bson.gz from 172.25.69.181
+2023-01-18 15:12:14.183 INFO     FileServer         Received download request for quartz_jobs.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:14.183 INFO     FileServer         Received download request for employee_onboarding_finished_failed_event_entry.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:14.184 INFO     FileServer         Received download request for quartz_locks.bson.gz from 172.25.69.181
+2023-01-18 15:12:14.185 INFO     FileServer         Received download request for employer.bson.gz from 172.25.67.0
+2023-01-18 15:12:14.186 INFO     FileServer         Received download request for quartz_locks.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:14.187 INFO     FileServer         Received download request for translation.metadata.json.gz from 172.25.75.17
+2023-01-18 15:12:14.187 INFO     FileServer         Received download request for quartz_schedulers.bson.gz from 172.25.69.181
+2023-01-18 15:12:14.188 INFO     FileServer         Received download request for employer.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:14.189 INFO     FileServer         Received download request for quartz_schedulers.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:14.189 INFO     FileServer         Received download request for employer_admin.bson.gz from 172.25.67.0
+2023-01-18 15:12:14.191 INFO     FileServer         Received download request for quartz_triggers.bson.gz from 172.25.69.181
+2023-01-18 15:12:14.192 INFO     FileServer         Received download request for quartz_triggers.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:14.193 INFO     FileServer         Received download request for required_documents_config.bson.gz from 172.25.69.181
+2023-01-18 15:12:14.194 INFO     FileServer         Received download request for required_documents_config.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:14.195 INFO     FileServer         Received download request for service_access_group.bson.gz from 172.25.69.181
+2023-01-18 15:12:14.196 INFO     FileServer         Received download request for employer_admin.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:14.197 INFO     FileServer         Received download request for job_position.bson.gz from 172.25.67.0
+2023-01-18 15:12:14.199 INFO     FileServer         Received download request for service_access_group.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:14.200 INFO     FileServer         Received download request for translation.bson.gz from 172.25.69.181
+2023-01-18 15:12:14.205 INFO     FileServer         Received download request for job_position.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:14.206 INFO     FileServer         Received download request for mongockChangeLog.bson.gz from 172.25.67.0
+2023-01-18 15:12:14.207 INFO     FileServer         Received download request for mongockChangeLog.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:14.209 INFO     FileServer         Received download request for mongockLock.bson.gz from 172.25.67.0
+2023-01-18 15:12:14.209 INFO     FileServer         Received download request for mongockLock.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:14.210 INFO     FileServer         Received download request for quartz_calendars.bson.gz from 172.25.67.0
+2023-01-18 15:12:14.212 INFO     FileServer         Received download request for quartz_calendars.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:14.212 INFO     FileServer         Received download request for translation.metadata.json.gz from 172.25.69.181
+2023-01-18 15:12:14.213 INFO     FileServer         Received download request for quartz_jobs.bson.gz from 172.25.67.0
+2023-01-18 15:12:14.214 INFO     FileServer         Received download request for quartz_jobs.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:14.215 INFO     FileServer         Received download request for quartz_locks.bson.gz from 172.25.67.0
+2023-01-18 15:12:14.215 INFO     FileServer         Received download request for quartz_locks.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:14.216 INFO     FileServer         Received download request for quartz_schedulers.bson.gz from 172.25.67.0
+2023-01-18 15:12:14.217 INFO     FileServer         Received download request for quartz_schedulers.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:14.218 INFO     FileServer         Received download request for quartz_triggers.bson.gz from 172.25.67.0
+2023-01-18 15:12:14.219 INFO     FileServer         Received download request for quartz_triggers.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:14.219 INFO     FileServer         Received download request for required_documents_config.bson.gz from 172.25.67.0
+2023-01-18 15:12:14.220 INFO     FileServer         Received download request for required_documents_config.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:14.220 INFO     FileServer         Received download request for service_access_group.bson.gz from 172.25.67.0
+2023-01-18 15:12:14.223 INFO     FileServer         Received download request for service_access_group.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:14.224 INFO     FileServer         Received download request for translation.bson.gz from 172.25.67.0
+2023-01-18 15:12:14.234 INFO     FileServer         Received download request for translation.metadata.json.gz from 172.25.67.0
+2023-01-18 15:12:16.820 DEBUG    FileSyncClient     Received 52 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:12:21.225 DEBUG    FileSyncClient     Received 52 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:12:25.469 DEBUG    FileSyncClient     Received 52 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:12:27.329 DEBUG    FileSyncClient     Received 52 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:12:28.167 DEBUG    FileSyncServer     Broadcasting 52 local files and 1 deleted files
+2023-01-18 15:12:31.834 DEBUG    FileSyncClient     Received 52 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:12:36.243 DEBUG    FileSyncClient     Received 52 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:12:40.485 DEBUG    FileSyncClient     Received 52 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:12:42.345 DEBUG    FileSyncClient     Received 52 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:12:43.175 DEBUG    FileSyncServer     Broadcasting 52 local files and 1 deleted files
+2023-01-18 15:12:46.850 DEBUG    FileSyncClient     Received 52 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:12:51.256 DEBUG    FileSyncClient     Received 52 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:12:55.499 DEBUG    FileSyncClient     Received 52 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:12:57.361 DEBUG    FileSyncClient     Received 52 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:12:58.180 DEBUG    FileSyncServer     Broadcasting 52 local files and 1 deleted files
+2023-01-18 15:13:01.865 DEBUG    FileSyncClient     Received 52 local files and 1 deleted files from 172.25.69.181
+2023-01-18 15:13:06.270 DEBUG    FileSyncClient     Received 52 local files and 1 deleted files from 172.25.67.0
+2023-01-18 15:13:10.514 DEBUG    FileSyncClient     Received 52 local files and 1 deleted files from 172.25.66.251
+2023-01-18 15:13:12.375 DEBUG    FileSyncClient     Received 52 local files and 1 deleted files from 172.25.75.17
+2023-01-18 15:13:13.190 DEBUG    FileSyncServer     Broadcasting 52 local files and 1 deleted files
+2023-01-18 15:13:16.883 DEBUG    FileSyncClient     Received 0 local files and 53 deleted files from 172.25.69.181
+2023-01-18 15:13:16.883 INFO     FileSyncClient     Deleting local b.txt, because it is marked as deleted
+2023-01-18 15:13:16.884 INFO     FileSyncClient     Deleting local employee_onboarding_finished_failed_event_entry.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.884 INFO     FileSyncClient     Deleting local quartz_jobs.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.885 INFO     FileSyncClient     Deleting local employee_integration.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.885 INFO     FileSyncClient     Deleting local quartz_triggers.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.885 INFO     FileSyncClient     Deleting local contract_type_config_backup.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.885 INFO     FileSyncClient     Deleting local alert.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.886 INFO     FileSyncClient     Deleting local attribute_metadata.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.886 INFO     FileSyncClient     Deleting local custom_attribute_definition.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.887 INFO     FileSyncClient     Deleting local required_documents_config.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.887 INFO     FileSyncClient     Deleting local job_position.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.887 INFO     FileSyncClient     Deleting local mongockChangeLog.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.888 INFO     FileSyncClient     Deleting local required_documents_config.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.888 INFO     FileSyncClient     Deleting local contract_type_config.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.888 INFO     FileSyncClient     Deleting local quartz_calendars.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.889 INFO     FileSyncClient     Deleting local attribute_metadata.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.889 INFO     FileSyncClient     Deleting local contract_type_config_backup.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.889 INFO     FileSyncClient     Deleting local employee_history_entry.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.889 INFO     FileSyncClient     Deleting local quartz_schedulers.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.890 INFO     FileSyncClient     Deleting local job_position.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.890 INFO     FileSyncClient     Deleting local mongockChangeLog.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.890 INFO     FileSyncClient     Deleting local employee_onboarding_finished_failed_event_entry.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.890 INFO     FileSyncClient     Deleting local employee_integration.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.891 INFO     FileSyncClient     Deleting local employee_history_entry.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.891 INFO     FileSyncClient     Deleting local employer_admin.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.891 INFO     FileSyncClient     Deleting local employer.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.891 INFO     FileSyncClient     Deleting local contract.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.892 INFO     FileSyncClient     Deleting local employer_admin.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.892 INFO     FileSyncClient     Deleting local contract.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.893 INFO     FileSyncClient     Deleting local quartz_calendars.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.893 INFO     FileSyncClient     Deleting local mongockLock.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.893 INFO     FileSyncClient     Deleting local addendum_type_config.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.893 INFO     FileSyncClient     Deleting local contract_type_config.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.893 INFO     FileSyncClient     Deleting local quartz_schedulers.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.893 INFO     FileSyncClient     Deleting local service_access_group.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.893 INFO     FileSyncClient     Deleting local quartz_jobs.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.894 INFO     FileSyncClient     Deleting local translation.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.894 INFO     FileSyncClient     Deleting local mongockLock.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.894 INFO     FileSyncClient     Deleting local alert.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.895 INFO     FileSyncClient     Deleting local service_access_group.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.895 INFO     FileSyncClient     Deleting local custom_attribute_definition.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.895 INFO     FileSyncClient     Deleting local translation.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.895 INFO     FileSyncClient     Deleting local quartz_triggers.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.896 INFO     FileSyncClient     Deleting local quartz_locks.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.896 INFO     FileSyncClient     Deleting local addendum_type_config.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.896 INFO     FileSyncClient     Deleting local employee.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.897 INFO     FileSyncClient     Deleting local address_type_metadata.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.897 INFO     FileSyncClient     Deleting local employer.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.897 INFO     FileSyncClient     Deleting local quartz_locks.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:16.897 INFO     FileSyncClient     Deleting local employee.bson.gz, because it is marked as deleted
+2023-01-18 15:13:16.897 INFO     FileSyncClient     Deleting local a.txt, because it is marked as deleted
+2023-01-18 15:13:16.898 INFO     FileSyncClient     Deleting local address_type_metadata.metadata.json.gz, because it is marked as deleted
+2023-01-18 15:13:17.638 INFO     FileSystem         File a.txt is now marked as deleted
+2023-01-18 15:13:17.638 INFO     FileSystem         File addendum_type_config.bson.gz is now marked as deleted
+2023-01-18 15:13:17.638 INFO     FileSystem         File addendum_type_config.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.638 INFO     FileSystem         File address_type_metadata.bson.gz is now marked as deleted
+2023-01-18 15:13:17.638 INFO     FileSystem         File address_type_metadata.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.638 INFO     FileSystem         File alert.bson.gz is now marked as deleted
+2023-01-18 15:13:17.638 INFO     FileSystem         File alert.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.638 INFO     FileSystem         File attribute_metadata.bson.gz is now marked as deleted
+2023-01-18 15:13:17.638 INFO     FileSystem         File attribute_metadata.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.638 INFO     FileSystem         File b.txt is now marked as deleted
+2023-01-18 15:13:17.638 INFO     FileSystem         File contract.bson.gz is now marked as deleted
+2023-01-18 15:13:17.638 INFO     FileSystem         File contract.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.639 INFO     FileSystem         File contract_type_config.bson.gz is now marked as deleted
+2023-01-18 15:13:17.639 INFO     FileSystem         File contract_type_config.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.639 INFO     FileSystem         File contract_type_config_backup.bson.gz is now marked as deleted
+2023-01-18 15:13:17.639 INFO     FileSystem         File contract_type_config_backup.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.639 INFO     FileSystem         File custom_attribute_definition.bson.gz is now marked as deleted
+2023-01-18 15:13:17.639 INFO     FileSystem         File custom_attribute_definition.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.639 INFO     FileSystem         File employee.bson.gz is now marked as deleted
+2023-01-18 15:13:17.639 INFO     FileSystem         File employee.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.639 INFO     FileSystem         File employee_history_entry.bson.gz is now marked as deleted
+2023-01-18 15:13:17.639 INFO     FileSystem         File employee_history_entry.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.639 INFO     FileSystem         File employee_integration.bson.gz is now marked as deleted
+2023-01-18 15:13:17.639 INFO     FileSystem         File employee_integration.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.639 INFO     FileSystem         File employee_onboarding_finished_failed_event_entry.bson.gz is now marked as deleted
+2023-01-18 15:13:17.639 INFO     FileSystem         File employee_onboarding_finished_failed_event_entry.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.639 INFO     FileSystem         File employer.bson.gz is now marked as deleted
+2023-01-18 15:13:17.640 INFO     FileSystem         File employer.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.640 INFO     FileSystem         File employer_admin.bson.gz is now marked as deleted
+2023-01-18 15:13:17.640 INFO     FileSystem         File employer_admin.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.640 INFO     FileSystem         File job_position.bson.gz is now marked as deleted
+2023-01-18 15:13:17.640 INFO     FileSystem         File job_position.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.640 INFO     FileSystem         File mongockChangeLog.bson.gz is now marked as deleted
+2023-01-18 15:13:17.640 INFO     FileSystem         File mongockChangeLog.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.640 INFO     FileSystem         File mongockLock.bson.gz is now marked as deleted
+2023-01-18 15:13:17.640 INFO     FileSystem         File mongockLock.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.640 INFO     FileSystem         File quartz_calendars.bson.gz is now marked as deleted
+2023-01-18 15:13:17.643 INFO     FileSystem         File quartz_calendars.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.643 INFO     FileSystem         File quartz_jobs.bson.gz is now marked as deleted
+2023-01-18 15:13:17.643 INFO     FileSystem         File quartz_jobs.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.643 INFO     FileSystem         File quartz_locks.bson.gz is now marked as deleted
+2023-01-18 15:13:17.643 INFO     FileSystem         File quartz_locks.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.643 INFO     FileSystem         File quartz_schedulers.bson.gz is now marked as deleted
+2023-01-18 15:13:17.643 INFO     FileSystem         File quartz_schedulers.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.643 INFO     FileSystem         File quartz_triggers.bson.gz is now marked as deleted
+2023-01-18 15:13:17.643 INFO     FileSystem         File quartz_triggers.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.644 INFO     FileSystem         File required_documents_config.bson.gz is now marked as deleted
+2023-01-18 15:13:17.644 INFO     FileSystem         File required_documents_config.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.644 INFO     FileSystem         File service_access_group.bson.gz is now marked as deleted
+2023-01-18 15:13:17.644 INFO     FileSystem         File service_access_group.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:17.644 INFO     FileSystem         File translation.bson.gz is now marked as deleted
+2023-01-18 15:13:17.644 INFO     FileSystem         File translation.metadata.json.gz is now marked as deleted
+2023-01-18 15:13:21.286 DEBUG    FileSyncClient     Received 0 local files and 53 deleted files from 172.25.67.0
+2023-01-18 15:13:25.531 DEBUG    FileSyncClient     Received 0 local files and 53 deleted files from 172.25.66.251
+2023-01-18 15:13:27.392 DEBUG    FileSyncClient     Received 0 local files and 53 deleted files from 172.25.75.17
+2023-01-18 15:13:28.195 DEBUG    FileSyncServer     Broadcasting 0 local files and 53 deleted files
+2023-01-18 15:13:31.896 DEBUG    FileSyncClient     Received 0 local files and 53 deleted files from 172.25.69.181
+2023-01-18 15:13:36.304 DEBUG    FileSyncClient     Received 0 local files and 53 deleted files from 172.25.67.0
+2023-01-18 15:13:40.546 DEBUG    FileSyncClient     Received 0 local files and 53 deleted files from 172.25.66.251
+2023-01-18 15:13:42.407 DEBUG    FileSyncClient     Received 0 local files and 53 deleted files from 172.25.75.17
+2023-01-18 15:13:43.202 DEBUG    FileSyncServer     Broadcasting 0 local files and 53 deleted files
+2023-01-18 15:13:46.912 DEBUG    FileSyncClient     Received 0 local files and 53 deleted files from 172.25.69.181
+2023-01-18 15:13:51.317 DEBUG    FileSyncClient     Received 0 local files and 53 deleted files from 172.25.67.0
+2023-01-18 15:13:51.318 DEBUG    FileSyncClient     FileSyncClientThread stopped
+2023-01-18 15:13:51.659 DEBUG    FileSystemWatcher  FileSystemWatcherThread stopped
+2023-01-18 15:13:52.30  DEBUG    FileServer         FileServerThread stopped
+2023-01-18 15:13:52.206 DEBUG    FileSyncServer     FileSyncServerThread stopped
+2023-01-18 15:13:52.206 INFO     FileSync           FileSync stopped

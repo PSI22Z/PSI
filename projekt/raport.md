@@ -196,7 +196,7 @@ sequenceDiagram
 ```
 
  
-## Planowany podział na moduły i strukturę komunikacji między nimi
+## Podział na moduły i strukturę komunikacji między nimi
 Projekt został podzielony na następujące moduły:
 * `file_system` - moduł odpowiedzialny za interakcje z systemem plików, umożliwia modyfikację i odczyt plików, również implementuje metody potrzebne do wykrywania zmian w plikach synchronizowanego katalogu. Model pliku składa się nazwy pliku, ostatniej daty modyfikacji, daty utworzenia, rozmiary oraz flagi `is_deleted` oznaczającej czy plik został usunięty. Aktualizowanie listy usuniętych plików działa na zasadzie porównywania ostatniego snapshotu listy plików (jeśli plik istniał w poprzednim snapshocie, a obecnie nie znajduje się w katalogu zostaje ustawiona flaga `is_deleted`)
 * `network` - moduł odpowiedzialny za warstwą sieciową realizujące następujące funkcje: 
