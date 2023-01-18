@@ -1206,3 +1206,4 @@
 2023-01-18 15:13:52.30  DEBUG    FileServer         FileServerThread stopped
 2023-01-18 15:13:52.206 DEBUG    FileSyncServer     FileSyncServerThread stopped
 2023-01-18 15:13:52.206 INFO     FileSync           FileSync stopped
+2023-01-18 15:37:12.947 INFO     FileSync           Starting FileSync
